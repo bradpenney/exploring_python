@@ -1,0 +1,104 @@
+.. role:: p(code)
+   :language: python
+
+Programming Glossary
+====================
+
+
+- `Abstraction <https://en.wikipedia.org/wiki/Abstraction>`_
+- `Algorithms <https://en.wikipedia.org/wiki/Algorithm>`_
+- `Application Programming Interface (API) <https://en.wikipedia.org/wiki/API>`_
+- `Arguments/Parameter <https://en.wikipedia.org/wiki/Parameter_(computer_programming)>`_
+- `Array <https://en.wikipedia.org/wiki/Array_(data_type)>`_
+- `ASCII <https://en.wikipedia.org/wiki/ASCII>`_
+- `Backtracking <https://en.wikipedia.org/wiki/Backtracking>`_
+- `Bare Machine <https://en.wikipedia.org/wiki/Bare_machine>`_
+- `Big-O <https://en.wikipedia.org/wiki/Big_O_notation>`_
+- `Binary <https://en.wikipedia.org/wiki/Binary_code>`_
+- `Bit <https://en.wikipedia.org/wiki/Bit>`_
+- `Boolean <https://en.wikipedia.org/wiki/Boolean_data_type>`_
+- `Brute Force <https://en.wikipedia.org/wiki/Brute-force_search>`_
+- `Byte <https://en.wikipedia.org/wiki/Byte>`_
+- `Call Stack <https://en.wikipedia.org/wiki/Call_stack>`_
+- `Char <https://en.wikipedia.org/wiki/Character_(computing)#char>`_
+- `Character Encoding <https://en.wikipedia.org/wiki/Character_encoding>`_
+- `Class <https://en.wikipedia.org/wiki/Class_(computer_programming)>`_
+- `Command Line Interface <https://en.wikipedia.org/wiki/Command-line_interface>`_
+- `Compiler <https://en.wikipedia.org/wiki/Compiler>`_
+- `Concurrency <https://en.wikipedia.org/wiki/Concurrency_(computer_science)>`_
+- `Conditional Logic <https://en.wikipedia.org/wiki/Conditional_(computer_programming)>`_
+- `CPU <https://en.wikipedia.org/wiki/Central_processing_unit>`_
+- `Data Type <https://en.wikipedia.org/wiki/Data_type>`_
+- `Declarative <https://en.wikipedia.org/wiki/Declarative_programming>`_
+- `Design Patterns <https://en.wikipedia.org/wiki/Design_pattern>`_
+- `Dijkstra's Shortest Path <https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`_
+- `Divide and conquer <https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm>`_
+- `Domain Name System (DNS) <https://en.wikipedia.org/wiki/Domain_Name_System>`_
+- `Double <https://en.wikipedia.org/wiki/Double-precision_floating-point_format>`_
+- `Dynamic Programming <https://en.wikipedia.org/wiki/Dynamic_programming>`_
+- `Endianness <https://en.wikipedia.org/wiki/Endianness>`_
+- `Error Code <https://en.wikipedia.org/wiki/Error_code>`_
+- `Executable <https://en.wikipedia.org/wiki/Executable>`_
+- `Expression <https://en.wikipedia.org/wiki/Expression_(computer_science)>`_
+- `Float <https://en.wikipedia.org/wiki/Floating-point_arithmetic>`_
+- `For Loop <https://en.wikipedia.org/wiki/For_loop>`_
+- `Functions <https://en.wikipedia.org/wiki/Subroutine>`_
+- `Functional Programming <https://en.wikipedia.org/wiki/Functional_programming>`_
+- `Garbage Collection <https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)>`_
+- `Graph <https://en.wikipedia.org/wiki/Graph_(abstract_data_type)>`_
+- `Greedy <https://en.wikipedia.org/wiki/Greedy_algorithm>`_
+- `Hash <https://en.wikipedia.org/wiki/Hash_table>`_
+- `Hexadecimal <https://en.wikipedia.org/wiki/Hexadecimal>`_
+- `Hypertext Transfer Protocol (HTTP) <https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol>`_
+- `Inheritance <https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)>`_
+- `Instance <https://en.wikipedia.org/wiki/Instance_(computer_science)>`_
+- `Integer (int) <https://en.wikipedia.org/wiki/Integer_(computer_science)>`_
+- `Interpreter <https://en.wikipedia.org/wiki/Interpreter_(computing)>`_
+- `Imperative <https://en.wikipedia.org/wiki/Imperative_programming>`_
+- `IP Address <https://en.wikipedia.org/wiki/IP_address>`_
+- `Iterator <https://en.wikipedia.org/wiki/Iterator>`_
+- `I/O <https://en.wikipedia.org/wiki/Input/output>`_
+- `Kernel (Drivers) <https://en.wikipedia.org/wiki/Kernel_(operating_system)>`_
+- `Linked List <https://en.wikipedia.org/wiki/Linked_list>`_
+- `Machine Code <https://en.wikipedia.org/wiki/Machine_code>`_
+- `Mainframe <https://en.wikipedia.org/wiki/Mainframe_computer>`_
+- `Memoization <https://en.wikipedia.org/wiki/Memoization>`_
+- `Memory Address <https://en.wikipedia.org/wiki/Memory_address>`_
+- `Memory Management <https://en.wikipedia.org/wiki/Memory_management>`_
+- `Methods <https://en.wikipedia.org/wiki/Method_(computer_programming)>`_
+- `Nibble <https://en.wikipedia.org/wiki/Nibble>`_
+- `Network Packet  <https://en.wikipedia.org/wiki/Network_packet>`_
+- `Nodes <https://en.wikipedia.org/wiki/Node_(computer_science)>`_
+- `Object-oriented Programming <https://en.wikipedia.org/wiki/Object-oriented_programming>`_
+- `Operators <https://en.wikipedia.org/wiki/Operator_(computer_programming)>`_
+- `Pointer <https://en.wikipedia.org/wiki/Pointer_(computer_programming)>`_
+- `Parallel Algorithms <https://en.wikipedia.org/wiki/Analysis_of_parallel_algorithms>`_
+- `Procedural Programming <https://en.wikipedia.org/wiki/Procedural_programming>`_
+- `Programming Language <https://en.wikipedia.org/wiki/Programming_language>`_
+- `Programming Paradigm <https://en.wikipedia.org/wiki/Programming_paradigm#Multi-paradigm>`_
+- `Properties <https://en.wikipedia.org/wiki/Property_(programming)>`_
+- `Queue <https://en.wikipedia.org/wiki/Queue_(abstract_data_type)>`_
+- `RAM <https://en.wikipedia.org/wiki/Random-access_memory>`_
+- `Recursion <https://en.wikipedia.org/wiki/Recursion_(computer_science)>`_
+- `Reference <https://en.wikipedia.org/wiki/Reference_(computer_science)>`_
+- `Set <https://en.wikipedia.org/wiki/Set_(abstract_data_type)>`_
+- `Shell <https://en.wikipedia.org/wiki/Shell_(computing)>`_
+- `Space Complexity <https://en.wikipedia.org/wiki/Space_complexity>`_
+- `Stack <https://en.wikipedia.org/wiki/Stack_(abstract_data_type)>`_
+- `Stack Overflow <https://en.wikipedia.org/wiki/Stack_buffer_overflow>`_
+- `Statement <https://en.wikipedia.org/wiki/Statement_(computer_science)>`_
+- `String <https://en.wikipedia.org/wiki/String_(computer_science)>`_
+- `SSH <https://en.wikipedia.org/wiki/Secure_Shell>`_
+- `Transistor <https://en.wikipedia.org/wiki/Transistor>`_
+- `Transport Layer Security (TLS) <https://en.wikipedia.org/wiki/Transport_Layer_Security>`_
+- `Threads <https://en.wikipedia.org/wiki/Thread_(computing)>`_
+- `Time Complexity <https://en.wikipedia.org/wiki/Time_complexity>`_
+- `Transmission Control Protol (TCP) <https://en.wikipedia.org/wiki/Transmission_Control_Protocol>`_
+- `Tree <https://en.wikipedia.org/wiki/Tree_(data_structure)>`_
+- `Turing Machine <https://en.wikipedia.org/wiki/Turing_machine>`_
+- `Type System <https://en.wikipedia.org/wiki/Type_system>`_
+- `URL <https://en.wikipedia.org/wiki/URL>`_
+- `Variable <https://en.wikipedia.org/wiki/Variable_(computer_science)>`_
+- `Virtual Machine <https://en.wikipedia.org/wiki/Virtual_machine>`_
+- `Void <https://en.wikipedia.org/wiki/Void_type>`_
+- `While Loop <https://en.wikipedia.org/wiki/While_loop>`_
