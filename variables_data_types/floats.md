@@ -34,7 +34,3 @@ price = 10.99 #float
 total_price = number_of_items * price # 54.95 will now be assigned to the "total_price" variable, which is a float
 print(total_price)
 ```
-
-```{code-cell} ipython3
-
-```

@@ -81,7 +81,3 @@ print("Hello I am " + name.strip() + ".") # whitespace stripped
 print("Hello I am " + name.rstrip() + ".") # whitespace on righ stripped
 print("Hello I am " + name.lstrip() + ".") # whitespace on left stripped
 ```
-
-```{code-cell} ipython3
-
-```

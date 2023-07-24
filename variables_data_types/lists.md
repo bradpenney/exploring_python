@@ -27,7 +27,3 @@ Lists can be sliced, see [Slicing](../slicing/index.html) for more details.
 +++
 
 [![Socratica: List Comprehensions](https://img.youtube.com/vi/AhSvKGTh28Q/maxresdefault.jpg)](https://youtu.be/AhSvKGTh28Q)
-
-```{code-cell} ipython3
-
-```

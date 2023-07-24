@@ -1,3 +1,16 @@
+---
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.14.7
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
 
 # Floats
 
@@ -20,8 +33,4 @@ number_of_items = 5 # integer
 price = 10.99 #float
 total_price = number_of_items * price # 54.95 will now be assigned to the "total_price" variable, which is a float
 print(total_price)
-```
-
-```{code-cell} ipython3
-
 ```

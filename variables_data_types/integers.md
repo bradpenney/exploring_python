@@ -48,7 +48,3 @@ print("The area of a the rectangle is " + str(rectangle_area))
 print("The area of the triangle is " + str(triangle_area))
 print("The area of the square is " + str(square_area))
 ```
-
-```{code-cell} ipython3
-
-```
