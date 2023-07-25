@@ -1,10 +1,12 @@
 
+
 # `while` Loops
 
++++
 
 Another option is a  `while` loop. The code within a `while` will run as long as the condition is `True`:
 
-```python
+```{code-cell} ipython3
 count = 0
 # while count is less than 10
 while count < 10:
