@@ -1,3 +1,18 @@
+---
+jupyter:
+  jupytext:
+    formats: md,ipynb
+    text_representation:
+      extension: .md
+      format_name: markdown
+      format_version: '1.3'
+      jupytext_version: 1.14.7
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
 # File Interactions
 
 Writing stand-alone programs is fun, but programming gets a lot more fun and interesting when we deal with persistent data. This section of the website will contain info about how to interact with four (4) common types of files - CSV, JSON, XML and databases.

@@ -18,11 +18,30 @@ parts:
       - file: control_statements/if_statements
       - file: control_statements/for_loops
       - file: control_statements/while_loops
-      - file: control_statements/looping_over_a_function.md
+      - file: control_statements/looping_over_a_function
     - file: modules_packages/index
+      sections:
+      - file: modules_packages/core_modules/datetime
+      - file: modules_packages/core_modules/logging
+      - file: modules_packages/core_modules/os
+      - file: modules_packages/core_modules/sqlite3
+      - file: modules_packages/core_modules/statistics
+      - file: modules_packages/core_modules/subprocess
+      - file: modules_packages/core_modules/webbrowser
+      - file: modules_packages/python_packages/bokeh
+      - file: modules_packages/python_packages/cryptography
+      - file: modules_packages/python_packages/matplotlib
+      - file: modules_packages/python_packages/pandas
+      - file: modules_packages/python_packages/pygame
     - file: functions_and_classes/index
+      sections:
+      - file: functions_and_classes/functions
+      - file: functions_and_classes/classes
     - file: file_interactions/index
+      sections:
+      - file: file_interactions/databases
+      - file: file_interactions/csv
+      - file: file_interactions/json
+      - file: file_interactions/xml
     - file: resources/index
     - file: slicing/index
-    - file: markdown
-    - file: notebooks
