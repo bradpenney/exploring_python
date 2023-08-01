@@ -21,6 +21,8 @@ parts:
       - file: control_statements/while_loops
       - file: control_statements/looping_over_a_function
     - file: file_interactions/index
+      sections:
+      - file: file_interactions/databases
     - file: modules_packages/index
       sections:
       - file: modules_packages/core_modules/datetime
