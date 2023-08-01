@@ -15,7 +15,3 @@ Code repeats its actions a specific number of times or until a specific conditio
 - [`for` Loops](./for_loops.md)
 - [`while` Loop](./while_loops.md)
 - [Looping over a Function](./looping_over_a_function.md)
-
-```python
-
-```

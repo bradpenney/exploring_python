@@ -13,12 +13,14 @@ parts:
       - file: variables_data_types/lists
       - file: variables_data_types/dictionaries
       - file: variables_data_types/tuples
+      - file: slicing/index
     - file: control_statements/index
       sections:
       - file: control_statements/if_statements
       - file: control_statements/for_loops
       - file: control_statements/while_loops
       - file: control_statements/looping_over_a_function
+    - file: file_interactions/index
     - file: modules_packages/index
       sections:
       - file: modules_packages/core_modules/datetime
@@ -37,11 +39,4 @@ parts:
       sections:
       - file: functions_and_classes/functions
       - file: functions_and_classes/classes
-    - file: file_interactions/index
-      sections:
-      - file: file_interactions/databases
-      - file: file_interactions/csv
-      - file: file_interactions/json
-      - file: file_interactions/xml
     - file: resources/index
-    - file: slicing/index

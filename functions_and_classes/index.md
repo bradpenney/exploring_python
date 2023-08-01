@@ -1,13 +1,4 @@
-.. role:: p(code)
-   :language: python
+# Functions & Classes
 
-.. _functionsAndClasses:
-
-Functions & Classes
-===================
-
-.. toctree::
-   :maxdepth: 1
-   
-   functions
-   classes
+- [Functions](./functions.ipynb)
+- [Classes](./classes.ipynb)
