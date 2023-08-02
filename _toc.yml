@@ -13,7 +13,7 @@ parts:
       - file: variables_data_types/lists
       - file: variables_data_types/dictionaries
       - file: variables_data_types/tuples
-      - file: slicing/index
+      - file: variables_data_types/slicing
     - file: control_statements/index
       sections:
       - file: control_statements/if_statements
@@ -23,6 +23,9 @@ parts:
     - file: file_interactions/index
       sections:
       - file: file_interactions/databases
+      - file: file_interactions/csv
+      - file: file_interactions/json
+      - file: file_interactions/xml
     - file: modules_packages/index
       sections:
       - file: modules_packages/core_modules/datetime

@@ -31,3 +31,38 @@ Traceback (most recent call last):
     1 / 0
     ~~^~~
 ZeroDivisionError: division by zero
+ERROR:root:Oh noes!  Brad created an error!
+ERROR:root:ZeroDivisionError
+Traceback (most recent call last):
+  File "/tmp/ipykernel_4776/8376821.py", line 2, in <module>
+    1 / 0
+    ~~^~~
+ZeroDivisionError: division by zero
+ERROR:root:Oh noes!  Brad created an error!
+ERROR:root:ZeroDivisionError
+Traceback (most recent call last):
+  File "/tmp/ipykernel_7733/8376821.py", line 2, in <module>
+    1 / 0
+    ~~^~~
+ZeroDivisionError: division by zero
+ERROR:root:Oh noes!  Brad created an error!
+ERROR:root:ZeroDivisionError
+Traceback (most recent call last):
+  File "/tmp/ipykernel_9190/8376821.py", line 2, in <module>
+    1 / 0
+    ~~^~~
+ZeroDivisionError: division by zero
+ERROR:root:Oh noes!  Brad created an error!
+ERROR:root:ZeroDivisionError
+Traceback (most recent call last):
+  File "/tmp/ipykernel_10298/8376821.py", line 2, in <module>
+    1 / 0
+    ~~^~~
+ZeroDivisionError: division by zero
+ERROR:root:Oh noes!  Brad created an error!
+ERROR:root:ZeroDivisionError
+Traceback (most recent call last):
+  File "/tmp/ipykernel_11577/8376821.py", line 2, in <module>
+    1 / 0
+    ~~^~~
+ZeroDivisionError: division by zero
