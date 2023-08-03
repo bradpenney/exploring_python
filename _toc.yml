@@ -3,6 +3,8 @@
 
 format: jb-book
 root: index
+defaults:
+  titlesonly: True
 parts:
   - chapters:
     - file: variables_data_types/index
@@ -21,27 +23,28 @@ parts:
       - file: control_statements/while_loops
       - file: control_statements/looping_over_a_function
     - file: file_interactions/index
+    - file: core_modules/index
       sections:
-      - file: file_interactions/databases
-      - file: file_interactions/csv
-      - file: file_interactions/json
-      - file: file_interactions/xml
-    - file: modules_packages/index
+      - file: core_modules/datetime
+      - file: core_modules/logging
+      - file: core_modules/os
+      - file: core_modules/sqlite3
+      - file: core_modules/statistics
+      - file: core_modules/subprocess
+      - file: core_modules/webbrowser
+    - file: python_packages/index
       sections:
-      - file: modules_packages/core_modules/datetime
-      - file: modules_packages/core_modules/logging
-      - file: modules_packages/core_modules/os
-      - file: modules_packages/core_modules/sqlite3
-      - file: modules_packages/core_modules/statistics
-      - file: modules_packages/core_modules/subprocess
-      - file: modules_packages/core_modules/webbrowser
-      - file: modules_packages/python_packages/bokeh
-      - file: modules_packages/python_packages/cryptography
-      - file: modules_packages/python_packages/matplotlib
-      - file: modules_packages/python_packages/pandas
-      - file: modules_packages/python_packages/pygame
+      - file: python_packages/bokeh
+      - file: python_packages/cryptography
+      - file: python_packages/matplotlib
+      - file: python_packages/pandas
+      - file: python_packages/pygame
     - file: functions_and_classes/index
       sections:
       - file: functions_and_classes/functions
       - file: functions_and_classes/classes
     - file: resources/index
+      sections:
+      - file: resources/glossary
+      - file: resources/general_coding_resources
+      - file: resources/useful_videos
