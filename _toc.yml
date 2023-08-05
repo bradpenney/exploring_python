@@ -12,6 +12,7 @@ parts:
       - file: variables_data_types/strings
       - file: variables_data_types/integers
       - file: variables_data_types/floats
+      - file: variables_data_types/booleans
       - file: variables_data_types/lists
       - file: variables_data_types/dictionaries
       - file: variables_data_types/tuples
