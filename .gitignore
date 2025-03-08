@@ -1,9 +1,0 @@
-_build/*
-.ipynb_checkpoints
-bin/*
-core_modules/*
-share/*
-lib/*
-lib64
-pyvenv.cfg
-include/

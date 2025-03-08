@@ -1,0 +1,3 @@
+# Learning Python Repo
+
+This repo is meant as a place of learning - just a private place to put a bunch of examples. Nothing fancy here...
