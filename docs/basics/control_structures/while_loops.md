@@ -5,7 +5,7 @@ always know how many times the loop will repeat before it finally calls it quits
 depends on a particular condition – usually waiting for a boolean to flip from `True` to
 `False`. 🕵️‍♂️
 
-???+ danger
+??? danger
 
      If the condition never becomes `False`, an _infinite_ loop can be created. If you encounter
      an infinite loop, usually `Ctrl+C` will kill the program (for basic scripting).
@@ -37,7 +37,7 @@ while keep_looping:
 Until the user enters "exit", this loop will keep echoing the user input infinitely.
 Careful not to get stuck in an infinite loop.
 
-???+ tip
+??? tip
 
      It is possible that a `while` loop will never run if, when it is reached, the condition
      it checks is already `False`. 🚫
@@ -53,7 +53,7 @@ while value > 0:
 print("Loop has ended. All done! 🏁")
 ```
 
-???+ challenge
+??? challenge
 
      Try writing your own `while` loop that is different from the examples above!
      Bonus points for creativity – maybe count sheep, print emojis, or make a countdown to pizza time! 🍕⏳

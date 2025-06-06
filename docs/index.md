@@ -1,10 +1,9 @@
-# Future Home of "Exploring Python" 🐍✨
+# Welcome to Exploring Python
 
-On this page, I'll explore Python while also learning Material for MKDocs. Should be a fun adventure! 🚀
-
-## What is "Exploring Python"? 🤔
-
-This site is dedicated to documenting my journey as I learn and experiment with Python programming. I'll share code examples, tips, and resources that I find helpful along the way. Whether you're a beginner or just curious, I hope you'll find something useful (or at least entertaining)! 😄
+A subdomain of [BradPenney.io](https://bradpenney.io), this site is dedicated to documenting best
+practices for Python programming. I'll share code examples, tips, and resources that I find helpful
+along the way. Whether you're a beginner or just curious, I hope you'll find something useful (or
+at least entertaining)! 😄
 
 ## Topics to Explore 📚
 
@@ -12,6 +11,5 @@ This site is dedicated to documenting my journey as I learn and experiment with 
 - Useful libraries and frameworks 🛠️
 - Tips for writing clean, efficient code 🧹
 - Project ideas and tutorials 💡
-- Notes on using Material for MKDocs 🎨
 
 Stay tuned for updates as I add more content! Thanks for stopping by! 👋

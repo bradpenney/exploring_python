@@ -1,8 +1,14 @@
-site_name: Exploring Python
+site_name: "Exploring Python"
+extra_css:
+  - stylesheets/extra.css
 theme:
   name: material
   palette:
     scheme: slate
+    primary: black
+    accent: amber
+  logo: images/exploring_python.png
+  favicon: images/exploring_python.png
   icon:
     admonition:
       note: octicons/tag-16
