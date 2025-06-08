@@ -46,4 +46,5 @@ nav:
       - Controlling Loops: basics/control_structures/controlling_loops.md
   - Data Structures:
       - Lists: basics/data_structures/lists.md
+      - Tuples: basics/data_structures/tuples.md
       - Dictionaries: basics/data_structures/dictionaries.md
