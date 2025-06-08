@@ -1,5 +1,7 @@
 # Dictionaries
 
+## Theory
+
 Dictionaries are one of the most important data structures in Python — and they’re *everywhere*.
 Even when you don’t see them directly, they’re often working behind the scenes, quietly holding
 things together.
@@ -36,6 +38,7 @@ not affected by its size!
             dream_car[engine_parts] = 563
             ~~~~~~~~~~^^^^^^^^^^^^^^
         TypeError: unhashable type: 'list'
+
 
 The data type of a dictionary in Python is `dict`, and they're iterable, even though they're not
 a sequence type like a `list` or `set`.  Instead, values are retrieved by *key*, not by index
