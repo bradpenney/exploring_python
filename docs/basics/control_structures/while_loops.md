@@ -13,26 +13,26 @@ depends on a particular condition – usually waiting for a boolean to flip from
 
 The basic form of a `while` loop is:
 
-```python
-while expr:
-    <code block>
-```
+    ``` python
+    while expr:
+        <code block>
+    ```
 
 The expression is evaluated at the start of each loop, and if it is `True`, the loop will run.
 It's like a party that keeps going as long as the music is playing! 🎶
 
 For example:
 
-```python
-keep_looping = True
-while keep_looping:
-    user_input = input("Enter 'exit' to stop the loop: ")
-    if user_input.lower() == 'exit':
-        print("Exiting the loop. Goodbye! 👋")
-        keep_looping = False
-    else:
-        print(f"You entered: {user_input} 🤖")
-```
+    ``` python
+    keep_looping = True
+    while keep_looping:
+        user_input = input("Enter 'exit' to stop the loop: ")
+        if user_input.lower() == 'exit':
+            print("Exiting the loop. Goodbye! 👋")
+            keep_looping = False
+        else:
+            print(f"You entered: {user_input} 🤖")
+    ```
 
 Until the user enters "exit", this loop will keep echoing the user input infinitely.
 Careful not to get stuck in an infinite loop.
@@ -44,14 +44,14 @@ Careful not to get stuck in an infinite loop.
 
 Another common pattern is to check equality and increment/decrement the value on each iteration:
 
-```python
-value = 10
+    ``` python
+    value = 10
 
-while value > 0:
-    print(f"Current value: {value}")
-    value -= 1  # Decrease the value by 1 each iteration
-print("Loop has ended. All done! 🏁")
-```
+    while value > 0:
+        print(f"Current value: {value}")
+        value -= 1  # Decrease the value by 1 each iteration
+    print("Loop has ended. All done! 🏁")
+    ```
 
 ??? challenge
 
