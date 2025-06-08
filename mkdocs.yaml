@@ -23,10 +23,30 @@ theme:
       bug: octicons/bug-16
       example: octicons/beaker-16
       quote: octicons/quote-16
+  features:
+    - content.code.annotate
 
 markdown_extensions:
   - admonition
   - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - Control Structures:
+      - If Statements: basics/control_structures/if_statements.md
+      - For Loops: basics/control_structures/for_loops.md
+      - While Loops: basics/control_structures/while_loops.md
+      - Controlling Loops: basics/control_structures/controlling_loops.md
+  - Data Structures:
+      - Lists: basics/data_structures/lists.md
+      - Dictionaries: basics/data_structures/dictionaries.md
+
 
 
