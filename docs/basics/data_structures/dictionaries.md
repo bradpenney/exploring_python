@@ -1,7 +1,5 @@
 # Dictionaries
 
-## Theory
-
 Dictionaries are one of the most important data structures in Python — and they’re *everywhere*.
 Even when you don’t see them directly, they’re often working behind the scenes, quietly holding
 things together.
