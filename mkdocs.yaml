@@ -39,6 +39,8 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Data Types:
+      - Strings: basics/data_types/strings.md
   - Control Structures:
       - If Statements: basics/control_structures/if_statements.md
       - For Loops: basics/control_structures/for_loops.md
@@ -49,4 +51,3 @@ nav:
       - Tuples: basics/data_structures/tuples.md
       - Dictionaries: basics/data_structures/dictionaries.md
       - Slicing Sequences: basics/data_structures/slicing_sequences.md
-      - Sets: basics/data_structures/sets.md
