@@ -1,9 +1,9 @@
 # Tuples
 
-Tuples, similar to [lists](lists.md), provide a means to collect and organize data. However, their
-immutability sets tuples apart – once created, the elements within a tuple cannot be modified. In
-this guide, we’ll delve into what tuples are, explore why they are used, and demonstrate some
-practical use cases for these unchangeable data structures.
+Tuples, similar to [lists](lists.md), are a sequenced collection that provides a means to collect
+and organize data. However, their immutability sets tuples apart – once created, the elements
+within a tuple cannot be modified. In this guide, we’ll delve into what tuples are, explore why
+they are used, and demonstrate some practical use cases for these unchangeable data structures.
 
 ## Understanding Tuples
 

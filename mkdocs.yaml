@@ -48,3 +48,5 @@ nav:
       - Lists: basics/data_structures/lists.md
       - Tuples: basics/data_structures/tuples.md
       - Dictionaries: basics/data_structures/dictionaries.md
+      - Slicing Sequences: basics/data_structures/slicing_sequences.md
+      - Sets: basics/data_structures/sets.md

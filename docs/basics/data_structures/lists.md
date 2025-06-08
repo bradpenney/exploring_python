@@ -3,9 +3,14 @@
 Lists are among Python’s most valuable and frequently used data types, and they are the heart
 of countless programs. So, what exactly is a `list`, and why are they so indispensable?
 
-In essence, a `list` is a dynamic and mutable collection of values. Think of it as a versatile
+In essence, a `list` is a dynamic and mutable sequence of values. Think of it as a versatile
 bag storing various items—numbers, words, and even a medley of data types—all within a single
 container. This flexibility makes lists an invaluable asset for any Python programmer.
+
+??? tip
+
+    Closely related to lists are [tuples](tuples.md), which are *immutable*, but can be
+    managed with similar syntax.
 
 Let’s explore the concept further with a real-world analogy. Imagine you have a collection of
 names, distances, and mixed data types like this:
