@@ -49,6 +49,7 @@ nav:
       - For Loops: basics/control_structures/for_loops.md
       - While Loops: basics/control_structures/while_loops.md
       - Controlling Loops: basics/control_structures/controlling_loops.md
+      - Functions: basics/control_structures/functions.md
   - Data Structures:
       - Lists: basics/data_structures/lists.md
       - Tuples: basics/data_structures/tuples.md
