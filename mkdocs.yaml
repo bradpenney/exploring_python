@@ -43,6 +43,7 @@ nav:
       - Strings: basics/data_types/strings.md
       - Integers: basics/data_types/ints.md
       - Floating Point Numbers: basics/data_types/floats.md
+      - Booleans: basics/data_types/booleans.md
   - Control Structures:
       - If Statements: basics/control_structures/if_statements.md
       - For Loops: basics/control_structures/for_loops.md

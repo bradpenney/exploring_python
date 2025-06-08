@@ -50,7 +50,8 @@ The area of the triangle is 15.0
 The area of the square is 36
 ```
 
-??? note
+??? tip "See Also"
 
-    Sometimes the output of two integers results in a floating point number (a number with
-    decimal points).  Python handles these as a `float`.
+    Sometimes, the output of two integers results in a floating point number (a number with
+    decimal points).  Python handles these as a `float`.  See [floats](floats.md) for more
+    details.

@@ -5,16 +5,19 @@ is a powerful tool for precisely that purpose. These statements allow you to cre
 branching logic within your programs. With them, you can instruct your code to take different
 actions based on specific conditions, making your programs more intelligent and responsive.
 
-## What is an `if-elif-else` Statement?
+## What & Why?
 
 An `if-elif-else` statement is a control structure in Python that enables your program to make
 choices. It starts with an `if` statement that checks a particular condition. If that condition
 is `True`, a specific block of code is executed. However, if the condition is not met, the program
 can continue to evaluate other conditions using `elif` (short for “else if”) statements. These
 `elif` clauses allow for multiple conditions to be checked sequentially. Finally, if none of the
-preceding conditions are true, the else code block is executed.
+preceding conditions are `True`, the else code block is executed.
 
-## Why Use if-elif-else Statements?
+??? tip "See Also"
+
+    `if/else` statements evaluate to `True` or `False` - which are `boolean` values.  See
+    [Booleans](../data_types/booleans.md) for more details.
 
 The primary purpose of `if-elif-else` statements is to introduce decision-making capabilities
 into your code. They allow your program to adapt and respond to varying situations. There are

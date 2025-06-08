@@ -2,8 +2,8 @@
 
 Unlike `for` loops, `while` loops are non-deterministic – the program (and programmer!) doesn't
 always know how many times the loop will repeat before it finally calls it quits. Instead, it
-depends on a particular condition – usually waiting for a boolean to flip from `True` to
-`False`. 🕵️‍♂️
+depends on a particular condition – usually waiting for a [`boolean`](../data_types/booleans.md)
+to flip from `True` to `False`. 🕵️‍♂️
 
 ??? danger
 
