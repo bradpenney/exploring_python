@@ -29,4 +29,13 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
 
+nav:
+  - Home: index.md
+  - Control Structures:
+      - While Loops: basics/control_structures/while_loops.md
+      - Controlling Loops: basics/control_structures/controlling_loops.md
+  - Data Structures:
+      - Dictionaries: basics/data_structures/dictionaries.md
+
+
 

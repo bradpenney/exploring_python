@@ -4,3 +4,18 @@
   padding: 0;
   margin: 0;
 }
+
+/* Responsive image alignment: right on large, center on small */
+.img-responsive-right {
+  display: block;
+  margin: 1em auto;
+  max-width: 100%;
+}
+
+/* On tablet and larger: float right */
+@media screen and (min-width: 768px) {
+  .img-responsive-right {
+    float: right;
+    margin: 0 0 1em 1em;
+  }
+}

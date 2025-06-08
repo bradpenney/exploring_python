@@ -1,5 +1,7 @@
 # Dictionaries
 
+## Theory
+
 Dictionaries are one of the most important data structures in Python — and they’re *everywhere*.
 Even when you don’t see them directly, they’re often working behind the scenes, quietly holding
 things together.
@@ -25,6 +27,68 @@ not affected by its size!
 
 ??? tip
 
-    Every key in a dictionary must be unique and _hashable_.  In practical terms, this means you
-    can't use a mutable object as keys - so you can't use a `list` as a key in a dictionary.  It
-    is ok to use a `list` as a value.
+    Every key in a dictionary must be *unique* and *hashable*.  In practical terms, this means you
+    can't use a *mutable* object as keys - so you can't use a `list` or a `dict` as as a key in a
+    dictionary. This will throw a `TypeError` exception. Mutable objects **can** be assigned as
+    values.
+
+The data type of a dictionary in Python is `dict`, and they're iterable, even though they're not
+a sequence type like a `list` or `set`.  Instead, values are retrieved by *key*, not by index
+value like a `list`.  Dictionaries do not have a guaranteed order.
+
+## Practice
+
+### Creating a Dictionary
+
+Dictionaries can be declared with:
+
+    ``` python
+    dream_car = {
+        "model": "Pinto",
+        "make": "Ford",
+        "year": 1971,
+        "mileage": 400
+    }
+    ```
+
+To retrieve a value, use square brackets `[]` and supply a key (not an index like a list):
+
+    ``` python
+    print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']}")
+    ```
+
+Would return:
+
+    ``` bash
+    Dream car: 1971 Ford Pinto
+    ```
+
+### Inserting or Changing a Value
+
+You can insert or update a key/value pair using the same square bracket syntax with an assignment:
+
+    ``` python
+        dream_car['make'] = "Ferrari"
+        dream_car['model'] = "365 GTS/4 Daytona"
+        dream_car['colour'] = "Rosso Chiaro"
+        print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']} of the colour {dream_car['colour']}")
+    ```
+This would output:
+
+    ``` bash
+    Dream car: 1971 Ferrari 365 GTS/4 Daytona of the colour Rosso Chiaro
+    ```
+
+### Deleting a Key/Value Pair
+
+Removing an entry is as easy as using the `del` keyword:
+
+    ``` python
+    del dream_car['colour']
+    ```
+
+??? warning
+
+    Attempting to read or delete a key that doesn’t exist will raise a `KeyError` exception.
+    If you’re unsure whether a key exists, you can check with `'key' in dictionary` or use
+    `.get()` instead.
