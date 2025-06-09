@@ -32,7 +32,7 @@ if python_is_awesome:
 
 Returns:
 
-``` bash
+``` text
 Python is Awesome!
 ```
 
@@ -51,7 +51,7 @@ while kevin_is_a_secret_genius:
 ```
 
 Which would return:
-``` bash
+``` text
 There is no way Kevin is a secret genius
 ```
 

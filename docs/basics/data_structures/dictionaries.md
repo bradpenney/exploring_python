@@ -63,7 +63,7 @@ print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']}"
 
 Would return:
 
-``` bash
+``` text
 Dream car: 1971 Ford Pinto
 ```
 
@@ -79,7 +79,7 @@ print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']} 
 ```
 This would output:
 
-``` bash
+``` text
 Dream car: 1971 Ferrari 365 GTS/4 Daytona of the colour Rosso Chiaro
 ```
 
@@ -95,7 +95,7 @@ del dream_car['colour']
 
     Attempting to read or delete a key that doesn’t exist will raise a `KeyError` exception:
 
-    ``` bash
+    ``` text
     Traceback (most recent call last):
     File "exploring_python/basics/data_structures/dictionaries.py", line 19, in <module>
         {dream_car['model']} with the {dream_car['engine']} engine.")

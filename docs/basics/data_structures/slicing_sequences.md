@@ -9,7 +9,7 @@ manipulation.
 
 ### Slicing Index System
 
-``` bash
+``` text
 Positive index system
   0      1      2      3      4      5      6
 Negative index system
@@ -34,7 +34,7 @@ print(days[2])
 
 Results in:
 
-``` bash
+``` text
 Saturday
 Wednesday
 ```
@@ -58,7 +58,7 @@ print(sliced_days)
 
 Would output:
 
-``` bash
+``` text
 ['Tuesday', 'Wednesday', 'Thursday']
 ```
 
@@ -80,7 +80,7 @@ print(first_three_days)
 
 Would result in:
 
-``` bash
+``` text
 ['Monday', 'Tuesday', 'Wednesday']
 ```
 
@@ -102,7 +102,7 @@ print(last_three_days)
 
 Outputs:
 
-``` bash
+``` text
 ['Friday', 'Saturday', 'Sunday']
 ```
 
@@ -124,7 +124,7 @@ print(everything_but_last)
 
 Results in:
 
-``` bash
+``` text
 ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 ```
 
@@ -146,7 +146,7 @@ print(everything_but_last_two)
 
 Returns:
 
-``` bash
+``` text
 ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
 ```
 
@@ -164,6 +164,6 @@ print(sliced_text)
 
 Would output:
 
-``` bash
+``` text
 World
 ```

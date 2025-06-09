@@ -44,7 +44,7 @@ print(f"The area of the square is {square_area}")
 
 Results in:
 
-``` bash
+``` text
 The area of a the rectangle is 50
 The area of the triangle is 15.0
 The area of the square is 36

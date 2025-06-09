@@ -25,7 +25,7 @@ for colour in colours:
 
 Would result in:
 
-``` bash
+``` text
 Ooooh, I totally dig the colour red!
 Ooooh, I totally dig the colour green!
 Ooooh, I totally dig the colour blue!
@@ -62,7 +62,7 @@ for withdrawal in withdrawals:
 
 Would result in:
 
-``` bash
+``` text
 📤 Request to withdraw $10...
 ✅ Success! You withdrew $10. Remaining balance: $90
 📤 Request to withdraw $23...
@@ -108,7 +108,7 @@ else:
 
 Would result in:
 
-``` bash
+``` text
 💸 Time for a little shopping adventure!
 🛒 You spot something for $10...
 🎉 Purchase successful! You’ve got $190 left in your treasure chest.

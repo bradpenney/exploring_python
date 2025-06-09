@@ -35,7 +35,7 @@ print("There was a famous scientist named " + first_name + " " + last_name + "."
 
 Would output:
 
-``` bash
+``` text
 There was a famous scientist named Albert Einstien.
 ```
 
@@ -54,7 +54,7 @@ print(f"My name is {name} and I am {age} years old!")
 
 Would produce:
 
-``` bash
+``` text
 My name is Jim and I am 32 years old!
 ```
 
@@ -73,7 +73,7 @@ print(book_title.capitalize())
 
 Returns:
 
-``` bash
+``` text
 MASTERY BY ROBERT GREENE
 mastery by robert greene
 Mastery by Robert Greene
@@ -94,7 +94,7 @@ print("and you are learning \n \t Python")
 
 Returns:
 
-``` bash
+``` text
 Hello, I'm 	 	 Brad!
 and you are learning
  	 Python
@@ -113,7 +113,7 @@ print("Hello I am " + name.lstrip() + ".") # whitespace on left stripped
 
 Would result with:
 
-``` bash
+``` text
 Hello I am       Albert Einstein       .
 Hello I am Albert Einstein.
 Hello I am       Albert Einstein.

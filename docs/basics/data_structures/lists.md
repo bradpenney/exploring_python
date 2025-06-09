@@ -37,7 +37,7 @@ print(f"What is your favourite moment when {users[0]} pulls a prank on {users[1]
 
 Returns:
 
-``` bash
+``` text
 What is your favourite moment when Jim pulls a prank on Dwight?
 ```
 
@@ -50,7 +50,7 @@ print(f"What was one thing that {users[-1]} did you found extra funny?")
 
 Outputs:
 
-``` bash
+``` text
 What was one thing that Michael did you found extra funny?
 ```
 
@@ -68,6 +68,6 @@ print(f"We've added {users[-1]} to the list!")
 ```
 
 Results in:
-``` bash
+``` text
 We've added Pam to the list!
 ```

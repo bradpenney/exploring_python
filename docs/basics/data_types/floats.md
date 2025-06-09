@@ -62,6 +62,6 @@ print(total_price)
 
 Results in:
 
-``` bash
+``` text
 54.95
 ```

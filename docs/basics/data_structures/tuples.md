@@ -34,7 +34,7 @@ print(ages[0])
 
 Would result in:
 
-``` bash
+``` text
 12
 ```
 
@@ -70,7 +70,7 @@ print(f"The CN Tower stands at {cn_tower[0]} latitude, and {cn_tower[1]} longitu
 
 Would return:
 
-``` bash
+``` text
 The CN Tower stands at 43.642567 latitude, and -79.387054 longitude.
 ```
 

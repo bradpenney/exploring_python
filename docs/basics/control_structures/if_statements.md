@@ -37,7 +37,7 @@ else:
     print(f"You need {100 - player_1_score} more points to win!")
 ```
 Would return:
-``` bash
+``` text
 You need 53 more points to win!
 ```
 
@@ -64,7 +64,7 @@ else:
    in the `if` statement.
 
 Would result in:
-``` bash
+``` text
 Access granted!
 ```
 
@@ -88,7 +88,7 @@ else:
 
 Would output:
 
-``` bash
+``` text
 B
 ```
 

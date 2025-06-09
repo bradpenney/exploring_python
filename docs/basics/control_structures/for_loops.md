@@ -26,7 +26,7 @@ for i in range(1,3):
 
 Would return:
 
-``` bash
+``` text
 1
 2
 ```
@@ -50,7 +50,7 @@ for book in fav_books:
 
 Results in:
 
-``` bash
+``` text
 My favourite books include:
    - Mastery
    - The Signal And The Noise
@@ -74,7 +74,7 @@ for number in range(1,11):
 
 Returns:
 
-``` bash
+``` text
 1
 2
 3
@@ -125,7 +125,7 @@ for name, number in phone_numbers.items():
 ```
 
 Would result in:
-``` bash
+``` text
 ## KEYS
 Jim
 Dwight
