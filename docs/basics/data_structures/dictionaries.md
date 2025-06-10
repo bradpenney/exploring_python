@@ -39,8 +39,16 @@ not affected by its size!
 
 
 The data type of a dictionary in Python is `dict`, and they're iterable, even though they're not
-a sequence type like a `list` or `set`.  Instead, values are retrieved by *key*, not by index
-value like a `list`.  Dictionaries do not have a guaranteed order.
+a sequence type like a [`list`](lists.md) or `set`.  In lists, it is possible to insert a value at
+in the sequence at a specific index position.  With dictionaries, position in the dictionary is
+determined by the *insertion order*, meaning new items are always appended to the end. When
+iterating over a dictionary (see below), iteration will always happen over insertion order.
+This isn't an index, but a natural order of dictionaries.
+
+??? info
+
+    Prior to Python `v3.6`, there was no guaranteed order of dictionaries at all. As of `v3.6`,
+    this changed, and dictionaries are guaranteed to iterate over the insertion order.
 
 ## Creating a Dictionary
 
@@ -75,12 +83,12 @@ You can insert or update a key/value pair using the same square bracket syntax w
 dream_car['make'] = "Ferrari"
 dream_car['model'] = "365 GTS/4 Daytona"
 dream_car['colour'] = "Rosso Chiaro"
-print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']} of the colour {dream_car['colour']}")
+print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']} of the colour {dream_car['colour']}.")
 ```
 This would output:
 
 ``` text
-Dream car: 1971 Ferrari 365 GTS/4 Daytona of the colour Rosso Chiaro
+Dream car: 1971 Ferrari 365 GTS/4 Daytona of the colour Rosso Chiaro.
 ```
 
 ## Deleting a Key/Value Pair
@@ -91,17 +99,42 @@ Removing an entry is as easy as using the `del` keyword:
 del dream_car['colour']
 ```
 
-??? warning
+## Avoiding `KeyError` with `get()`
 
-    Attempting to read or delete a key that doesn’t exist will raise a `KeyError` exception:
+Attempting to read or delete a key that doesn’t exist will raise a `KeyError` exception.
+For example, attempting to retrieve `dream_car['engine']` would result in:
 
-    ``` text
-    Traceback (most recent call last):
-    File "exploring_python/basics/data_structures/dictionaries.py", line 19, in <module>
-        {dream_car['model']} with the {dream_car['engine']} engine.")
-                                       ~~~~~~~~~^^^^^^^^^^
-    KeyError: 'engine'
-    ```
+``` text
+Traceback (most recent call last):
+File "exploring_python/basics/data_structures/dictionaries.py", line 19, in <module>
+    dream_car['engine']
+    ~~~~~~~~~^^^^^^^^^^
+KeyError: 'engine'
+```
 
-    If you’re unsure whether a key exists, you can check with `'key' in dictionary` or use
-    `.get()` instead.
+The `dict.get()` method will attempt to find a key in a dictionary and will not throw an error if
+that key doesn't exist.  Even nicer, it is possible to assign a default value if the key
+doesn't exist (the default is `None`). So if you search for a key and it isn't there, a default
+value will be returned:
+
+``` python {title="Creating a Dictionary" linenums="1"}
+dream_car = {
+    "model": "Pinto",
+    "make": "Ford",
+    "year": 1971,
+    "mileage": 400,
+}
+
+print(dream_car.get('engine', 'V8'))
+```
+
+Returns:
+
+``` text
+V8
+```
+
+???+ tip
+
+    Note that the key/value pair `engine: V8` isn't inserted into the dictionary, rather this
+    one-time value is returned to avoid throwing a `KeyError`.

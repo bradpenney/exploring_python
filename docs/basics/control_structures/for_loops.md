@@ -96,48 +96,71 @@ the common “off by one” error.
 
     [Dictionaries in Python](../data_structures/dictionaries.md)
 
-Python’s `for` loop can efficiently navigate dictionaries as well. Dictionaries are collections
-of key-value pairs, and you can loop over their keys, values, or both. Here’s how it’s done:
+Python’s `for` loop can efficiently iterate over dictionaries
+([the `dict` object](../data_structures/dictionaries.md))as well. Dictionaries are collections
+of key-value pairs, and you can loop over their keys, values, or both.  Lets start with a
+basic `dict` of names (keys) and phone numbers (values):
 
-``` python {title="For Loop Iterating Over a Dictionary" linenums="1"}
+``` python {title="Basic Dictionary" linenums="1"}
 phone_numbers = {
     "Jim": "+37682929928",
     "Dwight": "+423998200919",
     "Michael": "+876230123654"
     }
+```
 
-# looping over keys
+Looping over the keys is the default behaviour, so it is possible to use `for
+name in phone_numbers:`.  However, being a bit more explicit is recommended:
+
+``` python {title="Iterating Over Dictionary Keys" linenums="1"}
 for name in phone_numbers.keys():
     print("## KEYS")
     print(name)
     print(' ')
+```
+Returns:
 
+``` bash
+Jim
+Dwight
+Michael
+```
+
+It is also possible to loop over the values of a `dict` object:
+
+``` python {title="Iterating Over Dictionary Values" linenums="1"}
 # looping over values
 for number in phone_numbers.values():
     print("## VALUES")
     print(number)
     print(' ')
-
-# looping over items (key-value pairs)
-for name, number in phone_numbers.items():
-    print("## BOTH")
-    print(name, number)
 ```
 
-Would result in:
-``` text
-## KEYS
-Jim
-Dwight
-Michael
+Which would return:
 
-## VALUES
+``` text
 +37682929928
 +423998200919
 +876230123654
+```
 
-## BOTH
+Depending on the use case, it might also be necessary to return both the keys and the values of
+a `dict` object:
+
+``` python {title="Iterating Over Dictionary Items (Key and Value)" linenums="1"}
+for name, number in phone_numbers.items():
+    print(name, number)
+```
+
+Resulting with:
+
+``` text
 Jim +37682929928
 Dwight +423998200919
 Michael +876230123654
 ```
+
+??? tip
+
+    Note that `dict.items()` returns a [`tuple`](../data_structures/tuples.md) so we *unpack* it
+    by using two variables in the `for` loop.

@@ -6,12 +6,14 @@ dream_car = {
     "mileage": 400
 }
 
-print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']}.")
+print(dream_car.get('engine', 'V8'))
+# print(dream_car['make'])
+# print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']}.")
 
-dream_car['make'] = "Ferrari"
-dream_car['model'] = "365 GTS/4 Daytona"
-dream_car['colour'] = "Rosso Chiaro"
-print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']} of the colour {dream_car['colour']}.")
+# dream_car['make'] = "Ferrari"
+# dream_car['model'] = "365 GTS/4 Daytona"
+# dream_car['colour'] = "Rosso Chiaro"
+# print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']} of the colour {dream_car['colour']}.")
 
 # # Create a for loop to print all keys and values
 # print("Vehicle 1:")
