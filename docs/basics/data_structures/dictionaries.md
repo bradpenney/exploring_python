@@ -138,3 +138,65 @@ V8
 
     Note that the key/value pair `engine: V8` isn't inserted into the dictionary, rather this
     one-time value is returned to avoid throwing a `KeyError`.
+
+## Clearing a Dictionary
+
+If the data in a dictionary is no longer valuable, but you'd like to keep the same dictionary
+object, use the `clear()` method to empty a dictionary without changing the id.
+
+``` python {title="Clear a Dictionary but Keep the Object" linenums="1"}
+dream_car = {
+    "model": "Pinto",
+    "make": "Ford",
+    "year": 1971,
+    "mileage": 400
+}
+
+print(f"Dream Car Object ID: {id(dream_car)}")
+dream_car.clear()
+print(f"Dream Car after clear: {dream_car}")
+print(f"Dream Car Object ID after clear: {id(dream_car)}")
+```
+
+Results in:
+
+``` text
+Dream Car Object ID: 140457216790016
+Dream Car after clear: {}
+Dream Car Object ID after clear: 140457216790016
+```
+
+## Merging Dictionaries
+
+As dictionaries often contain data, it is a common practice to merge data together.  For this,
+use the `update()` function.  This means that the dictionary being passed in will **merge** with
+the values of the original dictionary, **update** any values that have the **same key**, and
+**add** the key/value pairs that were not existing in the original dictionary.
+
+``` python {title="Merging Dictionaries" linenums="1"}
+dream_car = {
+    "model": "Pinto",
+    "make": "Ford",
+    "year": 1971,
+    "mileage": 400
+}
+
+dream_car_engine = {
+    "engine": "V8",
+    "horsepower": 440,
+    "cylinders": 8
+}
+
+dream_car.update(dream_car_engine)
+print(f"Dream Car: {dream_car}")
+print(f"Dream Car Engine: {dream_car_engine}")
+```
+
+Would output:
+
+``` text
+Dream Car: {'model': 'Pinto', 'make': 'Ford', 'year': 1971, 'mileage': 400, 'engine': 'V8', 'horsepower': 440, 'cylinders': 8}
+Dream Car Engine: {'engine': 'V8', 'horsepower': 440, 'cylinders': 8}
+```
+
+Note how `dream_car_engine` was not modified by the `update()` function, only `dream_car`.

@@ -5,21 +5,44 @@ Explaining Dictionaries in Python
 # Create a dictionary to represent a vehicle
 dream_car = {
     "model": "Pinto",
-    "make": "Ford",
+    "make": ["Ford", "Chevrolet"],
     "year": 1971,
     "mileage": 400
 }
 
-print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']}.")
+dream_car_engine = {
+    "engine": "V8",
+    "horsepower": 440,
+    "cylinders": 8
+}
 
-dream_car['make'] = "Ferrari"
-dream_car['model'] = "365 GTS/4 Daytona"
-dream_car['colour'] = "Rosso Chiaro"
-print(f"Dream car: {dream_car['year']} {dream_car['make']} \
-      {dream_car['model']} with the {dream_car['engine']} engine.")
+import copy
+dream_car2 = copy.deepcopy(dream_car)
+print(f"Dream Car: {dream_car}")
+print(f"Dream Car 2: {dream_car2}")
 
-engine_parts = [1, 2, 3, 4, 5]
-dream_car[engine_parts] = 563 # This line will raise an error because lists cannot be used as dictionary keys
+dream_car['make'].append("Dodge")
+print(f"Dream Car after model change: {dream_car}")
+print(f"Dream Car 2 after Dream Car model change: {dream_car2}")
+
+# print(f"Dream Car Object ID: {id(dream_car)}")
+# dream_car.clear()
+# print(f"Dream Car after clear: {dream_car}")
+# print(f"Dream Car Object ID after clear: {id(dream_car)}")
+
+# dream_car.update(dream_car_engine)
+# print(f"Dream Car: {dream_car}")
+# print(f"Dream Car Engine: {dream_car_engine}")
+# print(f"Dream car: {dream_car['year']} {dream_car['make']} {dream_car['model']}.")
+
+# dream_car['make'] = "Ferrari"
+# dream_car['model'] = "365 GTS/4 Daytona"
+# dream_car['colour'] = "Rosso Chiaro"
+# print(f"Dream car: {dream_car['year']} {dream_car['make']} \
+#       {dream_car['model']} with the {dream_car['engine']} engine.")
+
+# engine_parts = [1, 2, 3, 4, 5]
+# dream_car[engine_parts] = 563 # This line will raise an error because lists cannot be used as dictionary keys
 
 
 # # Create a for loop to print all keys and values
