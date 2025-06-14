@@ -187,10 +187,12 @@ dream_car_engine = {
     "cylinders": 8
 }
 
-dream_car.update(dream_car_engine)
+dream_car.update(dream_car_engine) # (1)
 print(f"Dream Car: {dream_car}")
 print(f"Dream Car Engine: {dream_car_engine}")
 ```
+
+1. The `update()` method is also available, with similar functionality, in [`sets`](sets.md#adding-elements)
 
 Would output:
 
