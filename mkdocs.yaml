@@ -50,22 +50,25 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Data Types:
-      - Strings: basics/data_types/strings.md
-      - Integers: basics/data_types/ints.md
-      - Floating Point Numbers: basics/data_types/floats.md
-      - Booleans: basics/data_types/booleans.md
-  - Control Structures:
-      - If Statements: basics/control_structures/if_statements.md
-      - For Loops: basics/control_structures/for_loops.md
-      - While Loops: basics/control_structures/while_loops.md
-      - Controlling Loops: basics/control_structures/controlling_loops.md
-      - Comprehensions: basics/control_structures/comprehensions.md
-      - Functions: basics/control_structures/functions.md
-  - Data Structures:
-      - Lists: basics/data_structures/lists.md
-      - Tuples: basics/data_structures/tuples.md
-      - Dictionaries: basics/data_structures/dictionaries.md
-      - Sets: basics/data_structures/sets.md
-      - Membership Testing: basics/data_structures/membership_testing.md
-      - Slicing Sequences: basics/data_structures/slicing_sequences.md
+  - Basics:
+    - Data Types:
+        - Strings: basics/data_types/strings.md
+        - Integers: basics/data_types/ints.md
+        - Floating Point Numbers: basics/data_types/floats.md
+        - Booleans: basics/data_types/booleans.md
+    - Control Structures:
+        - If Statements: basics/control_structures/if_statements.md
+        - For Loops: basics/control_structures/for_loops.md
+        - While Loops: basics/control_structures/while_loops.md
+        - Controlling Loops: basics/control_structures/controlling_loops.md
+        - Comprehensions: basics/control_structures/comprehensions.md
+        - Functions: basics/control_structures/functions.md
+    - Data Structures:
+        - Lists: basics/data_structures/lists.md
+        - Tuples: basics/data_structures/tuples.md
+        - Dictionaries: basics/data_structures/dictionaries.md
+        - Sets: basics/data_structures/sets.md
+        - Membership Testing: basics/data_structures/membership_testing.md
+        - Slicing Sequences: basics/data_structures/slicing_sequences.md
+  - Intermediate:
+      - Iterators and Generators: intermediate/iterators_and_generators.md
