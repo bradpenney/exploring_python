@@ -1,6 +1,6 @@
 # Comprehensions
 
-Python comprehensions are elegant, concise, and widely used constructs that allow you to create new data structures by transforming and filtering existing iterables. They provide a more readable and often more performant alternative to traditional loops. Comprehensions can be used to create [`lists`](../data_structures/lists.md), [`dictionaries`](../data_structures/dictionaries.md), and [`sets`](../data_structures/sets.md).
+Python comprehensions are elegant, concise, and widely used constructs that allow you to create new data structures by transforming and filtering existing iterables. ✨ They're like magic one-liners. They provide a more readable and often more performant alternative to traditional loops. Comprehensions can be used to create [`lists`](../data_structures/lists.md), [`dictionaries`](../data_structures/dictionaries.md), and [`sets`](../data_structures/sets.md).
 
 ## Basic Comprehension Syntax
 
@@ -57,7 +57,7 @@ For Loop Result: [0, 1, 4, 9, 16]
 Comprehension Result: [0, 1, 4, 9, 16]
 ```
 
-The comprehension is not only more concise (one line vs three), but many Python developers find it more readable and "Pythonic." The expression `[x**2 for x in range(5)]` reads naturally as "create a list of x-squared for each x in the range 0 to 4."
+The comprehension is not only more concise (one line vs three), but many Python developers find it more readable and "Pythonic." 🐍 The expression `[x**2 for x in range(5)]` reads naturally as "create a list of x-squared for each x in the range 0 to 4."
 
 ## Two Types of Conditional Logic
 

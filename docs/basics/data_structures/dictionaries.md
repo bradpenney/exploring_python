@@ -1,7 +1,7 @@
 # Dictionaries
 
-Dictionaries are one of the most important data structures in Python — and they’re *everywhere*.
-Even when you don’t see them directly, they’re often working behind the scenes, quietly holding
+Dictionaries are one of the most important data structures in Python — and they're *everywhere*. 📖
+Even when you don't see them directly, they're often working behind the scenes, quietly holding
 things together.
 
 For instance, while a string like `"hello"` isn’t itself a dictionary, many Python objects
@@ -20,8 +20,8 @@ Think of it like an old-school phone book — you know the name, and the diction
 number.
 
 Dictionaries are a much less compute-intensive way to associate two values than say, keeping those
-values in two lists (where the order is guaranteed).  In fact, the lookup speed of a dictionary is
-not affected by its size!
+values in two lists (where the order is guaranteed). In fact, the lookup speed of a dictionary is
+not affected by its size! ⚡ That's some serious performance.
 
 ??? tip
 

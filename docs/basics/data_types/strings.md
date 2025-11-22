@@ -1,6 +1,6 @@
 # Strings
 
-Strings are a fundamental data type used to represent text. Whether it’s a single
+Strings are a fundamental data type used to represent text. 📝 Whether it's a single
 character or a paragraph, any text enclosed within either single quotes (`' '`) or double quotes
 (`" "`) is considered a `string` in Python. Strings serve as the building blocks for text
 manipulation, and Python equips us with a rich set of built-in methods, or manipulators, to
@@ -41,8 +41,8 @@ There was a famous scientist named Albert Einstien.
 
 ### F-Strings
 
-Introduced in version 3.6 (3.13.3 is current as of Summer 2025), “F-Strings” are a much-improved
-way to build strings in Python. Simply precede a string with f before the opening quotation. Then,
+Introduced in version 3.6 (3.13.3 is current as of Summer 2025), "F-Strings" are a much-improved
+way to build strings in Python. Once you try them, you'll never go back. ✨ Simply precede a string with f before the opening quotation. Then,
 any variable can be surrounded by curly braces {}, removing the need to cast variables of various
 types. For example:
 

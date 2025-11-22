@@ -1,6 +1,6 @@
 # Booleans
 
-A `boolean` is akin to a digital switch, representing a binary state that can be "on" or "off".
+A `boolean` is akin to a digital switch, representing a binary state that can be "on" or "off". 💡
 Booleans, a fundamental data type in Python, provides a simple yet powerful way to express
 conditions and make decisions in your code. They are the cornerstone of control statements
 like [`if/else`](../control_structures/if_statements.md) statements and

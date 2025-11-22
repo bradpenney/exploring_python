@@ -1,6 +1,6 @@
 # Sets
 
-In Python, a Sets are a unique data type inspired by mathematical sets.  They are a collection of
+In Python, Sets are a unique data type inspired by mathematical sets. 🎲 They are a collection of
 elements, like a [`list`](./lists.md) or [`dict`](dictionaries.md), but there is
 **no ordering** of the elements, and there can be **no duplicate** elements. With that in mind,
 it should be clear that the main use of a `set` is to have unique set of values, ideal when

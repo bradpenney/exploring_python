@@ -2,7 +2,7 @@
 
 Integers, data type `int`, are interpreted as numbers, enabling you to perform standard
 mathematical operations efficiently. Integers represent whole numbers, crucial for various
-mathematical and computational tasks.
+mathematical and computational tasks. No decimal nonsense here — just clean, whole numbers. 🔢
 
 Declaring integers in Python is a breeze, following the same straightforward syntax used for all
 variables. You assign a value to a variable name using the assignment operator (`=`). For instance,

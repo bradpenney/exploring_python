@@ -25,8 +25,8 @@ In the above example, the following items should be noted:
 
 ## Functions Are Repeatable
 
-Functions are useful for repeated actions. A famous principle of software development is “Don’t
-Repeat Yourself” (aka DRY code). As an example, writing the same message to multiple users could
+Functions are useful for repeated actions. A famous principle of software development is "Don't
+Repeat Yourself" (aka DRY code). Copy-pasting is for amateurs. 😉 As an example, writing the same message to multiple users could
 be performed as follows:
 
 ``` python {title="Inefficient Repeated Code" linenums="1"}

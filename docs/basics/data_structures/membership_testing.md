@@ -1,7 +1,7 @@
 # Membership Testing
 
 When working with data structures, one of the most common questions is
-*"Does this value exist in this data structure?"*.  Python comes to the rescue here with two
+*"Does this value exist in this data structure?"* 🔍 Python comes to the rescue here with two
 operators: `in` and `not in`.
 
 ## Testing Membership in Sequences

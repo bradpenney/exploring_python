@@ -1,7 +1,7 @@
 # `for` Loops
 
 One of the defining features of computers is their ability to perform repetitive tasks with
-precision and speed. Python, like many other languages, offers powerful construct known as
+precision and speed. 🔁 Python, like many other languages, offers powerful construct known as
 the `for` loop to automate and simplify such repetitive actions.
 
 ## What is a `for` Loop?
@@ -88,7 +88,7 @@ Returns:
 ```
 
 This code snippet will print numbers from 1 to 10, emphasizing the importance of being mindful of
-the common “off by one” error.
+the common "off by one" error. (We've all been there. 😅)
 
 ## Looping Over Dictionaries
 
