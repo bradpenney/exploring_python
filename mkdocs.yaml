@@ -56,6 +56,7 @@ nav:
         - Integers: basics/data_types/ints.md
         - Floating Point Numbers: basics/data_types/floats.md
         - Booleans: basics/data_types/booleans.md
+        - None: basics/data_types/none.md
     - Control Structures:
         - If Statements: basics/control_structures/if_statements.md
         - For Loops: basics/control_structures/for_loops.md
