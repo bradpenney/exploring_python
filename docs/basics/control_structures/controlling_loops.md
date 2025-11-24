@@ -129,6 +129,121 @@ Would result in:
 🎊 You made it through your spree without going broke!
 ```
 
-Using else in loops isn’t especially common, but when used well, it can express logic cleanly —
+Using else in loops isn't especially common, but when used well, it can express logic cleanly —
 particularly in search loops, or when you want to take special action only if no early exit
 occurred.
+
+### A Classic Use Case: Searching
+
+The `else` clause shines when searching for something — if you find it, you `break`; if you
+don't, the `else` runs:
+
+``` python {title="Search Loop with Else" linenums="1"}
+users = ["alice", "bob", "charlie", "diana"]
+looking_for = "eve"
+
+for user in users:
+    if user == looking_for:
+        print(f"Found {user}! ✅")
+        break
+else:
+    print(f"User '{looking_for}' not found. 🔍")
+```
+
+Returns:
+
+``` text
+User 'eve' not found. 🔍
+```
+
+## Controlling Nested Loops
+
+When you have loops inside loops, `break` and `continue` only affect the *innermost* loop.
+This can trip people up!
+
+``` python {title="Break Only Exits Inner Loop" linenums="1"}
+for i in range(3):
+    print(f"Outer loop: {i}")
+    for j in range(3):
+        if j == 1:
+            break  # Only breaks the inner loop!
+        print(f"  Inner loop: {j}")
+```
+
+Returns:
+
+``` text
+Outer loop: 0
+  Inner loop: 0
+Outer loop: 1
+  Inner loop: 0
+Outer loop: 2
+  Inner loop: 0
+```
+
+Notice the outer loop keeps running — `break` only escaped the inner loop.
+
+### Breaking Out of Multiple Loops
+
+If you need to break out of nested loops entirely, you have a few options:
+
+**Option 1: Use a flag**
+
+``` python {title="Flag Variable" linenums="1"}
+found = False
+for i in range(5):
+    for j in range(5):
+        if i * j == 6:
+            print(f"Found it at ({i}, {j})!")
+            found = True
+            break
+    if found:
+        break
+```
+
+**Option 2: Move loops into a function and use `return`**
+
+``` python {title="Extract to Function" linenums="1"}
+def find_pair():
+    for i in range(5):
+        for j in range(5):
+            if i * j == 6:
+                return (i, j)  # Exits the entire function
+    return None
+
+result = find_pair()
+if result:
+    print(f"Found it at {result}!")
+```
+
+**Option 3: Use an exception (rarely needed)**
+
+``` python {title="Exception-Based Exit" linenums="1"}
+class FoundIt(Exception):
+    pass
+
+try:
+    for i in range(5):
+        for j in range(5):
+            if i * j == 6:
+                raise FoundIt()
+except FoundIt:
+    print(f"Found it at ({i}, {j})!")
+```
+
+!!! tip "Which Approach?"
+
+    The function approach (Option 2) is usually the cleanest. If you find yourself needing to
+    break out of nested loops, it's often a sign that the logic should be extracted into a
+    function anyway. Clean code is like good coffee — worth the extra effort. ☕
+
+## Key Takeaways
+
+| Concept | What to Remember |
+|:--------|:-----------------|
+| **continue** | Skip to the next iteration |
+| **break** | Exit the loop entirely |
+| **else clause** | Runs only if no `break` occurred |
+| **Nested loops** | `break`/`continue` only affect the innermost loop |
+| **Breaking out** | Use a flag, extract to function, or (rarely) raise an exception |
+| **Best practice** | Extract nested loops to functions for cleaner `return`-based exits |

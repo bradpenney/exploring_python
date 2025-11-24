@@ -214,3 +214,240 @@ Dream Car Engine: {'engine': 'V8', 'horsepower': 440, 'cylinders': 8}
 
 Note how `dream_car_engine` was not modified by the `update()` function,
 only `dream_car`.
+
+### Merge Operator (Python 3.9+)
+
+Python 3.9 introduced the `|` operator for merging dictionaries:
+
+``` python {title="Merge Operator" linenums="1"}
+defaults = {"theme": "dark", "font_size": 12, "language": "en"}
+user_prefs = {"font_size": 14, "sidebar": True}
+
+# Merge (user_prefs values win on conflict)
+combined = defaults | user_prefs
+print(combined)
+# {'theme': 'dark', 'font_size': 14, 'language': 'en', 'sidebar': True}
+
+# Update in place
+defaults |= user_prefs
+print(defaults)
+# {'theme': 'dark', 'font_size': 14, 'language': 'en', 'sidebar': True}
+```
+
+## The setdefault() Method
+
+`setdefault()` gets a value if the key exists, or sets it to a default if it doesn't:
+
+``` python {title="setdefault()" linenums="1"}
+inventory = {"apples": 5, "bananas": 3}
+
+# Key exists — just returns the value
+count = inventory.setdefault("apples", 0)
+print(count)       # 5
+print(inventory)   # {'apples': 5, 'bananas': 3}
+
+# Key doesn't exist — sets it and returns the default
+count = inventory.setdefault("oranges", 0)
+print(count)       # 0
+print(inventory)   # {'apples': 5, 'bananas': 3, 'oranges': 0}
+```
+
+This is particularly useful for building up collections:
+
+``` python {title="Building Lists in a Dict" linenums="1"}
+# Grouping items by category
+items = [("fruit", "apple"), ("veggie", "carrot"), ("fruit", "banana")]
+
+grouped = {}
+for category, item in items:
+    grouped.setdefault(category, []).append(item)
+
+print(grouped)
+# {'fruit': ['apple', 'banana'], 'veggie': ['carrot']}
+```
+
+## Dictionary Comprehensions
+
+Just like [list comprehensions](../control_structures/comprehensions.md), you can create
+dictionaries with a concise syntax:
+
+``` python {title="Dict Comprehensions" linenums="1"}
+# Basic: {key_expr: value_expr for item in iterable}
+squares = {x: x**2 for x in range(6)}
+print(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+# With filtering
+even_squares = {x: x**2 for x in range(10) if x % 2 == 0}
+print(even_squares)  # {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
+
+# Transform existing dict
+prices = {"apple": 0.50, "banana": 0.25, "orange": 0.75}
+doubled = {fruit: price * 2 for fruit, price in prices.items()}
+print(doubled)  # {'apple': 1.0, 'banana': 0.5, 'orange': 1.5}
+
+# Swap keys and values
+flipped = {v: k for k, v in prices.items()}
+print(flipped)  # {0.5: 'apple', 0.25: 'banana', 0.75: 'orange'}
+```
+
+### Practical Dict Comprehension Patterns
+
+``` python {title="Common Patterns" linenums="1"}
+# Create lookup from list
+names = ["Alice", "Bob", "Charlie"]
+name_lengths = {name: len(name) for name in names}
+print(name_lengths)  # {'Alice': 5, 'Bob': 3, 'Charlie': 7}
+
+# Filter a dictionary
+scores = {"Alice": 85, "Bob": 92, "Charlie": 78, "Diana": 95}
+passing = {name: score for name, score in scores.items() if score >= 80}
+print(passing)  # {'Alice': 85, 'Bob': 92, 'Diana': 95}
+
+# Convert keys to uppercase
+upper_scores = {name.upper(): score for name, score in scores.items()}
+print(upper_scores)  # {'ALICE': 85, 'BOB': 92, 'CHARLIE': 78, 'DIANA': 95}
+```
+
+## defaultdict: Dictionaries with Default Values
+
+The `defaultdict` from the `collections` module automatically creates missing keys with
+a default value. No more `KeyError`! 🎉
+
+``` python {title="defaultdict Basics" linenums="1"}
+from collections import defaultdict
+
+# Regular dict raises KeyError
+regular = {}
+# regular["missing"] += 1  # KeyError!
+
+# defaultdict provides a default
+counter = defaultdict(int)  # int() returns 0
+counter["apples"] += 1
+counter["apples"] += 1
+counter["bananas"] += 1
+print(dict(counter))  # {'apples': 2, 'bananas': 1}
+
+# defaultdict with list
+groups = defaultdict(list)
+groups["fruit"].append("apple")
+groups["fruit"].append("banana")
+groups["veggie"].append("carrot")
+print(dict(groups))  # {'fruit': ['apple', 'banana'], 'veggie': ['carrot']}
+```
+
+### Common defaultdict Factories
+
+``` python {title="defaultdict Factories" linenums="1"}
+from collections import defaultdict
+
+# int — for counting
+word_counts = defaultdict(int)
+
+# list — for grouping
+grouped_items = defaultdict(list)
+
+# set — for unique grouping
+unique_tags = defaultdict(set)
+
+# Custom default
+default_score = defaultdict(lambda: 100)
+print(default_score["new_player"])  # 100
+```
+
+## Counter: Counting Made Easy
+
+`Counter` is a specialized dict for counting hashable objects. Perfect for answering
+questions like "How many times did someone order pepperoni?" (Spoiler: a lot. But at
+least it wasn't on cheap pizza.)
+
+``` python {title="Counter Basics" linenums="1"}
+from collections import Counter
+
+# Count from an iterable
+word = "mississippi"
+letter_counts = Counter(word)
+print(letter_counts)
+# Counter({'i': 4, 's': 4, 'p': 2, 'm': 1})
+
+# Count from a list
+votes = ["alice", "bob", "alice", "charlie", "alice", "bob"]
+results = Counter(votes)
+print(results)
+# Counter({'alice': 3, 'bob': 2, 'charlie': 1})
+
+# Most common items
+print(results.most_common(2))  # [('alice', 3), ('bob', 2)]
+
+# Access counts like a dict
+print(results["alice"])  # 3
+print(results["nobody"])  # 0 (not KeyError!)
+```
+
+### Counter Operations
+
+``` python {title="Counter Operations" linenums="1"}
+from collections import Counter
+
+c1 = Counter(a=3, b=1)
+c2 = Counter(a=1, b=2)
+
+# Add counts
+print(c1 + c2)  # Counter({'a': 4, 'b': 3})
+
+# Subtract counts
+print(c1 - c2)  # Counter({'a': 2})
+
+# Intersection (minimum counts)
+print(c1 & c2)  # Counter({'a': 1, 'b': 1})
+
+# Union (maximum counts)
+print(c1 | c2)  # Counter({'a': 3, 'b': 2})
+
+# Total count
+print(c1.total())  # 4 (Python 3.10+)
+```
+
+## Iterating Over Dictionaries
+
+Three ways to iterate, depending on what you need:
+
+``` python {title="Dictionary Iteration" linenums="1"}
+person = {"name": "Alice", "age": 30, "city": "NYC"}
+
+# Iterate over keys (default)
+for key in person:
+    print(key)
+
+# Explicit keys
+for key in person.keys():
+    print(key)
+
+# Iterate over values
+for value in person.values():
+    print(value)
+
+# Iterate over key-value pairs (most common!)
+for key, value in person.items():
+    print(f"{key}: {value}")
+```
+
+!!! tip "items() is Your Friend"
+
+    When you need both key and value, always use `items()`. It's cleaner than
+    `for key in dict: value = dict[key]`.
+
+## Key Takeaways
+
+| Concept | What to Remember |
+|:--------|:-----------------|
+| **Creating** | `{"key": value}` or `dict()` |
+| **Accessing** | `dict[key]` or `dict.get(key, default)` |
+| **Adding/Updating** | `dict[key] = value` |
+| **Deleting** | `del dict[key]` or `dict.pop(key)` |
+| **Merging** | `dict.update(other)` or `dict1 \| dict2` (3.9+) |
+| **setdefault()** | Get or set a default in one step |
+| **Comprehensions** | `{k: v for k, v in items}` |
+| **defaultdict** | Auto-creates missing keys with a factory |
+| **Counter** | Specialized dict for counting |
+| **Iteration** | `keys()`, `values()`, `items()` |
+| **Order** | Insertion order preserved (Python 3.7+) |

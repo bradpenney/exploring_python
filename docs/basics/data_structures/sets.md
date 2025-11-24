@@ -2,8 +2,11 @@
 
 In Python, Sets are a unique data type inspired by mathematical sets. 🎲 They are a collection of
 elements, like a [`list`](./lists.md) or [`dict`](dictionaries.md), but there is
-**no ordering** of the elements, and there can be **no duplicate** elements. With that in mind,
-it should be clear that the main use of a `set` is to have unique set of values, ideal when
+**no ordering** of the elements, and there can be **no duplicate** elements. Think of it like
+a pizza order where everyone shouts their toppings — you end up with a unique list, no matter
+how many times someone yells "pepperoni!" (And please, no cheap pizza. Life's too short.)
+
+With that in mind, the main use of a `set` is to have a unique set of values, ideal when
 dealing with data prone to duplication, and then [testing membership](membership_testing.md)
 against that `set`.
 
@@ -252,3 +255,132 @@ Returns:
 ``` text
 True
 ```
+
+### Symmetric Difference
+
+The *symmetric difference* is all elements that are in *either* set, but not in *both*.
+It's essentially the opposite of intersection:
+
+``` python {title="Symmetric Difference" linenums="1"}
+mechanic_tools = {"wrench", "screwdriver", "hammer", "pliers", "jack"}
+carpenter_tools = {"saw", "hammer", "chisel", "screwdriver", "level"}
+
+# Elements unique to each set (not shared)
+unique_tools = mechanic_tools.symmetric_difference(carpenter_tools)
+print(unique_tools)
+# {'saw', 'level', 'chisel', 'jack', 'pliers', 'wrench'}
+
+# Also available with ^ operator
+print(mechanic_tools ^ carpenter_tools)
+# Same result
+```
+
+## Set Comprehensions
+
+Just like [list comprehensions](../control_structures/comprehensions.md), you can create
+sets with a concise syntax:
+
+``` python {title="Set Comprehensions" linenums="1"}
+# Basic set comprehension
+squares = {x**2 for x in range(10)}
+print(squares)  # {0, 1, 4, 9, 16, 25, 36, 49, 64, 81}
+
+# With filtering
+even_squares = {x**2 for x in range(10) if x % 2 == 0}
+print(even_squares)  # {0, 4, 16, 36, 64}
+
+# Extract unique values from data
+emails = ["alice@gmail.com", "bob@yahoo.com", "charlie@gmail.com"]
+domains = {email.split("@")[1] for email in emails}
+print(domains)  # {'gmail.com', 'yahoo.com'}
+```
+
+## Frozenset: Immutable Sets
+
+A `frozenset` is an immutable version of a set. Since it's immutable (and therefore
+hashable), it can be used as a dictionary key or as an element of another set:
+
+``` python {title="Frozenset Basics" linenums="1"}
+# Create a frozenset
+frozen = frozenset([1, 2, 3])
+print(frozen)  # frozenset({1, 2, 3})
+
+# Cannot modify!
+# frozen.add(4)  # AttributeError: 'frozenset' object has no attribute 'add'
+
+# But all read operations work
+print(2 in frozen)  # True
+print(len(frozen))  # 3
+```
+
+### Frozenset as Dictionary Key
+
+``` python {title="Frozenset as Dict Key" linenums="1"}
+# Regular sets CANNOT be dict keys
+# {{"a", "b"}: "value"}  # TypeError: unhashable type: 'set'
+
+# Frozensets CAN be dict keys
+permissions = {
+    frozenset(["read"]): "viewer",
+    frozenset(["read", "write"]): "editor",
+    frozenset(["read", "write", "delete"]): "admin"
+}
+
+user_perms = frozenset(["read", "write"])
+print(permissions[user_perms])  # editor
+```
+
+### Sets of Sets (Using Frozenset)
+
+``` python {title="Nested Sets with Frozenset" linenums="1"}
+# Create a set of frozensets
+power_set = {
+    frozenset(),
+    frozenset([1]),
+    frozenset([2]),
+    frozenset([1, 2])
+}
+
+print(power_set)
+# {frozenset(), frozenset({2}), frozenset({1}), frozenset({1, 2})}
+
+# Check if a subset exists
+print(frozenset([1]) in power_set)  # True
+```
+
+### When to Use Frozenset
+
+| Use `set` when... | Use `frozenset` when... |
+|:------------------|:------------------------|
+| You need to add/remove elements | The set won't change |
+| It's a working collection | You need it as a dict key |
+| Modifying in loops | You need a set of sets |
+| Building up results | Representing fixed categories |
+
+## Operators Summary
+
+| Operation | Method | Operator | Result |
+|:----------|:-------|:---------|:-------|
+| Union | `a.union(b)` | `a \| b` | All elements from both |
+| Intersection | `a.intersection(b)` | `a & b` | Elements in both |
+| Difference | `a.difference(b)` | `a - b` | Elements in a, not in b |
+| Symmetric Diff | `a.symmetric_difference(b)` | `a ^ b` | Elements in either, not both |
+| Subset | `a.issubset(b)` | `a <= b` | Is a contained in b? |
+| Proper Subset | — | `a < b` | a ⊂ b (a is smaller) |
+| Superset | `a.issuperset(b)` | `a >= b` | Does a contain b? |
+
+## Key Takeaways
+
+| Concept | What to Remember |
+|:--------|:-----------------|
+| **Creating** | `{1, 2, 3}` or `set()` (empty set must use `set()`) |
+| **No duplicates** | Automatically removes duplicate elements |
+| **No order** | Elements have no guaranteed order |
+| **Adding** | `add()` for one, `update()` for many |
+| **Removing** | `discard()` (safe) or `remove()` (raises error) |
+| **Union** | `a \| b` — all elements from both |
+| **Intersection** | `a & b` — elements in both |
+| **Difference** | `a - b` — elements in a, not in b |
+| **Symmetric diff** | `a ^ b` — elements in either, not both |
+| **Frozenset** | Immutable set, can be dict key |
+| **Performance** | O(1) membership testing — very fast! ⚡ |
