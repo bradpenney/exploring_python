@@ -300,3 +300,9 @@ flowchart TD
 | **Conditional value** | `value_if_true if cond else value_if_false` before `for` |
 | **Nested loops** | `for x in xs for y in ys` — outer loop first |
 | **When to avoid** | Complex logic, side effects, or hard-to-read expressions |
+
+## Video Summary
+
+<div class="video-wrapper">
+  <iframe src="https://www.youtube.com/embed/pLaeNKEyPvA" title="Python Comprehensions" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>

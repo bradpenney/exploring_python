@@ -375,3 +375,9 @@ print(f"Value: {mystery_value}, Truthy: {bool(mystery_value)}")
 | **Truthy values** | Everything else |
 | **Short-circuit** | `and`/`or` stop early when result is known |
 | **Pythonic style** | Use `if items:` not `if len(items) > 0:` |
+
+## Video Summary
+
+<div class="video-wrapper">
+  <iframe src="https://www.youtube.com/embed/MahbVDnYSpU" title="Python Booleans" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>

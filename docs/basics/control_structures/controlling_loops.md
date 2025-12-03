@@ -247,3 +247,9 @@ except FoundIt:
 | **Nested loops** | `break`/`continue` only affect the innermost loop |
 | **Breaking out** | Use a flag, extract to function, or (rarely) raise an exception |
 | **Best practice** | Extract nested loops to functions for cleaner `return`-based exits |
+
+## Video Summary
+
+<div class="video-wrapper">
+  <iframe src="https://www.youtube.com/embed/94GDqmXxd3s" title="Controlling Loops in Python" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>

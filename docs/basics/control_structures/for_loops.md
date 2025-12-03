@@ -457,3 +457,9 @@ Returns:
 | **Negative step** | `range(10, 0, -1)` counts backwards |
 | **reversed()** | Cleaner than negative range for reversing sequences |
 | **Nested loops** | Inner loop runs completely for each outer iteration |
+
+## Video Summary
+
+<div class="video-wrapper">
+  <iframe src="https://www.youtube.com/embed/r4NYBXqmttc" title="Python For Loops" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
