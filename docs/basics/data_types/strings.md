@@ -21,7 +21,7 @@ multiple lines."""          # (3)!
 
 1. Double quotes are most common for strings
 2. Single quotes work identically—use whichever you prefer
-3. Triple quotes preserve line breaks and are useful for docstrings
+3. Triple quotes preserve line breaks and are useful for [docstrings](../../control_structures/functions.md#docstrings)
 
 Python treats single and double quotes identically. The flexibility lets you embed one type of quote inside the other:
 
@@ -165,9 +165,9 @@ new_sentence = " ".join(words)  # (3)!
 print(new_sentence)             # "Python is great"
 ```
 
-1. `.split()` with no argument splits on whitespace
+1. `.split()` with no argument splits on whitespace—returns a [list](../../data_structures/lists.md) of words
 2. `.split(",")` splits on commas—useful for CSV data
-3. `" ".join(list)` joins list elements with spaces between them
+3. `" ".join(list)` joins [list](../../data_structures/lists.md) elements with spaces between them
 
 ## Working with Whitespace
 
@@ -237,7 +237,7 @@ print(original)   # (3)!
 2. Prints `"Blice"` - the new string
 3. Prints `"Alice"` - the original string remains unchanged, proving immutability
 
-This immutability makes strings safe for use as dictionary keys and enables performance optimizations.
+This immutability makes strings safe for use as [dictionary](../../data_structures/dictionaries.md) keys and enables performance optimizations.
 
 ## Practice Problems
 

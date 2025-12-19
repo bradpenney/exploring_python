@@ -8,7 +8,7 @@ Computers excel at repetition without fatigue or error. For loops are how you ha
 
 ## What is a For Loop?
 
-A for loop executes a block of code once for each item in a sequence (list, string, range, etc.):
+A for loop executes a block of code once for each item in a sequence ([list](../../data_structures/lists.md), [string](../../data_types/strings.md), range, etc.):
 
 ```python title="Basic For Loop Structure" linenums="1"
 for item in sequence:  # (1)!
@@ -67,7 +67,7 @@ Loops make your code:
 
 ### Lists
 
-The most common use case—iterate over list elements:
+The most common use case—iterate over [list](../../data_structures/lists.md) elements:
 
 ```python title="Processing List Items" linenums="1"
 scores = [85, 92, 78, 90, 88]
@@ -104,7 +104,7 @@ n
 
 ### Dictionaries
 
-Loop over keys, values, or both:
+Loop over [dictionary](../../data_structures/dictionaries.md) keys, values, or both:
 
 ```python title="Dictionary Iteration" linenums="1"
 user = {"name": "Alice", "age": 30, "city": "Boston"}
@@ -135,7 +135,7 @@ city: Boston
 
 ??? tip "Dictionary Unpacking"
 
-    `for key, value in user.items()` uses **tuple unpacking**. Each iteration, `.items()` returns a tuple like `("name", "Alice")`, which Python automatically unpacks into the two variables.
+    `for key, value in user.items()` uses **[tuple](../../data_structures/tuples.md) unpacking**. Each iteration, `.items()` returns a tuple like `("name", "Alice")`, which Python automatically unpacks into the two variables.
 
 ## The `range()` Function
 

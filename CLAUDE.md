@@ -120,6 +120,41 @@ Articles must balance **playfulness with professionalism** and be **technically 
   - Rounded corners and no border
   - Proper spacing above and below the video
 
+### Linking Strategy
+
+**IMPORTANT**: Always check for both internal and external linking opportunities when polishing articles.
+
+**Internal Links (within Python site):**
+- Link related Python concepts using relative paths: `[lists](../../data_structures/lists.md)`
+- Strategic places to add internal links:
+  - First mention of a concept covered in another article
+  - Code annotations explaining related topics
+  - "See also" style references in admonitions
+  - Practice problem answers that reference other concepts
+  - Closing paragraphs connecting topics
+- Common internal link targets:
+  - Data types: `strings.md`, `ints.md`, `floats.md`, `booleans.md`, `none.md`
+  - Data structures: `lists.md`, `tuples.md`, `dictionaries.md`, `sets.md`
+  - Control structures: `if_statements.md`, `for_loops.md`, `while_loops.md`, `functions.md`, `comprehensions.md`
+
+**External Links (to cs.bradpenney.io):**
+- Link foundational CS concepts to the Exploring Computer Science site
+- Add external links in:
+  - "Why [Topic] Matters" sections (connect to broader CS principles)
+  - Further Reading sections (cross-reference related CS fundamentals)
+  - Body text when mentioning CS concepts like algorithms, computational thinking, etc.
+  - Closing paragraphs discussing programming philosophy or paradigms
+- Common external link targets:
+  - [Computational Thinking](https://cs.bradpenney.io/fundamentals/computational_thinking/) - logical reasoning, problem decomposition
+  - [What is Computer Science](https://cs.bradpenney.io/fundamentals/what_is_computer_science/) - programming paradigms, language philosophy
+  - Use anchor links for specific sections: `https://cs.bradpenney.io/page/#section-name`
+
+**After polishing an article, always verify:**
+1. ✅ Internal links connect to related Python topics naturally
+2. ✅ External links to cs.bradpenney.io ground Python concepts in CS fundamentals
+3. ✅ Links enhance learning without being excessive (avoid overlinking common terms)
+4. ✅ All links use correct relative/absolute paths
+
 ### Python-Specific Guidelines
 
 - **Version awareness**: Note when features were introduced (e.g., "f-strings, introduced in Python 3.6")

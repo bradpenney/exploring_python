@@ -1,74 +1,84 @@
 # Integers
 
-Integers, data type `int`, are interpreted as numbers, enabling you to perform standard
-mathematical operations efficiently. Integers represent whole numbers, crucial for various
-mathematical and computational tasks. No decimal nonsense here — just clean, whole numbers. 🔢
+Count users in a database. Calculate pixels on a screen. Track inventory quantities. Process financial transactions. Loop exactly 100 times. Index into the 42nd element of a list.
 
-Declaring integers in Python is a breeze, following the same straightforward syntax used for all
-variables. You assign a value to a variable name using the assignment operator (`=`). For instance,
-you can declare integers like this:
+Every one of these tasks requires whole numbers—integers. No fractions, no decimals, just precise counting and calculation. Integers are Python's workhorse numeric type, appearing in nearly every program you write.
 
-``` python {title="Declaring Integer Variables" linenums="1"}
-rank = 10
-eggs = 12
-people = 3
-negative_temp = -15  # Negative integers work too
-big_number = 1_000_000  # Underscores for readability (Python 3.6+)
+## What is an Integer?
+
+Integers (`int` type) represent whole numbers—positive, negative, or zero:
+
+```python title="Creating Integers" linenums="1"
+count = 42                # (1)!
+temperature = -15         # (2)!
+balance = 0
+large_number = 1_000_000  # (3)!
 ```
 
-!!! tip "Readable Large Numbers"
+1. Positive integers—the most common case
+2. Negative integers work identically
+3. Underscores improve readability for large numbers (Python 3.6+)—`1_000_000` is the same as `1000000`
 
-    Python lets you use underscores in numbers for readability. `1_000_000` is the same as
-    `1000000`, but much easier to read. Your eyes will thank you. 👀
+Unlike many programming languages where integers have size limits (32-bit, 64-bit), Python integers can be arbitrarily large—limited only by available memory.
 
-??? tip "Combining Integers with Strings"
+## Why Integers Matter
 
-    Exercise caution when combining an `int` with a `string`. To ensure correct output, you must
-    *cast* the `int` as a `string` within the context of the `print()` statement. For example,
-    when working with the variable `my_age = 12`, a standard concatenated print statement would
-    need to *cast* the variable like this: `print("My age is " + str(my_age))`. This casting
-    operation ensures that the `int` value of `my_age` is correctly interpreted as part of the
-    `string`. Python can also handle this automatically through the use of "F-strings" (the
-    preferred approach).
+Integers solve fundamental programming problems:
+
+- **Counting**: Users, iterations, items in a collection
+- **Indexing**: Accessing elements in sequences ([lists](../../data_structures/lists.md), [strings](strings.md))
+- **File I/O**: Byte offsets, line numbers, file sizes
+- **Game development**: Scores, health points, coordinates
+- **Web applications**: Pagination (page 5 of 100), user IDs
+- **Data processing**: Row counts, batch sizes
+
+Every time you use [`range()`](../../control_structures/for_loops.md#the-range-function), index a list, or count occurrences, you're working with integers. They're the foundation of [computational thinking](https://cs.bradpenney.io/fundamentals/computational_thinking/)—the discrete, step-by-step logic that computers excel at.
 
 ## Arithmetic Operations
 
-The primary use of an `int` in Python is mathematical operations. Whether you're calculating the
-area of geometric shapes, managing quantities, or working on numerical algorithms, integers are
-essential.
+Calculate total price from quantity and unit cost. Determine grid dimensions. Compute elapsed time from timestamps. Scale image coordinates. Integers power these calculations.
 
 ### Basic Operators
 
-``` python {title="Basic Arithmetic" linenums="1"}
+```python title="Basic Arithmetic" linenums="1"
 a = 10
 b = 3
 
-print(a + b)   # 13  — Addition
-print(a - b)   # 7   — Subtraction
-print(a * b)   # 30  — Multiplication
-print(a ** b)  # 1000 — Exponentiation (10³)
+print(a + b)   # (1)!
+print(a - b)   # (2)!
+print(a * b)   # (3)!
+print(a ** b)  # (4)!
 ```
 
-### Division: The Three Flavors 🍦
+1. Addition: `13`—combining quantities
+2. Subtraction: `7`—finding differences, remainders
+3. Multiplication: `30`—scaling values, calculating areas
+4. Exponentiation: `1000` (10³)—growth rates, compound calculations
 
-This is where integers get interesting. Python has *three* different division operators:
+### Division: Three Types for Different Needs
 
-``` python {title="Division Types" linenums="1"}
+Division is where integers reveal their nuances. Python provides three division operators because different problems require different behaviors:
+
+```python title="Division Types" linenums="1"
 a = 17
 b = 5
 
-print(a / b)   # 3.4  — True division (always returns a float!)
-print(a // b)  # 3    — Floor division (rounds down to nearest integer)
-print(a % b)   # 2    — Modulo (remainder after division)
+print(a / b)   # (1)!
+print(a // b)  # (2)!
+print(a % b)   # (3)!
 ```
 
-Let's break these down:
+1. True division: `3.4`—always returns a float, even if the result is a whole number
+2. Floor division: `3`—rounds down to the nearest integer (useful for pagination, chunking)
+3. Modulo: `2`—returns the remainder after division (essential for cycling, even/odd checks)
 
-| Operator | Name | What It Does | Result Type |
-|:---------|:-----|:-------------|:------------|
-| `/` | True division | Divides and keeps decimals | Always `float` |
-| `//` | Floor division | Divides and rounds *down* | `int` if both operands are `int` |
-| `%` | Modulo | Returns the remainder | `int` if both operands are `int` |
+**Why three operators?** Different problems need different behaviors:
+
+| Operator | Name | When to Use | Example Use Case |
+|:---------|:-----|:------------|:-----------------|
+| `/` | True division | Need decimal precision | Calculating averages, percentages |
+| `//` | Floor division | Need integer result, round down | Pagination (items per page), splitting into chunks |
+| `%` | Modulo | Need remainder | Checking even/odd, cycling through lists, time calculations |
 
 !!! warning "True Division Always Returns a Float"
 
@@ -83,53 +93,67 @@ Let's break these down:
 
 ### Floor Division with Negative Numbers
 
-Here's a gotcha that trips people up — floor division rounds toward *negative infinity*, not
-toward zero:
+Floor division always rounds toward negative infinity—not toward zero. This catches programmers familiar with other languages:
 
-``` python {title="Floor Division Gotcha" linenums="1"}
-print(17 // 5)    # 3   — rounds down from 3.4
-print(-17 // 5)   # -4  — rounds down from -3.4 (toward negative infinity!)
-print(17 // -5)   # -4  — same deal
+```python title="Floor Division with Negatives" linenums="1"
+print(17 // 5)    # (1)!
+print(-17 // 5)   # (2)!
+print(17 // -5)   # (3)!
 ```
 
-This is mathematically consistent but can be surprising if you expect truncation toward zero.
+1. Returns `3`—rounds down from 3.4 as expected
+2. Returns `-4`—rounds down from -3.4 (toward negative infinity, not toward zero!)
+3. Returns `-4`—same behavior with negative divisor
 
-### The Modulo Operator in Action
+This is mathematically consistent but surprises those expecting truncation toward zero.
 
-The modulo operator (`%`) is more useful than it might seem:
+### The Modulo Operator in Real Use
 
-``` python {title="Practical Modulo Uses" linenums="1"}
+Check if a number is even or odd. Cycle through array indices. Convert 24-hour to 12-hour time. Implement round-robin task assignment. Modulo powers all these patterns:
+
+```python title="Practical Modulo Uses" linenums="1"
 # Check if a number is even or odd
 number = 42
-if number % 2 == 0:
-    print("Even")  # This prints
+if number % 2 == 0:  # (1)!
+    print("Even")
 else:
     print("Odd")
 
 # Wrap around (like a clock)
 hour = 14
-print(hour % 12)  # 2 — 24-hour to 12-hour conversion
+print(hour % 12)  # (2)!
 
 # Check divisibility
-if 100 % 25 == 0:
-    print("100 is divisible by 25")  # This prints
+if 100 % 25 == 0:  # (3)!
+    print("100 is divisible by 25")
 
 # Cycle through a list
 colors = ["red", "green", "blue"]
-for i in range(10):
-    print(colors[i % len(colors)])  # Cycles: red, green, blue, red, green...
+for i in range(10):  # (4)!
+    print(colors[i % len(colors)])  # (5)!
 ```
+
+1. Even/odd check—[if statement](../../control_structures/if_statements.md) tests if remainder is 0 when divided by 2
+2. Returns `2`—converts 14:00 (2 PM) to 12-hour format
+3. Divisibility test—remainder of 0 means evenly divisible
+4. [For loop](../../control_structures/for_loops.md) with range—common pattern for iteration
+5. Cycles through colors: `i % 3` wraps indices 0,1,2,0,1,2... regardless of how large `i` gets
 
 ## Operator Precedence
 
-Python follows standard mathematical order of operations (PEMDAS/BODMAS):
+Calculate a discount with tax. Compute compound interest. Convert units with multiple steps. Complex formulas fail when operators execute in the wrong order. Understanding precedence prevents subtle bugs in mathematical expressions:
 
-``` python {title="Order of Operations" linenums="1"}
-result = 2 + 3 * 4      # 14, not 20 (multiplication first)
-result = (2 + 3) * 4    # 20 (parentheses override)
-result = 2 ** 3 ** 2    # 512 (exponentiation is right-to-left: 3² = 9, then 2⁹)
-result = 10 - 3 - 2     # 5 (subtraction is left-to-right: 7 - 2)
+```python title="Order of Operations" linenums="1"
+result = 2 + 3 * 4      # (1)!
+result = (2 + 3) * 4    # (2)!
+result = 2 ** 3 ** 2    # (3)!
+result = 10 - 3 - 2     # (4)!
 ```
+
+1. Returns `14`, not 20—multiplication happens before addition
+2. Returns `20`—parentheses override precedence
+3. Returns `512`—exponentiation is right-to-left: 3² = 9, then 2⁹ = 512
+4. Returns `5`—subtraction is left-to-right: (10 - 3) - 2 = 7 - 2 = 5
 
 | Priority | Operators | Description |
 |:---------|:----------|:------------|
@@ -152,79 +176,103 @@ result = 10 - 3 - 2     # 5 (subtraction is left-to-right: 7 - 2)
 
 ## Useful Integer Functions
 
-Python provides several built-in functions for working with integers:
+Find the largest score in a game. Calculate total sales from a list. Get the distance between two points regardless of direction. These common operations appear in nearly every program—Python provides built-in functions so you don't reinvent them:
 
-``` python {title="Handy Integer Functions" linenums="1"}
+```python title="Handy Integer Functions" linenums="1"
 # Absolute value
-print(abs(-42))      # 42
-print(abs(42))       # 42
+print(abs(-42))      # (1)!
+print(abs(42))
 
 # Power (alternative to **)
-print(pow(2, 10))    # 1024
-print(pow(2, 10, 100))  # 24 — pow with modulo: (2¹⁰) % 100
+print(pow(2, 10))    # (2)!
+print(pow(2, 10, 100))  # (3)!
 
 # Min and max
-print(min(5, 3, 8, 1))  # 1
-print(max(5, 3, 8, 1))  # 8
+print(min(5, 3, 8, 1))  # (4)!
+print(max(5, 3, 8, 1))
 
 # Sum of an iterable
 numbers = [1, 2, 3, 4, 5]
-print(sum(numbers))  # 15
+print(sum(numbers))  # (5)!
 
 # divmod — returns both quotient and remainder
-quotient, remainder = divmod(17, 5)
-print(f"17 ÷ 5 = {quotient} remainder {remainder}")  # 17 ÷ 5 = 3 remainder 2
+quotient, remainder = divmod(17, 5)  # (6)!
+print(f"17 ÷ 5 = {quotient} remainder {remainder}")
 ```
+
+1. Returns `42`—`abs()` converts negative to positive (useful for distances, differences)
+2. Returns `1024`—`pow(x, y)` is equivalent to `x ** y`
+3. Returns `24`—three-argument form: `(2¹⁰) % 100` (efficient for cryptography, large numbers)
+4. Returns `1`—finds minimum value (works with any number of arguments or an iterable)
+5. Returns `15`—adds all values in a list
+6. Returns both quotient (3) and remainder (2) in one operation—more efficient than using `//` and `%` separately
 
 ## Number Systems
 
-Python can work with numbers in different bases. This is handy when dealing with
-low-level programming, networking, or just impressing your friends. 🤓
+Parse network packets. Set file permissions on Unix. Define colors for web design. Work with memory addresses. Process bit flags. Different number bases aren't academic—they're practical tools for systems programming, web development, and data processing.
 
-### Binary, Octal, and Hexadecimal Literals
+### Why Number Bases Matter
 
-``` python {title="Different Number Bases" linenums="1"}
-decimal = 255        # Base 10 (normal)
-binary = 0b11111111  # Base 2 (prefix: 0b)
-octal = 0o377        # Base 8 (prefix: 0o)
-hexadecimal = 0xFF   # Base 16 (prefix: 0x)
+- **Binary (base 2)**: Bit manipulation, flags, permissions, low-level protocols
+- **Hexadecimal (base 16)**: Colors (`#FF5733`), memory addresses, MAC addresses, hashing
+- **Octal (base 8)**: Unix file permissions (`chmod 755`)
+
+Python lets you write integers in any of these bases:
+
+```python title="Different Number Bases" linenums="1"
+decimal = 255        # (1)!
+binary = 0b11111111  # (2)!
+octal = 0o377        # (3)!
+hexadecimal = 0xFF   # (4)!
 
 # They're all the same number!
-print(decimal == binary == octal == hexadecimal)  # True
-print(decimal, binary, octal, hexadecimal)  # 255 255 255 255
+print(decimal == binary == octal == hexadecimal)  # (5)!
+print(decimal, binary, octal, hexadecimal)
 ```
+
+1. Base 10 (decimal)—the default, what we use daily
+2. Base 2 (binary)—prefix `0b`—useful for bit operations
+3. Base 8 (octal)—prefix `0o`—used in Unix permissions
+4. Base 16 (hexadecimal)—prefix `0x`—common in web colors, memory addresses
+5. Returns `True`—all represent 255, just in different notations
 
 ### Converting Between Bases
 
-``` python {title="Base Conversion" linenums="1"}
+```python title="Base Conversion" linenums="1"
 number = 255
 
 # Convert to string representation in different bases
-print(bin(number))   # '0b11111111'
-print(oct(number))   # '0o377'
-print(hex(number))   # '0xff'
+print(bin(number))   # (1)!
+print(oct(number))   # (2)!
+print(hex(number))   # (3)!
 
 # Convert string back to int (specify the base)
-print(int('11111111', 2))   # 255 — from binary
-print(int('377', 8))        # 255 — from octal
-print(int('FF', 16))        # 255 — from hex
-print(int('ff', 16))        # 255 — hex is case-insensitive
+print(int('11111111', 2))   # (4)!
+print(int('377', 8))
+print(int('FF', 16))
+print(int('ff', 16))        # (5)!
 ```
 
-??? example "When Would You Use This?"
+1. Returns `'0b11111111'`—binary string representation
+2. Returns `'0o377'`—octal string representation
+3. Returns `'0xff'`—hexadecimal string representation
+4. Parse binary string to integer by specifying base 2 as second argument
+5. Hexadecimal parsing is case-insensitive—`'FF'` and `'ff'` both work
 
-    - **Binary**: Bit manipulation, flags, permissions
-    - **Hexadecimal**: Colors (`#FF5733`), memory addresses, MAC addresses
-    - **Octal**: Unix file permissions (`chmod 755`)
+??? example "Real-World Number Base Examples"
 
+    **Web development—RGB colors**:
     ```python
     # RGB color as hex
     red = 0xFF
     green = 0x57
     blue = 0x33
     print(f"#{red:02X}{green:02X}{blue:02X}")  # #FF5733
+    ```
 
-    # Unix permissions
+    **Systems programming—Unix permissions**:
+    ```python
+    # chmod 755 in Python
     rwx_owner = 0o700   # Read, write, execute for owner
     rx_group = 0o050    # Read, execute for group
     rx_other = 0o005    # Read, execute for others
@@ -234,55 +282,61 @@ print(int('ff', 16))        # 255 — hex is case-insensitive
 
 ## Python's Unlimited Integer Size
 
-Unlike many programming languages, Python integers have no maximum size. They can be as
-large as your memory allows:
+Calculate factorial of 100. Process credit card numbers. Work with cryptographic keys. Handle astronomical calculations. Generate large prime numbers. In other languages, these tasks hit integer overflow—values wrap around or crash. Python just works:
 
-``` python {title="Big Numbers" linenums="1"}
+```python title="Arbitrarily Large Integers" linenums="1"
 # This is perfectly valid Python
-huge = 10 ** 100  # A googol
+huge = 10 ** 100  # (1)!
 print(huge)
-# 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 # Calculate factorial of 100
 import math
-print(math.factorial(100))  # A 158-digit number!
+print(math.factorial(100))  # (2)!
 ```
+
+1. A googol (10¹⁰⁰)—100 digits long! Python handles this without overflow
+2. Returns a 158-digit number—no special "big integer" library needed
 
 !!! note "No Integer Overflow"
 
-    In languages like C or Java, integers have fixed sizes (32-bit, 64-bit) and can overflow.
-    Python handles this automatically by switching to arbitrary-precision arithmetic. You'll
-    never see an integer overflow in Python — just potentially slow calculations with very
-    large numbers.
+    Languages like C or Java use fixed-size integers (32-bit, 64-bit) that overflow when values get too large. Python automatically switches to arbitrary-precision arithmetic—you'll never see integer overflow, just potentially slower calculations with very large numbers.
 
 ## Converting To and From Integers
 
-``` python {title="Type Conversion" linenums="1"}
+Parse user input from a form. Read numeric data from CSV files. Round measurements down to whole units. Display counts in messages. Data arrives in various types—[strings](strings.md) from files, [floats](floats.md) from calculations, [booleans](booleans.md) from logic. Converting between types is constant in real programs:
+
+```python title="Type Conversion" linenums="1"
 # String to integer
-age = int("25")
-print(age + 1)  # 26
+age = int("25")  # (1)!
+print(age + 1)
 
 # Float to integer (truncates toward zero!)
-print(int(3.9))    # 3
-print(int(-3.9))   # -3 (not -4!)
+print(int(3.9))    # (2)!
+print(int(-3.9))
 
 # Boolean to integer
-print(int(True))   # 1
-print(int(False))  # 0
+print(int(True))   # (3)!
+print(int(False))
 
 # Integer to string
 count = 42
-message = "The answer is " + str(count)
-print(message)  # The answer is 42
+message = f"The answer is {count}"  # (4)!
+print(message)
 
 # Check if something is an integer
-print(isinstance(42, int))     # True
-print(isinstance(42.0, int))   # False
+print(isinstance(42, int))     # (5)!
+print(isinstance(42.0, int))
 ```
+
+1. Parse [string](strings.md) to integer—essential for processing user input, file data
+2. Returns `3` (not 4!)—`int()` truncates toward zero, doesn't round (see [floats](floats.md) for precision)
+3. Returns `1`—[booleans](booleans.md) convert to 0 and 1 (useful in calculations)
+4. [F-strings](strings.md#building-strings-with-f-strings) handle conversion automatically—cleaner than `str(count)` concatenation
+5. Returns `True`—`isinstance()` checks type (note: `42.0` is [float](floats.md), not int)
 
 !!! warning "int() Truncates, Not Rounds"
 
-    `int()` always truncates toward zero, which is different from `round()` or floor division:
+    `int()` always truncates toward zero—different from `round()` or floor division:
 
     ```python
     print(int(3.9))    # 3 (truncated)
@@ -290,6 +344,72 @@ print(isinstance(42.0, int))   # False
     print(int(-3.9))   # -3 (truncated toward zero)
     print(-3.9 // 1)   # -4.0 (floor division toward negative infinity)
     ```
+
+## Practice Problems
+
+??? question "Practice Problem 1: Division Types"
+
+    What's the difference between `17 / 5`, `17 // 5`, and `17 % 5`?
+
+    ??? tip "Answer"
+
+        ```python
+        print(17 / 5)   # 3.4 - true division (float)
+        print(17 // 5)  # 3 - floor division (rounds down)
+        print(17 % 5)   # 2 - modulo (remainder)
+        ```
+
+        - `/` gives the exact quotient as a float
+        - `//` gives the quotient rounded down to an integer
+        - `%` gives the remainder after division
+
+??? question "Practice Problem 2: Modulo for Even/Odd"
+
+    Write code to determine if a number stored in variable `n` is even or odd using the modulo operator.
+
+    ??? tip "Answer"
+
+        ```python
+        n = 42
+        if n % 2 == 0:
+            print("Even")
+        else:
+            print("Odd")
+        ```
+
+        Any even number divided by 2 has remainder 0. Odd numbers have remainder 1.
+
+??? question "Practice Problem 3: Number Bases"
+
+    What decimal number do these represent: `0b1010`, `0o12`, `0xA`?
+
+    ??? tip "Answer"
+
+        All three represent the decimal number `10`:
+
+        ```python
+        print(0b1010)  # 10 (binary: 1×8 + 0×4 + 1×2 + 0×1)
+        print(0o12)    # 10 (octal: 1×8 + 2×1)
+        print(0xA)     # 10 (hex: A = 10)
+        ```
+
+        Python automatically converts all number literals to decimal for display.
+
+??? question "Practice Problem 4: Floor Division Trap"
+
+    What does `print(-17 // 5)` output, and why might it be surprising?
+
+    ??? tip "Answer"
+
+        It outputs `-4`, not `-3`.
+
+        ```python
+        print(-17 / 5)   # -3.4
+        print(-17 // 5)  # -4 (rounds DOWN toward negative infinity)
+        print(int(-17 / 5))  # -3 (truncates toward zero)
+        ```
+
+        Floor division (`//`) always rounds toward negative infinity, so -3.4 rounds down to -4. This differs from truncation toward zero, which would give -3.
 
 ## Key Takeaways
 
@@ -303,3 +423,20 @@ print(isinstance(42.0, int))   # False
 | **Number bases** | `0b` (binary), `0o` (octal), `0x` (hex) |
 | **No overflow** | Python integers can be arbitrarily large |
 | **int() truncates** | Toward zero, not rounding |
+
+## Further Reading
+
+- [**Python Integer Documentation**](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex) - Official reference for integer operations
+- [**PEP 237 – Unifying Long Integers and Integers**](https://peps.python.org/pep-0237/) - How Python removed integer overflow
+- [**Bitwise Operations**](https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types) - Advanced integer operations for low-level programming
+- [**Python's Data Model**](https://docs.python.org/3/reference/datamodel.html#the-standard-type-hierarchy) - Deep dive into how integers work internally
+- [**Computational Thinking**](https://cs.bradpenney.io/fundamentals/computational_thinking/) - Problem-solving patterns using discrete mathematics
+- [**What is Computer Science?**](https://cs.bradpenney.io/fundamentals/what_is_computer_science/) - Understanding how computers process discrete values
+
+---
+
+Integers are the foundation of computational logic. From counting loop iterations to indexing arrays, from checking divisibility to converting between number systems, integers power the discrete mathematics that computers excel at.
+
+Python's integer implementation removes the complexity found in other languages—no overflow errors, no separate "long" types, automatic precision scaling. This lets you focus on solving problems rather than managing numeric representation.
+
+Master integers, and you master the building blocks of algorithmic thinking.

@@ -80,7 +80,7 @@ Accessing `fruits[5]` would raise `IndexError: list index out of range` since on
 
 Users add items to shopping carts. You filter invalid entries from data. Tasks get completed and removed. Collections grow and shrink as programs run. This is why lists are mutable—they reflect dynamic, changing data.
 
-Unlike strings, lists are **mutable**—they can be modified after creation:
+Unlike [strings](../data_types/strings.md), lists are **mutable**—they can be modified after creation:
 
 ### Adding Elements
 
@@ -248,7 +248,7 @@ for fruit in fruits:  # (1)!
     print(f"I like {fruit}")
 ```
 
-1. The most Pythonic way to iterate—directly over elements, not indices
+1. The most Pythonic way to iterate—directly over elements, not indices (see [For Loops](../control_structures/for_loops.md))
 
 ### Finding Elements
 
@@ -366,7 +366,7 @@ Use lists when you need a collection that can grow, shrink, or change. Use tuple
 | Concept | What It Means |
 |:--------|:--------------|
 | **List** | Ordered, mutable collection of items |
-| **Mutability** | Lists can be modified after creation (unlike strings or tuples) |
+| **Mutability** | Lists can be modified after creation (unlike [strings](../data_types/strings.md) or [tuples](tuples.md)) |
 | **Indexing** | Access elements by position (zero-based, negative from end) |
 | **Slicing** | Extract portions: `[start:end:step]` |
 | **`.append()`** | Add single element to end |
