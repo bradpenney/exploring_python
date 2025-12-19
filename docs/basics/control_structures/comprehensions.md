@@ -1,6 +1,8 @@
 # Comprehensions
 
-Python comprehensions are elegant, concise, and widely used constructs that allow you to create new data structures by transforming and filtering existing iterables. ✨ They're like magic one-liners. They provide a more readable and often more performant alternative to traditional loops. Comprehensions can be used to create [`lists`](../data_structures/lists.md), [`dictionaries`](../data_structures/dictionaries.md), and [`sets`](../data_structures/sets.md).
+Python comprehensions are elegant, concise, and widely used constructs that allow you to create new data structures by transforming and filtering existing iterables. ✨ They're like magic one-liners — the espresso shot of Python. One sip (line) and you're awake (productive).
+
+They provide a more readable and often more performant alternative to traditional loops. Comprehensions can be used to create [`lists`](../data_structures/lists.md), [`dictionaries`](../data_structures/dictionaries.md), and [`sets`](../data_structures/sets.md).
 
 ## Basic Comprehension Syntax
 
@@ -286,3 +288,21 @@ flowchart TD
     K -->|Yes| B
     K -->|No| L[Return final collection]
 ```
+
+## Key Takeaways
+
+| Concept | What to Remember |
+|:--------|:-----------------|
+| **List comprehension** | `[expr for item in iterable]` |
+| **Set comprehension** | `{expr for item in iterable}` — auto-deduplicates |
+| **Dict comprehension** | `{key: value for item in iterable}` |
+| **Filtering** | `... if condition` after the `for` clause |
+| **Conditional value** | `value_if_true if cond else value_if_false` before `for` |
+| **Nested loops** | `for x in xs for y in ys` — outer loop first |
+| **When to avoid** | Complex logic, side effects, or hard-to-read expressions |
+
+## Video Summary
+
+<div class="video-wrapper">
+  <iframe src="https://www.youtube.com/embed/pLaeNKEyPvA" title="Python Comprehensions" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
