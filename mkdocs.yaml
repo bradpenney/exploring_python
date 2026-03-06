@@ -1,6 +1,21 @@
 site_name: "Exploring Python"
+site_url: https://python.bradpenney.io
+site_description: Python for engineers who've hit the ceiling of Bash. Replace brittle shell scripts with maintainable Python — one real task at a time.
+site_author: Brad Penney
+
+extra:
+  analytics:
+    provider: google
+    property: G-V01MJ4R3SQ
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/bradpenney
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/bradpenney
+
 extra_css:
   - stylesheets/extra.css
+
 theme:
   name: material
   palette:
@@ -31,6 +46,35 @@ theme:
     - content.tooltips
     - content.code.mermaid
 
+plugins:
+  - search
+  - meta
+  - exclude:
+      glob:
+        # Essentials — drafts not yet written to standard
+        - "essentials/reading_files_and_parsing_text.md"
+        - "essentials/cli_scripts.md"
+        # Efficiency — drafts not yet written to standard
+        - "efficiency/config_files.md"
+        - "efficiency/functions_and_modules.md"
+        # Mastery — all drafts
+        - "mastery/proper_cli_tools.md"
+        - "mastery/testing_scripts.md"
+        - "mastery/reliable_api_clients.md"
+        - "mastery/csv_and_tabular_data.md"
+        - "mastery/packaging_and_sharing.md"
+  - social:
+      cards: true
+      cards_layout_options:
+        background_color: "#1a202c"
+        color: "#cbd5e0"
+  - htmlproofer:
+      enabled: true
+      validate_rendered_template: true
+      validate_external_urls: false
+      raise_error: true
+      raise_error_after_finish: true
+
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -45,32 +89,34 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.highlight
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - attr_list
+  - md_in_html
 
 nav:
   - Home: index.md
-  - Basics:
-    - Data Types:
-        - Strings: basics/data_types/strings.md
-        - Integers: basics/data_types/ints.md
-        - Floating Point Numbers: basics/data_types/floats.md
-        - Booleans: basics/data_types/booleans.md
-        - None: basics/data_types/none.md
-    - Control Structures:
-        - If Statements: basics/control_structures/if_statements.md
-        - For Loops: basics/control_structures/for_loops.md
-        - While Loops: basics/control_structures/while_loops.md
-        - Controlling Loops: basics/control_structures/controlling_loops.md
-        - Comprehensions: basics/control_structures/comprehensions.md
-        - Functions: basics/control_structures/functions.md
-    - Data Structures:
-        - Lists: basics/data_structures/lists.md
-        - Tuples: basics/data_structures/tuples.md
-        - Dictionaries: basics/data_structures/dictionaries.md
-        - Sets: basics/data_structures/sets.md
-        - Membership Testing: basics/data_structures/membership_testing.md
-        - Slicing Sequences: basics/data_structures/slicing_sequences.md
-  - Intermediate:
-      - Iterators and Generators: intermediate/iterators_and_generators.md
+
+  - 📦 Essentials:
+      - "Python vs Bash\\: When to Graduate": essentials/python_vs_bash.md
+      - Running System Commands: essentials/running_commands.md
+      - Working with JSON: essentials/working_with_json.md
+      - Error Handling: essentials/error_handling.md
+
+  - ⚡ Efficiency:
+      - Calling HTTP APIs: efficiency/http_apis.md
+      - File and Directory Operations: efficiency/files_and_directories.md
+      - Environment Variables and Secrets: efficiency/environment_and_secrets.md
+      - Logging: efficiency/logging.md
+
+  # 🎯 Mastery — Build tools, not just scripts
+  # - 🎯 Mastery:
+  #     - Building a Proper CLI Tool: mastery/proper_cli_tools.md
+  #     - Writing Tests for Your Scripts: mastery/testing_scripts.md
+  #     - Calling APIs Reliably: mastery/reliable_api_clients.md
+  #     - Reading and Writing CSV/TSV: mastery/csv_and_tabular_data.md
+  #     - Packaging and Sharing Tools: mastery/packaging_and_sharing.md
