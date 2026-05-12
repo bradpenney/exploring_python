@@ -1,119 +1,75 @@
-<img src="images/exploring_python.png" alt="Explore Python" class="img-responsive-right" width="300">
+---
+title: "Exploring Python: Automation for Platform Engineers"
+description: "Python automation for platform engineers and SREs — task-first guides for health checking, log parsing, config comparison, fleet operations, and more."
+---
+
+<img src="images/exploring_python.png" alt="Exploring Python" class="img-responsive-right" width="300">
 
 # Exploring Python
 
-Python runs the world's infrastructure. YouTube, Instagram, Spotify, Netflix, NASA—all built on Python. Self-driving cars, scientific research, web backends, data analysis, machine learning—Python powers it all.
+You automate things. Bash has served you well — it's the right tool for one-liners, pipelines, and quick shell glue. But somewhere around the third time you've rewritten the same 60-line deploy script because error handling got too complicated, you need something that scales with you.
 
-Why? Because Python combines simplicity with capability. It's a language that beginners can learn in weeks but experts use to build billion-user systems. That rare combination makes it indispensable.
+This site is Python for people who already know how to work in a terminal. Not a programming primer. Not syntax drills. Real automation tasks, organized by the problem you're trying to solve.
 
-This site teaches Python from fundamentals through advanced topics—not just syntax, but understanding. Each article builds conceptual foundations with clear explanations, annotated code examples, and practice problems. Whether you're starting from zero or reviewing core concepts, you'll find depth and clarity here.
+## Who This Is For
 
-## What Makes Python Special?
+You work in platform engineering, infrastructure, SRE, or DevOps. You know `bash`. You've probably got a folder of scripts that "mostly work." You need Python to be useful — not eventually, right now.
 
-Python's design philosophy centers on **readability** and **practicality**. Code reads like English. Complex operations have simple syntax. The standard library handles common tasks out of the box. You focus on solving problems, not fighting the language.
+You don't need to know what a decorator is before you can write a health-check poller. You don't need to understand generators before you can parse a log file.
 
-Consider reading a CSV file and processing its data:
+This site starts with the task. The Python comes with it.
 
-**In C**: 50+ lines of pointer arithmetic, buffer management, and manual parsing.
+## What You'll Learn to Do
 
-**In Python**:
+| Problem | Where It Lives |
+|:--------|:--------------|
+| Check if an API recovers during a redeploy | [Day One → "Is It Still Up?"](day_one/health_check.md) |
+| Find what's breaking from a 10MB log file | [Day One → "What Just Broke?"](day_one/parsing_logs.md) |
+| Verify a running config matches what you deployed | [Day One → "Did the Config Change?"](day_one/comparing_configs.md) |
+| Run a check across your whole fleet | [Day One → "Run This Everywhere"](day_one/run_everywhere.md) |
+| Migrate a `bash` script that's gotten too complex | [Day One → "My Bash Script Is Getting Out of Hand"](day_one/wrapping_bash.md) |
+| Load credentials without hardcoding them | [Essentials → Environment Variables and Secrets](essentials/env_and_secrets.md) |
+| Read and modify Kubernetes manifests in Python | [Essentials → Working with YAML](essentials/yaml.md) |
+| Build a CLI tool your team can actually use | Efficiency → `click` *(coming soon)* |
+| Package and distribute your automation tools | Mastery → Packaging *(coming soon)* |
 
-```python
-import csv
-with open('data.csv') as file:
-    for row in csv.reader(file):
-        process(row)
-```
+## The Path
 
-That's the Python advantage. Concise without being cryptic. Powerful without being complex.
+=== "🐍 Day One"
 
-## Learning Path
+    For engineers who need Python to solve a specific problem today. Each article starts with a real scenario, shows the Python solution, and explains just enough to understand what's happening.
 
-### Level 1: Foundations (Start Here)
+    **Persona:** Platform engineer who knows `bash`, needs Python working now.
 
-Master Python's core building blocks:
+    **Tone:** Practical. No hand-holding on basic programming concepts.
 
-**Data Types**
+    [Start with the Overview →](day_one/overview.md)
 
-- [**Strings**](basics/data_types/strings.md) - Text processing, f-strings, methods
-- [**Integers**](basics/data_types/ints.md) - Whole numbers, arithmetic, number systems
-- [**Floating Point Numbers**](basics/data_types/floats.md) - Decimals, precision, scientific notation
-- [**Booleans**](basics/data_types/booleans.md) - Truth values, logical operators, truthiness
+=== "📦 Essentials"
 
-**Control Structures**
+    Core Python patterns for engineers who've done Day One and want to write better, more maintainable automation. Deeper coverage of the tools you'll reach for every day.
 
-- [**If Statements**](basics/control_structures/if_statements.md) - Conditional logic and branching
-- [**For Loops**](basics/control_structures/for_loops.md) - Iteration over sequences
-- [**While Loops**](basics/control_structures/while_loops.md) - Condition-based loops
-- [**Controlling Loops**](basics/control_structures/controlling_loops.md) - `break`, `continue`, `else`
-- [**Functions**](basics/control_structures/functions.md) - Defining reusable code blocks
-- [**Comprehensions**](basics/control_structures/comprehensions.md) - Concise list/dict/set creation
+    **Persona:** Engineer who can write basic scripts, wants to level up.
 
-**Data Structures**
+    - [Environment Variables and Secrets](essentials/env_and_secrets.md) — Loading credentials at runtime, `.env` files, failing fast on missing vars
+    - [Working with YAML](essentials/yaml.md) — Reading, modifying, and generating Kubernetes manifests
 
-- [**Lists**](basics/data_structures/lists.md) - Ordered, mutable collections
-- [**Tuples**](basics/data_structures/tuples.md) - Immutable sequences
-- [**Dictionaries**](basics/data_structures/dictionaries.md) - Key-value mappings
-- [**Sets**](basics/data_structures/sets.md) - Unique, unordered collections
-- [**Membership Testing**](basics/data_structures/membership_testing.md) - Using `in` and `not in`
-- [**Slicing Sequences**](basics/data_structures/slicing_sequences.md) - Extracting portions
+=== "⚡ Efficiency"
 
-### Level 2: Intermediate Concepts (Coming Soon)
+    Professional-grade Python: CLI tools with `argparse`, proper logging, testing your automation, building things your team can actually use.
 
-- [**Iterators and Generators**](intermediate/iterators_and_generators.md) - Memory-efficient iteration
-- **File I/O** - Reading and writing files
-- **Exception Handling** - Managing errors gracefully
-- **Modules and Packages** - Organizing code
-- **Object-Oriented Programming** - Classes and objects
+    **Persona:** Working platform engineer shipping Python to production.
 
-### Level 3: Advanced Topics (Planned)
+    *Coming soon.*
 
-- **Decorators** - Modifying function behavior
-- **Context Managers** - Resource management with `with`
-- **Metaclasses** - Customizing class creation
-- **Async/Await** - Concurrent programming
-- **Type Hints** - Static type checking
+=== "🎯 Mastery"
 
-## Content Philosophy
+    Production Python: packaging tools for distribution, internal APIs with FastAPI, async operations, the Kubernetes Python client.
 
-Every article on this site follows these principles:
+    **Persona:** Senior SRE responsible for Python automation infrastructure.
 
-1. **Start with why** - Real-world motivation before syntax
-2. **Build progressively** - Simple examples first, complexity layered
-3. **Annotate code** - Every non-obvious line explained
-4. **Practice deliberately** - Problems that test understanding, not memorization
-5. **Link to official docs** - Point you toward authoritative resources
-
-Python is a practical language. You learn by building. These articles give you the foundation to build confidently.
-
-## Why This Site Exists
-
-Countless Python tutorials exist. Most teach syntax. Few teach understanding.
-
-This site focuses on **conceptual depth**: not just what Python does, but why it works that way. Not just memorizing methods, but internalizing patterns. Not just copy-paste examples, but principles you can apply.
-
-Python is a tool for computational problem-solving. To use it effectively, you need both the language mechanics and the [computational thinking](https://cs.bradpenney.io/fundamentals/computational_thinking/) mindset that underlies all of computer science.
-
-The goal: transform you from someone who follows tutorials into someone who writes original solutions.
-
-## Recent Updates
-
-**December 2025**
-
-- Refreshed [Strings](basics/data_types/strings.md), [Lists](basics/data_structures/lists.md), and [For Loops](basics/control_structures/for_loops.md) with enhanced examples and practice problems
-- Added comprehensive code annotations throughout
-- Standardized article structure across all topics
-
-## Getting Started
-
-New to Python? Start with [Strings](basics/data_types/strings.md), then work through the Data Types section sequentially. Each article builds on previous concepts.
-
-Reviewing fundamentals? Jump to any topic—articles are self-contained with cross-links to related concepts.
-
-Experienced developer learning Python? Focus on [Comprehensions](basics/control_structures/comprehensions.md) and [Dictionaries](basics/data_structures/dictionaries.md)—Python's approach differs from other languages.
+    *Coming soon — and eventually paywalled.*
 
 ---
 
-Python transformed programming from an expert-only activity to something accessible to millions. It didn't sacrifice power for simplicity—it achieved both. That's why it's worth learning deeply.
-
-Welcome to Exploring Python. Let's build something.
+If `bash` is getting in your way, start with [Day One](day_one/overview.md).

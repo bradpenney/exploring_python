@@ -2,206 +2,172 @@
 
 This file provides guidance to Claude Code when working with this repository.
 
-## Repository Overview
+## Core Philosophy: Task-First, Not Concept-First
 
-This is a Material for MkDocs site teaching Python programming from fundamentals through advanced topics. The site serves as a teaching tool, portfolio, and reference for learners at all levels.
+**This is the most important thing to understand about this site.**
 
-## Important Preferences
+Every other Python tutorial teaches concepts first: "here's what a string is, here's why you use it." This site teaches tasks first: "you need to check an API during a redeploy — here's why Python is the right tool and here's how to do it."
 
-**Git Operations**: The user handles all git operations (commits, pushes, etc.) themselves. Do not commit or push changes.
+Python concepts appear in service of solving a specific problem. The reader arrives because they have a task at work, not because they want to learn about data types.
 
-## Project Structure
+**Before writing any article, name the real-world scenario the reader is in. If you can't name it, the article isn't ready.**
 
-- `docs/` - Markdown content organized by skill level
-  - `basics/` - Fundamental Python concepts
-    - `data_types/` - Strings, integers, floats, booleans, None
-    - `control_structures/` - If statements, loops, functions, comprehensions
-    - `data_structures/` - Lists, tuples, dictionaries, sets, slicing
-  - `intermediate/` - Intermediate topics (planned expansion)
-  - `advanced/` - Advanced topics (planned)
-- `mkdocs.yaml` - Site configuration and navigation
-- `pyproject.toml` - Poetry dependencies (if present)
+---
 
-## Common Commands
+## Target Persona
 
-```bash
-# Install dependencies (if using Poetry)
-poetry install
+**Who they are:** Platform engineer, SRE, or DevOps engineer who works in production environments.
 
-# Serve locally (http://localhost:8000)
-poetry run mkdocs serve
-# OR if not using Poetry:
-mkdocs serve
+**What they already know:**
+- Bash scripting — they know what a loop is, what an exit code means, why you don't run as root
+- Linux command line — comfortable in a terminal
+- Their infrastructure — Kubernetes, cloud providers, deployment pipelines
 
-# Build static site
-mkdocs build
-```
+**What they don't have yet:** Python that's useful in their actual work. Not tutorial Python — production automation Python.
 
-## Content Guidelines
+**What they are NOT:**
+- Programming beginners who need basic concepts explained
+- CS students learning Python for the first time
+- Developers who write application code (this is infrastructure automation)
 
-### Tone and Style
+**Opening pattern:** Start with THEIR situation — a specific task they face at work — then introduce Python as the right tool for it.
 
-Articles must balance **playfulness with professionalism** and be **technically accurate** while remaining **accessible**. The goal: meaningful for beginners, yet useful for experienced Python developers reviewing fundamentals.
+- ❌ Wrong: "Strings are sequences of characters..."
+- ✅ Right: "You're deploying and need to know when the API comes back up. Here's why a Python poller beats a bash curl loop."
 
-**Core Principles:**
+---
 
-- **Strong openings**: Ground in real-world scenarios (data processing, web apps, automation scripts, everyday programming tasks)
-- **Professional yet engaging**: Use wit in parentheticals and asides, not emoji spam (limit to 1-3 per article, used strategically)
-- **Technical rigor**: Include formal definitions where appropriate, Python version context, and precise terminology
-- **Structured learning**: Build from simple to complex examples; use clear section headers
-- **Thoughtful closings**: Tie concepts to broader Python philosophy or programming concepts; avoid jokey endings
-- **Direct voice**: Address reader as "you"; be confident but not arrogant; educational but not preachy
-- **Practical focus**: Python is a practical language—show real use cases, not just abstract examples
+## Site Structure
 
-**Required Sections:**
+### 🐍 Day One (Essential tier — always free)
 
-1. Opening paragraph(s) - hook with real-world relevance
-2. Formal definition (if applicable) - clear explanation of what the concept is
-3. Simple examples building to complex - start basic, layer complexity
-4. "Why [Topic] Matters" section - practical importance in real Python programming
-5. Practice Problems with full solutions (use `??? question` and `??? tip`)
-6. "Key Takeaways" table - summarize essential points
-7. "Further Reading" section with links to official docs, PEPs, quality resources
-8. Closing paragraph(s) - thoughtful reflection on broader significance
-9. Video Summary (when available) - embedded YouTube tutorial
+For engineers who need Python to solve a specific problem today. Task-first, one scenario per article, just enough Python to understand what's happening.
 
-**Examples of Good Tone:**
-- "This is why Python developers love list comprehensions." (confident assertion)
-- "(Spoiler: it's not what you'd think.)" (playful aside in parenthetical)
-- "Python's approach to duck typing means we care about what an object can do, not what it is." (precise yet accessible)
+**Tone:** Mentorship, but peer-level. No hand-holding on basic programming. Assume they know bash and can follow code.
 
-**Avoid:**
-- Excessive emojis (📋✨🎮😄 scattered everywhere)
-- Over-the-top phrases like "amazing!", "incredible!", "mind-blowing!"
-- Condescending language or talking down to readers
-- Jokey closings that undermine the technical content
-- Creating files unless absolutely necessary
+**Articles are titled by the task, not the concept:**
+- ✅ "Is It Still Up?" (teaches requests, loops, sys.exit)
+- ✅ "What Just Broke?" (teaches file I/O, Counter, string parsing)
+- ❌ "Introduction to the requests library"
 
-### Content Structure
+### 📦 Essentials (Efficient tier — free)
 
-- Articles should be teaching-focused, not just notes
-- Use mermaid diagrams for visual concepts (already configured)
-- Include practice problems with expandable solutions (`??? question`)
-- Cross-link related articles using markdown links
-- Use admonitions for tips and callouts:
-  - Prefer `??? tip` (collapsible tips) for helpful insights
-  - **Avoid** `??? note` or `!!! note` (the "note" style doesn't render well in Material for MkDocs)
-- **Code examples must include titles, line numbers, and annotations**:
-  - Format: ` ```python title="Descriptive Title" linenums="1" `
-  - Example: ` ```python title="List Comprehension with Filter" linenums="1" `
-  - The title should describe what the code demonstrates
-  - Material for MkDocs provides copy button automatically
-  - **Add code annotations** to explain key concepts:
-    - Use `# (1)!`, `# (2)!`, etc. for inline annotations
-    - After the code block, provide numbered explanations
-    - Annotate important lines that explain language features, idioms, or non-obvious logic
-    - Example:
-      ```python title="F-String Formatting" linenums="1"
-      name = "Alice"
-      age = 30
-      print(f"Hello, {name}! You are {age} years old.")  # (1)!
-      ```
+Core patterns for engineers who've done Day One and want to write better automation. Peer-to-peer tone. No hand-holding.
 
-      1. F-strings automatically convert variables to strings and embed them—no need for str() casting
-- **Markdown list formatting**: Always add a blank line before lists that follow text/bold headers
-- Embed YouTube videos at the bottom of articles in a "Video Summary" section using the responsive wrapper class:
-  ```markdown
-  ## Video Summary
+**Required section in every Essentials article:** "Where You've Seen This" — connects the Python concept to something they already do in bash or their existing workflow.
 
-  <div class="video-wrapper">
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Descriptive Title" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div>
-  ```
-  Replace `VIDEO_ID` with the YouTube video ID (from `https://youtu.be/VIDEO_ID`) and provide a descriptive title.
+### ⚡ Efficiency (Efficient/professional tier — free)
 
-  The `video-wrapper` class is defined in `docs/stylesheets/extra.css` and provides:
-  - Full-width responsive embedding (100% width, max 800px)
-  - Automatic 16:9 aspect ratio
-  - Rounded corners and no border
-  - Proper spacing above and below the video
+Professional-grade Python: argparse, logging, testing, things your team can actually use.
 
-### Linking Strategy
+### 🎯 Mastery (Mastery tier — eventually paywalled)
 
-**IMPORTANT**: Always check for both internal and external linking opportunities when polishing articles.
+Production Python: packaging, FastAPI, async, Kubernetes client. Professionals with training budgets.
 
-**Internal Links (within Python site):**
-- Link related Python concepts using relative paths: `[lists](../../data_structures/lists.md)`
-- Strategic places to add internal links:
-  - First mention of a concept covered in another article
-  - Code annotations explaining related topics
-  - "See also" style references in admonitions
-  - Practice problem answers that reference other concepts
-  - Closing paragraphs connecting topics
-- Common internal link targets:
-  - Data types: `strings.md`, `ints.md`, `floats.md`, `booleans.md`, `none.md`
-  - Data structures: `lists.md`, `tuples.md`, `dictionaries.md`, `sets.md`
-  - Control structures: `if_statements.md`, `for_loops.md`, `while_loops.md`, `functions.md`, `comprehensions.md`
+---
 
-**External Links (to cs.bradpenney.io):**
-- Link foundational CS concepts to the Exploring Computer Science site
-- Add external links in:
-  - "Why [Topic] Matters" sections (connect to broader CS principles)
-  - Further Reading sections (cross-reference related CS fundamentals)
-  - Body text when mentioning CS concepts like algorithms, computational thinking, etc.
-  - Closing paragraphs discussing programming philosophy or paradigms
-- Common external link targets:
-  - [Computational Thinking](https://cs.bradpenney.io/fundamentals/computational_thinking/) - logical reasoning, problem decomposition
-  - [What is Computer Science](https://cs.bradpenney.io/fundamentals/what_is_computer_science/) - programming paradigms, language philosophy
-  - Use anchor links for specific sections: `https://cs.bradpenney.io/page/#section-name`
+## Tone by Tier
 
-**After polishing an article, always verify:**
-1. ✅ Internal links connect to related Python topics naturally
-2. ✅ External links to cs.bradpenney.io ground Python concepts in CS fundamentals
-3. ✅ Links enhance learning without being excessive (avoid overlinking common terms)
-4. ✅ All links use correct relative/absolute paths
+| Tier | Tone | What to assume |
+|------|------|----------------|
+| Day One | Mentorship, practical | They know bash; they don't know Python |
+| Essentials | Peer-to-peer | They can write Python scripts; want to write better ones |
+| Efficiency | Colleague-to-colleague | Working professional; no hand-holding |
+| Mastery | Expert-to-expert | Senior engineer; deep production context |
 
-### Python-Specific Guidelines
+**Tone shifts at Essentials** — drop the guiding hand, treat them as peers.
 
-- **Version awareness**: Note when features were introduced (e.g., "f-strings, introduced in Python 3.6")
-- **Pythonic idioms**: Show the "Python way" of doing things, not just what works
-- **Common pitfalls**: Call out gotchas (mutable default arguments, late binding in closures, etc.)
-- **Official resources**: Link to official Python docs, relevant PEPs when applicable
-- **Type hints**: Include type hints in more advanced examples where they add clarity
-- **Real examples**: Use realistic variable names and scenarios, not just `foo`, `bar`, `x`, `y`
+---
 
-### Practice Problems
+## Article Structure (Day One)
 
-Every article should include 2-4 practice problems:
+1. **Frontmatter** — `title` (50-60 chars), `description` (150-160 chars)
+2. **"Part of Day One" callout** — links back to overview
+3. **The scenario** — specific situation the reader is in right now
+4. **The bash version first** (if applicable) — show what they'd normally do and where it falls short
+5. **The Python solution** — code with annotations
+6. **Extensions** — natural next steps (check a JSON field, add parallelism, etc.)
+7. **Practice exercises** — `??? question` with nested `??? tip "Answer"`
+8. **Quick Recap table** — concept → what it does
+9. **What's Next** — link to the next article in the path
+10. **Further Reading** — organized by category
 
-- Use `??? question "Practice Problem N: Descriptive Title"`
-- Provide solutions in nested `??? tip "Answer"` blocks
-- Problems should test understanding, not just memorization
-- Build from basic recall to application
-- Include explanation in answers, not just code
+---
 
-Example:
-```markdown
-??? question "Practice Problem 1: String Indexing"
+## Code Standards
 
-    What does `"Python"[-1]` return?
+**All code blocks must have:**
+- `title=` attribute describing what the code demonstrates
+- `linenums="1"`
+- Language specified (`python`, `bash`)
+- Annotations (`# (1)!`) for non-obvious lines
 
-    ??? tip "Answer"
+**Python code must:**
+- Be tested and actually work
+- Use realistic variable names (not `foo`, `x`, `my_list`)
+- Show actual output in comments or separate output blocks
+- Exit with meaningful codes (`sys.exit(1)`, not always `sys.exit(0)`)
 
-        It returns `'n'` - the last character. Negative indexing counts from the end, with -1 being the last element.
-```
+**Don't use `shell=True` in code examples** without an explicit comment explaining why and the security trade-off.
 
-### Key Takeaways Format
+---
 
-End each article with a table summarizing core concepts:
+## Critical Rules
 
-```markdown
-## Key Takeaways
+### No repetition
+Cross-link instead of repeating. If `subprocess.run` is covered in `wrapping_bash.md`, the `run_everywhere.md` article links to it rather than re-explaining it.
 
-| Concept | What It Means |
-|:--------|:--------------|
-| **List** | Mutable, ordered sequence of items |
-| **Mutability** | Lists can be modified after creation |
-| **Indexing** | Access elements by position (0-indexed) |
-```
+### Blank line before every list
+This is a recurring MkDocs rendering issue. Every bullet list must have a blank line before it.
 
-## Working with This Repository
+### Command names in backticks
+In prose: ✅ `requests`, `subprocess.run()`, `sys.exit()` — ❌ requests, subprocess.run, sys.exit
 
-- Read existing content before modifying to match established tone
-- Preview changes locally with `mkdocs serve` before committing
-- Keep navigation in `mkdocs.yaml` organized and logical
-- Ensure all internal links work (Material for MkDocs will warn about broken links)
+### Never link to unpublished articles
+Check `mkdocs.yaml` nav. If an article is commented out, don't link to it.
+
+---
+
+## Publishing Workflow
+
+1. Write the article
+2. Pass the quality checklist (below)
+3. Add to the `nav:` section in `mkdocs.yaml`
+4. Do NOT run `mkdocs` commands — the user handles builds and deploys
+
+### Quality Checklist
+
+- [ ] Task/scenario clearly identified in the opening paragraph
+- [ ] Bash version shown first (if applicable) with its limitations explained
+- [ ] Python solution is complete and actually works
+- [ ] Code annotations on non-obvious lines
+- [ ] `title=` and `linenums="1"` on all code blocks
+- [ ] Blank lines before all lists
+- [ ] Practice exercises with nested solutions
+- [ ] Quick Recap table
+- [ ] What's Next link
+- [ ] Further Reading by category
+- [ ] "Part of Day One" (or Essentials/Efficiency/Mastery) callout
+- [ ] SEO frontmatter: title 50-60 chars, description 150-160 chars
+- [ ] No links to unpublished articles
+
+---
+
+## What NOT to Do
+
+- ❌ Write concept-first articles ("Today we'll learn about dictionaries...")
+- ❌ Write articles without a named real-world scenario
+- ❌ Use `shell=True` without explaining why and the security trade-off
+- ❌ Hardcode credentials in code examples
+- ❌ Run git commits, pushes, or mkdocs commands (user handles these)
+- ❌ Link to unpublished articles
+
+## File Structure
+
+- `docs/` — Published content
+  - `day_one/` — Day One task articles (all published)
+  - `essentials/` — Essentials articles (coming)
+  - `efficiency/` — Efficiency articles (coming)
+  - `mastery/` — Mastery articles (coming)
+- `_archive/` — Old content from the previous concept-first structure
+- `mkdocs.yaml` — Nav and configuration

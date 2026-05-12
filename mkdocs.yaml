@@ -1,6 +1,21 @@
 site_name: "Exploring Python"
+site_url: https://python.bradpenney.io
+site_description: Python automation for platform engineers and SREs — from first script to production-grade automation tools.
+site_author: Brad Penney
+
+extra:
+  analytics:
+    provider: google
+    property: G-V01MJ4R3SQ
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/bradpenney
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/bradpenney
+
 extra_css:
   - stylesheets/extra.css
+
 theme:
   name: material
   palette:
@@ -31,6 +46,10 @@ theme:
     - content.tooltips
     - content.code.mermaid
 
+plugins:
+  - search
+  - meta
+
 markdown_extensions:
   - admonition
   - pymdownx.details
@@ -45,32 +64,50 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed
-  - pymdownx.highlight
+  - pymdownx.tabbed:
+      alternate_style: true
   - attr_list
+  - md_in_html
 
 nav:
   - Home: index.md
-  - Basics:
-    - Data Types:
-        - Strings: basics/data_types/strings.md
-        - Integers: basics/data_types/ints.md
-        - Floating Point Numbers: basics/data_types/floats.md
-        - Booleans: basics/data_types/booleans.md
-        - None: basics/data_types/none.md
-    - Control Structures:
-        - If Statements: basics/control_structures/if_statements.md
-        - For Loops: basics/control_structures/for_loops.md
-        - While Loops: basics/control_structures/while_loops.md
-        - Controlling Loops: basics/control_structures/controlling_loops.md
-        - Comprehensions: basics/control_structures/comprehensions.md
-        - Functions: basics/control_structures/functions.md
-    - Data Structures:
-        - Lists: basics/data_structures/lists.md
-        - Tuples: basics/data_structures/tuples.md
-        - Dictionaries: basics/data_structures/dictionaries.md
-        - Sets: basics/data_structures/sets.md
-        - Membership Testing: basics/data_structures/membership_testing.md
-        - Slicing Sequences: basics/data_structures/slicing_sequences.md
-  - Intermediate:
-      - Iterators and Generators: intermediate/iterators_and_generators.md
+
+  - 🐍 Day One:
+      - Overview: day_one/overview.md
+      - Why Python (Not Just Bash): day_one/why_python.md
+      - "Is It Still Up?": day_one/health_check.md
+      - "What Just Broke?": day_one/parsing_logs.md
+      - "Did the Config Change?": day_one/comparing_configs.md
+      - "Run This Everywhere": day_one/run_everywhere.md
+      - My Bash Script Is Getting Out of Hand: day_one/wrapping_bash.md
+      - The "Don't Do This" Guide: day_one/safety_guide.md
+
+  # 📦 Essentials — Core Python for working platform engineers
+  - 📦 Essentials:
+      - Environment Variables and Secrets: essentials/env_and_secrets.md
+      - Working with YAML: essentials/yaml.md
+  #     - Strings for Platform Engineers: essentials/strings.md
+  #     - Lists and Loops: essentials/lists_and_loops.md
+  #     - Dictionaries and JSON: essentials/dicts_and_json.md
+  #     - Functions: essentials/functions.md
+  #     - File I/O in Depth: essentials/file_io.md
+  #     - Error Handling: essentials/error_handling.md
+
+  # ⚡ Efficiency — Professional Python patterns
+  # - ⚡ Efficiency:
+  #     - subprocess in Depth: efficiency/subprocess.md
+  #     - requests: Calling APIs: efficiency/requests.md
+  #     - click: Building CLI Tools: efficiency/click.md
+  #     - Logging: efficiency/logging.md
+  #     - Regular Expressions for Log Parsing: efficiency/regex.md
+  #     - Testing Automation with pytest: efficiency/pytest.md
+  #     - Dataclasses and Type Hints: efficiency/dataclasses.md
+
+  # 🎯 Mastery — Production Python for senior engineers
+  # - 🎯 Mastery:
+  #     - Packaging Python Tools with Poetry: mastery/packaging.md
+  #     - Building Internal APIs with FastAPI: mastery/fastapi.md
+  #     - Async Python for Platform Engineering: mastery/async.md
+  #     - Python for Kubernetes: mastery/kubernetes_client.md
+  #     - Secrets Management: mastery/secrets_management.md
+  #     - Building Reliable CLI Applications: mastery/robust_cli.md
