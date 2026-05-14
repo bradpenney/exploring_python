@@ -19,46 +19,33 @@ You don't need to know what a decorator is before you can write a health-check p
 
 This site starts with the task. The Python comes with it.
 
-## What You'll Learn to Do
-
-| Problem | Where It Lives |
-|:--------|:--------------|
-| Check if an API recovers during a redeploy | [Day One → "Is It Still Up?"](day_one/health_check.md) |
-| Find what's breaking from a 10MB log file | [Day One → "What Just Broke?"](day_one/parsing_logs.md) |
-| Verify a running config matches what you deployed | [Day One → "Did the Config Change?"](day_one/comparing_configs.md) |
-| Run a check across your whole fleet | [Day One → "Run This Everywhere"](day_one/run_everywhere.md) |
-| Migrate a `bash` script that's gotten too complex | [Day One → "My Bash Script Is Getting Out of Hand"](day_one/wrapping_bash.md) |
-| Load credentials without hardcoding them | [Essentials → Environment Variables and Secrets](essentials/env_and_secrets.md) |
-| Read and modify Kubernetes manifests in Python | [Essentials → Working with YAML](essentials/yaml.md) |
-| Build a CLI tool your team can actually use | Efficiency → `click` *(coming soon)* |
-| Package and distribute your automation tools | Mastery → Packaging *(coming soon)* |
-
 ## The Path
 
 === "🐍 Day One"
 
-    For engineers who need Python to solve a specific problem today. Each article starts with a real scenario, shows the Python solution, and explains just enough to understand what's happening.
+    Each article starts with a real scenario you'd face at work. Just enough Python to solve it, no syntax drills.
 
-    **Persona:** Platform engineer who knows `bash`, needs Python working now.
-
-    **Tone:** Practical. No hand-holding on basic programming concepts.
+    - [The Clean Setup](day_one/setup.md) — Stop "Python Hell" before it starts
+    - [Why Python, Not Just Bash](day_one/why_python.md) — When `bash` is the right tool and when it isn't
+    - [Is It Still Up?](day_one/health_check.md) — Poll a health endpoint during a redeploy
+    - [What Just Broke?](day_one/parsing_logs.md) — Parse a log file to understand failures fast
+    - [Did the Config Change?](day_one/comparing_configs.md) — Compare running config against what you deployed
+    - [Run This Everywhere](day_one/run_everywhere.md) — Run a check across your whole fleet
+    - [My Bash Script Is Getting Out of Hand](day_one/wrapping_bash.md) — Wrap complex shell logic in Python
+    - [The "Don't Do This" Guide](day_one/safety_guide.md) — Safety rules before you run any of this in production
 
     [Start with the Overview →](day_one/overview.md)
 
 === "📦 Essentials"
 
-    Core Python patterns for engineers who've done Day One and want to write better, more maintainable automation. Deeper coverage of the tools you'll reach for every day.
-
-    **Persona:** Engineer who can write basic scripts, wants to level up.
+    Core Python patterns for writing better, more maintainable automation. Deeper coverage of the tools you'll reach for every day.
 
     - [Environment Variables and Secrets](essentials/env_and_secrets.md) — Loading credentials at runtime, `.env` files, failing fast on missing vars
     - [Working with YAML](essentials/yaml.md) — Reading, modifying, and generating Kubernetes manifests
 
 === "⚡ Efficiency"
 
-    Professional-grade Python: CLI tools with `argparse`, proper logging, testing your automation, building things your team can actually use.
-
-    **Persona:** Working platform engineer shipping Python to production.
+    Professional-grade Python: CLI tools with `click`, proper logging, testing your automation, building things your team can actually use.
 
     *Coming soon.*
 
@@ -66,9 +53,7 @@ This site starts with the task. The Python comes with it.
 
     Production Python: packaging tools for distribution, internal APIs with FastAPI, async operations, the Kubernetes Python client.
 
-    **Persona:** Senior SRE responsible for Python automation infrastructure.
-
-    *Coming soon — and eventually paywalled.*
+    *Coming soon.*
 
 ---
 

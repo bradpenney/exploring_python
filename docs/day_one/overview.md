@@ -1,5 +1,5 @@
 ---
-title: "Day One: Python for Platform Engineers"
+title: "Day One: Python for Platform Engineers, SREs, and DevOps"
 description: "Python automation for platform engineers who know bash — task-first guides for health checking, log parsing, config comparison, and fleet operations."
 ---
 
@@ -27,6 +27,7 @@ By the end of Day One, you'll be able to handle these situations with Python:
 
 | Situation | Article |
 |:----------|:--------|
+| You want to avoid breaking your system Python | [The Clean Setup](setup.md) |
 | API needs to recover before traffic can cut back | [Is It Still Up?](health_check.md) |
 | Something broke in production, you have a giant log file | [What Just Broke?](parsing_logs.md) |
 | You need to verify running config against expected | [Did the Config Change?](comparing_configs.md) |
@@ -46,13 +47,14 @@ The articles in Day One are all situations where `bash` starts to cost you more 
 
 Work through these in order, or jump to the scenario you're facing right now:
 
-1. **[Why Python (Not Just Bash)](why_python.md)** — When to reach for Python instead of staying in `bash`
-2. **[Is It Still Up?](health_check.md)** — Polling a health endpoint during a redeploy
-3. **[What Just Broke?](parsing_logs.md)** — Parsing a log file to find and understand errors
-4. **[Did the Config Change?](comparing_configs.md)** — Comparing running config against expected
-5. **[Run This Everywhere](run_everywhere.md)** — Checking a condition across a fleet of servers or services
-6. **[My Bash Script Is Getting Out of Hand](wrapping_bash.md)** — Wrapping shell commands in Python when `bash` gets unwieldy
-7. **[The "Don't Do This" Guide](safety_guide.md)** — Security and safety rules for production automation
+1. **[The Clean Setup](setup.md)** — Setting up your Python environment correctly
+2. **[Why Python (Not Just Bash)](why_python.md)** — When to reach for Python instead of staying in `bash`
+3. **[Is It Still Up?](health_check.md)** — Polling a health endpoint during a redeploy
+4. **[What Just Broke?](parsing_logs.md)** — Parsing a log file to find and understand errors
+5. **[Did the Config Change?](comparing_configs.md)** — Comparing running config against expected
+6. **[Run This Everywhere](run_everywhere.md)** — Checking a condition across a fleet of servers or services
+7. **[My Bash Script Is Getting Out of Hand](wrapping_bash.md)** — Wrapping shell commands in Python when `bash` gets unwieldy
+8. **[The "Don't Do This" Guide](safety_guide.md)** — Security and safety rules for production automation
 
 ## One Rule Before You Start
 
@@ -62,4 +64,4 @@ Always test on one before you run on all. Always build a `--dry-run` flag before
 
 ---
 
-Ready? Start with **[Why Python (Not Just Bash)](why_python.md)**, or jump straight to the scenario you're dealing with today.
+Start with **[Why Python (Not Just Bash)](why_python.md)** for the framework, or jump straight to whichever scenario you're dealing with today.

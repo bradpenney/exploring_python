@@ -20,6 +20,12 @@
   }
 }
 
+/* Center Mermaid diagrams */
+.mermaid {
+  display: flex;
+  justify-content: center;
+}
+
 /* Video embeds - responsive with max-width cap */
 .video-wrapper {
   width: 100%;

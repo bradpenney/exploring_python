@@ -1,5 +1,5 @@
 ---
-title: "What Just Broke? Parsing Logs with Python"
+title: "What Just Broke? Parsing Application Logs with Python"
 description: "Use Python to parse application log files — count errors by component, find when errors started, and understand failure patterns that grep alone can't surface."
 ---
 
@@ -14,9 +14,43 @@ You need to understand the failure, not just find it. That's the gap between `gr
 
 ---
 
+## The Concept: Finding vs. Understanding
+
+```mermaid
+flowchart TD
+    subgraph G [The grep Way: Finding]
+        G1([Log File]) --> G2[grep ERROR]
+        G2 --> G3([List of Lines])
+    end
+
+    subgraph P [The Python Way: Understanding]
+        P1([Log File]) --> P2{Parse & Filter}
+        P2 --> P3[Count by Component]
+        P2 --> P4[Find Time Window]
+        P2 --> P5[Calculate Error Rate]
+        P3 & P4 & P5 --> P6([Actionable Summary])
+    end
+
+    style G1 fill:#1a202c,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style G2 fill:#c53030,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style G3 fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+
+    style P1 fill:#1a202c,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style P2 fill:#4a5568,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style P3 fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style P4 fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style P5 fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style P6 fill:#2f855a,stroke:#cbd5e0,stroke-width:2px,color:#fff
+
+    style G fill:transparent,stroke:#cbd5e0,stroke-dasharray: 5 5,color:#fff
+    style P fill:transparent,stroke:#cbd5e0,stroke-dasharray: 5 5,color:#fff
+```
+
+---
+
 ## What `grep` Does Well (and Where It Stops)
 
-```bash title="grep: finding errors"
+```bash title="grep: finding errors" linenums="1"
 grep ERROR /var/log/myapp/app.log
 ```
 
@@ -38,19 +72,27 @@ import sys
 
 log_file = sys.argv[1] if len(sys.argv) > 1 else "/var/log/myapp/app.log"
 
+total_lines = 0
+error_count = 0
+
 with open(log_file) as f:  # (1)!
-    lines = f.readlines()
+    for line in f:  # (2)!
+        total_lines += 1
+        if "ERROR" in line:
+            error_count += 1
 
-errors = [line for line in lines if "ERROR" in line]  # (2)!
-
-print(f"{len(errors)} errors in {len(lines)} total lines")
-print(f"Error rate: {len(errors)/len(lines)*100:.1f}%")
+print(f"{error_count} errors in {total_lines} total lines")
+if total_lines > 0:
+    print(f"Error rate: {error_count/total_lines*100:.1f}%")
 ```
 
 1. `with open(...)` automatically closes the file when the block exits — no need to call `f.close()`.
-2. List comprehension: builds a new list containing only lines that have "ERROR" in them. Equivalent to `grep ERROR` but the result is a Python list you can do more with.
+2. **Memory Efficient:** We iterate over the file one line at a time. This works on a 1KB file or a 10GB file without crashing your server.
 
-```bash title="Running it"
+!!! tip "Scaling to Giant Logs"
+    Earlier tutorials often show `f.readlines()`, which reads the **entire file** into memory at once. For an SRE, this is a trap. A 5GB production log will immediately trigger an OOM (Out of Memory) killer on your app server. Always use `for line in f:` to process logs safely.
+
+```bash title="Running it" linenums="1"
 python count_errors.py /var/log/myapp/app.log
 # 847 errors in 12,304 total lines
 # Error rate: 6.9%
@@ -62,7 +104,7 @@ That one number already tells you something. 6.9% error rate on login is a probl
 
 ## Find Which Component Is Failing
 
-Most application logs follow a pattern. Here's a common one:
+Most application logs follow a pattern. A common one:
 
 ```
 2024-01-15 14:23:01 ERROR [AuthService] Token validation failed for user 4821
@@ -71,7 +113,7 @@ Most application logs follow a pattern. Here's a common one:
 2024-01-15 14:23:02 ERROR [DatabasePool] Connection timeout after 5000ms
 ```
 
-The component name is in brackets. Python can pull it out:
+The component name is in brackets. Pull it out:
 
 ```python title="errors_by_component.py" linenums="1"
 from collections import Counter  # (1)!
@@ -79,20 +121,20 @@ import sys
 
 log_file = sys.argv[1] if len(sys.argv) > 1 else "/var/log/myapp/app.log"
 
-with open(log_file) as f:
-    lines = f.readlines()
-
-errors = [line for line in lines if "ERROR" in line]
 components = Counter()
+error_count = 0
 
-for line in errors:
-    try:
-        component = line.split("[")[1].split("]")[0]  # (2)!
-        components[component] += 1
-    except IndexError:
-        components["unknown"] += 1
+with open(log_file) as f:
+    for line in f:
+        if "ERROR" in line:
+            error_count += 1
+            try:
+                component = line.split("[")[1].split("]")[0]  # (2)!
+                components[component] += 1
+            except IndexError:
+                components["unknown"] += 1
 
-print(f"\n{len(errors)} errors across {len(components)} components:\n")
+print(f"\n{error_count} errors across {len(components)} components:\n")
 for component, count in components.most_common():  # (3)!
     bar = "█" * min(count // 10, 40)
     print(f"  {component:25s} {count:5d}  {bar}")
@@ -102,7 +144,7 @@ for component, count in components.most_common():  # (3)!
 2. `line.split("[")` splits the string on `[`, giving a list. `[1]` takes the second element (after the first `[`). `.split("]")[0]` then takes the part before `]`. Brittle if the format changes, but effective for a consistent log format.
 3. `most_common()` returns `(key, count)` pairs sorted by count descending — the worst offender is first.
 
-```bash title="Output"
+```bash title="Output" linenums="1"
 847 errors across 3 components:
 
   AuthService               821  ████████████████████████████████████████
@@ -116,17 +158,25 @@ Now you know: it's almost entirely `AuthService`. The database pool errors are p
 
 ## Find When the Errors Started
 
-If your log lines start with a timestamp, you can find the first error:
+If your log lines start with a timestamp, you can find the first and last error window:
 
 ```python title="Find error window" linenums="1"
-errors = [line for line in lines if "ERROR" in line]
+first_error = None
+last_error = None
+error_count = 0
 
-if errors:
-    first = errors[0][:19]   # first 19 chars = "2024-01-15 14:23:01"
-    last  = errors[-1][:19]
-    print(f"First error: {first}")
-    print(f"Last error:  {last}")
-    print(f"Error window: {len(errors)} errors between those timestamps")
+with open(log_file) as f:
+    for line in f:
+        if "ERROR" in line:
+            error_count += 1
+            if not first_error:
+                first_error = line[:19]
+            last_error = line[:19]
+
+if first_error:
+    print(f"First error: {first_error}")
+    print(f"Last error:  {last_error}")
+    print(f"Error window: {error_count} errors between those timestamps")
 ```
 
 Cross that timestamp against your deploy log and you know immediately whether the errors started with the deploy.
@@ -140,26 +190,35 @@ from collections import Counter
 import sys
 
 def summarize_log(log_file):
+    total_lines = 0
+    error_count = 0
+    first_error = None
+    last_error = None
+    components = Counter()
+
     with open(log_file) as f:
-        lines = f.readlines()
+        for line in f:
+            total_lines += 1
+            if "ERROR" in line:
+                error_count += 1
+                if not first_error:
+                    first_error = line[:19]
+                last_error = line[:19]
+                
+                try:
+                    component = line.split("[")[1].split("]")[0]
+                    components[component] += 1
+                except IndexError:
+                    components["unknown"] += 1
 
-    errors = [l for l in lines if "ERROR" in l]
-
-    if not errors:
-        print(f"✓ No errors found in {len(lines)} log lines")
+    if error_count == 0:
+        print(f"✓ No errors found in {total_lines} log lines")
         return
 
-    components = Counter()
-    for line in errors:
-        try:
-            component = line.split("[")[1].split("]")[0]
-            components[component] += 1
-        except IndexError:
-            components["unknown"] += 1
-
-    print(f"✗ {len(errors)} errors in {len(lines)} lines ({len(errors)/len(lines)*100:.1f}%)")
-    print(f"  First: {errors[0][:19]}")
-    print(f"  Last:  {errors[-1][:19]}")
+    rate = (error_count / total_lines * 100) if total_lines > 0 else 0
+    print(f"✗ {error_count} errors in {total_lines} lines ({rate:.1f}%)")
+    print(f"  First: {first_error}")
+    print(f"  Last:  {last_error}")
     print(f"\nErrors by component:")
     for component, count in components.most_common():
         print(f"  {component:25s} {count}")
@@ -175,19 +234,16 @@ This is a script you keep. Add it to your dotfiles or internal tooling repo. Run
 
 ---
 
-## When Your Log Format Is Different
+!!! tip "Different log format?"
+    Not every log uses `[ComponentName]`. If yours uses `key=value` pairs instead:
 
-Not every log uses `[ComponentName]`. Adjust the parsing to match what you have:
-
-```python title="Adapting to different log formats" linenums="1"
-# Format: "2024-01-15T14:23:01Z level=ERROR component=AuthService message=..."
-for line in errors:
+    ```python
+    # Format: "2024-01-15T14:23:01Z level=ERROR component=AuthService message=..."
     parts = dict(p.split("=", 1) for p in line.split() if "=" in p)
     component = parts.get("component", "unknown")
-    components[component] += 1
-```
+    ```
 
-The pattern is always the same: find the field you want, extract it, count or group by it.
+    The extraction changes; the rest of the script stays the same.
 
 ---
 
@@ -232,8 +288,8 @@ The pattern is always the same: find the field you want, extract it, count or gr
 
 | Concept | What It Does |
 |:--------|:-------------|
-| `open(file)` + `readlines()` | Read entire file into a list of lines |
-| List comprehension with `if` | Filter lines (like `grep`) |
+| `open(file)` + `for line in f:` | Read file one line at a time (memory efficient) |
+| `line[:19]` | Extract fixed-width timestamp from start of line |
 | `Counter` | Count occurrences of any key |
 | `most_common()` | Return items sorted by count, highest first |
 | `line.split("[")[1].split("]")[0]` | Extract text between brackets |
@@ -252,3 +308,7 @@ The pattern is always the same: find the field you want, extract it, count or gr
 
 ### Deep Dives
 - [Regular expressions in Python](https://docs.python.org/3/library/re.html) — For parsing log formats that aren't cleanly delimited by brackets or spaces (covered in depth in the Efficiency section)
+
+### Exploring Linux
+- [Reading Logs](https://linux.bradpenney.io/day_one/reading_logs/) — The Linux side: `journalctl`, `tail -f`, and navigating log files from the command line
+- [grep](https://linux.bradpenney.io/essentials/grep/) — When your log parsing can stay in bash, `grep` is what you reach for first

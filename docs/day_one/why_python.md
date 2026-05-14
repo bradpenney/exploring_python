@@ -1,6 +1,6 @@
 ---
-title: "Why Python (Not Just Bash)"
-description: "A practical decision framework for platform engineers: when to stay in bash, when to switch to Python, and what the real differences are in practice."
+title: "Why Python, Not Just Bash: A Practical Decision Framework"
+description: "A practical decision framework for platform engineers: when to stay in bash, when to switch to Python, and what the real differences look like in practice."
 ---
 
 # Why Python (Not Just Bash)
@@ -8,9 +8,9 @@ description: "A practical decision framework for platform engineers: when to sta
 !!! tip "Part of Day One"
     This is part of [Day One: Python for Platform Engineers](overview.md).
 
-This isn't a "Python is better" argument. `bash` is excellent. You should keep writing `bash`. The question is: at what point does a problem outgrow what `bash` does comfortably?
+It's 2am. The alert fired. Your monitoring script logged 'Health check failed' and exited 1 — but you don't know if it was a connection refused, an HTTP 500, or a 30-second timeout. `bash` gave you one bit of information.
 
-That point is earlier than most people think.
+That's the flip-over point. Not an argument against `bash` — a decision framework for when the problem has outgrown what `bash` handles well.
 
 ---
 
@@ -18,7 +18,7 @@ That point is earlier than most people think.
 
 Bash was built for one job: running commands and piping their output together. It's exceptionally good at that job.
 
-```bash title="Bash at its best"
+```bash title="Bash at its best" linenums="1"
 kubectl get pods -o name | grep myapp | xargs kubectl delete
 ```
 
@@ -34,7 +34,7 @@ The trouble starts when your script needs to **do something with the data** inst
 
 ### Counting and grouping
 
-```bash title="Bash: counting errors from a log"
+```bash title="Bash: counting errors from a log" linenums="1"
 grep ERROR app.log | wc -l
 ```
 
@@ -42,7 +42,7 @@ That tells you how many. It doesn't tell you which component is producing them, 
 
 ### Handling failures per item
 
-```bash title="Bash: looping over servers"
+```bash title="Bash: looping over servers" linenums="1"
 for server in $(cat servers.txt); do
   ssh "$server" "systemctl is-active myapp"
 done
@@ -52,7 +52,7 @@ When one server fails, what happens? The loop continues. How do you collect whic
 
 ### Parsing structured data
 
-```bash title="Bash: parsing JSON"
+```bash title="Bash: parsing JSON" linenums="1"
 curl -s http://api/status | jq '.services[] | select(.healthy == false) | .name'
 ```
 
@@ -81,7 +81,7 @@ The difference isn't syntax. It's what happens when something goes wrong.
 
 === "Bash approach"
 
-    ```bash title="Deploy check in bash"
+    ```bash title="Deploy check in bash" linenums="1"
     RESULT=$(curl -sf --retry 5 http://api.internal/health)
     if [ $? -ne 0 ]; then
       echo "Health check failed"
@@ -93,7 +93,7 @@ The difference isn't syntax. It's what happens when something goes wrong.
 
 === "Python approach"
 
-    ```python title="Deploy check in Python"
+    ```python title="Deploy check in Python" linenums="1"
     import requests
 
     try:
@@ -128,6 +128,89 @@ If you find yourself:
 - Avoiding tests because "it's just a `bash` script"
 
 ...rewrite it in Python. You'll spend an hour on the rewrite and save days over the life of the script.
+
+---
+
+## Quick Recap
+
+| Situation | Stay in `bash` | Switch to Python |
+|:----------|:--------------|:-----------------|
+| Running commands, piping output | ✓ | |
+| One-liners and quick operations | ✓ | |
+| Counting, grouping, summarizing results | | ✓ |
+| Handling failures per item in a loop | | ✓ |
+| Parsing structured JSON or YAML | | ✓ |
+| Script needs to be testable | | ✓ |
+| Someone else needs to maintain it | | ✓ |
+
+---
+
+## Practice Exercises
+
+??? question "Exercise 1: Identify the flip-over point"
+    Should this script stay in `bash` or be rewritten in Python? Explain your reasoning.
+
+    ```bash title="deploy_check.sh" linenums="1"
+    #!/bin/bash
+    SERVICES=("api" "worker" "scheduler")
+    FAILED=()
+
+    for svc in "${SERVICES[@]}"; do
+        if ! kubectl rollout status deployment/$svc -n production --timeout=30s 2>/dev/null; then
+            FAILED+=("$svc")
+        fi
+    done
+
+    if [ ${#FAILED[@]} -gt 0 ]; then
+        echo "Failed: ${FAILED[*]}"
+        exit 1
+    fi
+    echo "All services healthy"
+    ```
+
+    ??? tip "Answer"
+        This is a good candidate for rewrite. Signs:
+
+        - **Collecting results across a loop** — works in `bash` but gets harder to extend as requirements grow
+        - **No per-service failure details** — you know something failed but not why or what the rollout output said
+        - **Can't easily add features** — retry logic, per-service timeouts, or Slack notification would require significantly more `bash`
+
+        The `bash` version is functional for its current scope. The Python version would be easier to extend and test.
+
+??? question "Exercise 2: Decide for a one-liner"
+    This one-liner counts pods that aren't Running. Rewrite it in Python. Then decide: was the rewrite worth it?
+
+    ```bash title="count not-running pods" linenums="1"
+    kubectl get pods -n production -o json \
+      | jq '[.items[] | select(.status.phase != "Running")] | length'
+    ```
+
+    ??? tip "Answer"
+        ```python title="equivalent Python" linenums="1"
+        import subprocess
+        import json
+
+        result = subprocess.run(
+            ["kubectl", "get", "pods", "-n", "production", "-o", "json"],
+            capture_output=True, text=True
+        )
+        pods = json.loads(result.stdout)
+        not_running = [p for p in pods["items"] if p["status"]["phase"] != "Running"]
+        print(len(not_running))
+        ```
+
+        **Was the rewrite worth it?** Probably not for just the count. The `bash` version is shorter and clearer. Python wins when you also need the pod names, restart counts, or per-pod status — `jq` gets unwieldy for multi-field output.
+
+---
+
+## Further Reading
+
+### Official Documentation
+- [`subprocess` module](https://docs.python.org/3/library/subprocess.html) — Running shell commands from Python
+- [`requests` library](https://requests.readthedocs.io/) — HTTP in Python, used in the health check example
+
+### Perspective
+- [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html) — When Google uses shell scripts and when they don't; the same decision framework applied at scale
 
 ---
 

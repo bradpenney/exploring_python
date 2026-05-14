@@ -16,7 +16,7 @@ This is where Python earns its place. Not because `curl` can't poll — it can. 
 
 ## The Bash Version and Its Problem
 
-```bash title="Bash health poller"
+```bash title="Bash health poller" linenums="1"
 while ! curl -sf http://api.internal/health; do
   sleep 5
 done
@@ -31,6 +31,29 @@ This works for interactive use. In a deployment pipeline, it has problems:
 - No useful output about how long it waited
 
 ---
+
+Here's what the Python version does at each step:
+
+```mermaid
+flowchart TD
+    A([Start polling]) --> B[Send HTTP GET]
+    B --> C{Response?}
+    C -->|HTTP 200| D([✓ Healthy — continue deploy])
+    C -->|HTTP 503| E[Print status, wait 5s]
+    C -->|Connection refused| E
+    C -->|Request timeout| E
+    E --> F{Elapsed ≥ timeout?}
+    F -->|No| B
+    F -->|Yes| G([✗ Did not recover — exit 1])
+
+    style A fill:#1a202c,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style B fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style C fill:#4a5568,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style D fill:#2f855a,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style E fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style F fill:#4a5568,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style G fill:#c53030,stroke:#cbd5e0,stroke-width:2px,color:#fff
+```
 
 ## The Python Version
 
@@ -87,7 +110,7 @@ if __name__ == "__main__":
 
 ## Running It
 
-```bash title="Running the health check"
+```bash title="Running the health check" linenums="1"
 python health_check.py
 #   Connection refused (0s / 120s)
 #   Connection refused (5s / 120s)
@@ -108,7 +131,7 @@ Your `/health` endpoint might return 200 with a body that indicates partial read
 {"status": "degraded", "database": false, "cache": true}
 ```
 
-A status-code-only check would pass this. Here's how to check the body:
+A status-code-only check would pass this. Look at the body itself:
 
 ```python title="Checking the response body" linenums="1"
 resp = requests.get(url, timeout=3)
@@ -117,8 +140,10 @@ if resp.status_code == 200:
     if data.get("status") == "healthy":
         return True
     else:
-        print(f"  Status: {data.get('status')} ({elapsed:.0f}s)")
+        print(f"  Status: {data.get('status')}")
 ```
+
+This snippet replaces the `if resp.status_code == 200:` block inside the `wait_for_health()` loop.
 
 This is where Python genuinely beats a `curl` loop — parsing JSON inline without calling `jq` or juggling subshells.
 
@@ -149,7 +174,7 @@ def deploy():
 deploy()
 ```
 
-Bash functions exist but sharing logic across files and integrating cleanly with exit codes gets awkward. Python modules are designed for this.
+Bash functions exist, but sharing logic across files and integrating cleanly with exit codes gets awkward fast. The moment a health check needs to live inside a deploy pipeline — not a terminal — you've outgrown the `curl` loop.
 
 ---
 
@@ -182,7 +207,7 @@ Bash functions exist but sharing logic across files and integrating cleanly with
 
         url = sys.argv[1]
         ```
-        For a full CLI with flags, the Efficiency section covers `argparse`.
+        For a full CLI with flags, the Efficiency section covers `click`.
 
 ---
 
@@ -209,3 +234,6 @@ Bash functions exist but sharing logic across files and integrating cleanly with
 - [`requests` library](https://requests.readthedocs.io/) — The HTTP library used here
 - [`time` module](https://docs.python.org/3/library/time.html) — `time.sleep()`, `time.time()`
 - [`sys.exit()`](https://docs.python.org/3/library/sys.html#sys.exit) — Exit codes and pipeline integration
+
+### Exploring Kubernetes
+- [kubectl Commands](https://k8s.bradpenney.io/day_one/kubectl/commands/) — When health checking is part of a larger deploy: `kubectl rollout status` and related commands

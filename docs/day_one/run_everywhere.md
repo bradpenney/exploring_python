@@ -1,5 +1,5 @@
 ---
-title: "Run This Everywhere: Fleet Operations with Python"
+title: "Run This Everywhere: Automating Fleet Checks in Python"
 description: "Loop over a server inventory in Python, run checks across your fleet, collect per-server results, and produce a clear pass/fail report — with proper failure handling."
 ---
 
@@ -16,7 +16,7 @@ In `bash`, the loop is easy. The problem is what happens when one server fails, 
 
 ## The Bash Loop and Its Gaps
 
-```bash title="Bash: looping over servers"
+```bash title="Bash: looping over servers" linenums="1"
 for server in $(cat servers.txt); do
   ssh "$server" "systemctl is-active myapp"
 done
@@ -97,7 +97,7 @@ if __name__ == "__main__":
 1. `StrictHostKeyChecking=no` skips the "are you sure you want to connect?" prompt for new hosts. Necessary in automation; understand the security trade-off. For production tooling, use a known_hosts file instead.
 2. `timeout=cmd_timeout` is the Python-level timeout on the `subprocess.run()` call — if SSH hangs entirely (not just slow to connect), this catches it.
 
-```bash title="Running it"
+```bash title="Running it" linenums="1"
 python fleet_check.py
 # Checking fleet...
 #
@@ -178,6 +178,26 @@ Bash can produce this output. Python lets you sort it, flag the worst offenders,
 
 The sequential version waits for each server before moving to the next. For 15 servers that's fine. For 150, it's slow. Python's `concurrent.futures` runs checks in parallel without requiring you to manage threads yourself:
 
+```mermaid
+flowchart TD
+    A([check_fleet starts]) --> B[Submit all servers<br/>to thread pool]
+    B --> C[app-01]
+    B --> D[app-02]
+    B --> E[app-03]
+    C -->|✓ passed| F[Collect results<br/>as they complete]
+    D -->|✓ passed| F
+    E -->|✗ failed| F
+    F --> G([Print summary])
+
+    style A fill:#1a202c,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style B fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style C fill:#2f855a,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style D fill:#2f855a,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style E fill:#c53030,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style F fill:#4a5568,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style G fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+```
+
 ```python title="Parallel fleet check" linenums="1"
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -196,6 +216,8 @@ with ThreadPoolExecutor(max_workers=10) as executor:  # (1)!
 1. `max_workers=10` runs up to 10 SSH connections simultaneously. Set this based on your network and the load you're comfortable putting on your servers. Don't set it to 500.
 
 The `as_completed()` loop prints results as they arrive rather than waiting for all of them — so you see fast servers immediately instead of staring at a blank screen.
+
+`bash` lets you run the same command on every server. Python lets you know what happened on each.
 
 ---
 
@@ -262,3 +284,7 @@ The `as_completed()` loop prints results as they arrive rather than waiting for 
 ### Deep Dives
 - [`fabric` library](https://www.fabfile.org/) — A higher-level library for SSH automation in Python, worth knowing once fleet operations become a regular part of your work
 - [`paramiko`](https://www.paramiko.org/) — Direct SSH from Python without calling the `ssh` binary, useful when you need more control over the connection
+
+### Exploring Linux
+- [Processes](https://linux.bradpenney.io/essentials/processes/) — `systemctl`, service states, and what your fleet checks are actually verifying at the OS level
+- [Users and Groups](https://linux.bradpenney.io/essentials/users_and_groups/) — SSH access, user permissions, and why your automation might be refused on certain hosts

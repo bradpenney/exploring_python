@@ -16,13 +16,44 @@ You deployed. Something's slightly off — not broken enough to trigger alerts, 
 
 ## The `diff` Approach and Its Limits
 
-```bash title="Comparing config files with diff"
+```bash title="Comparing config files with diff" linenums="1"
 diff expected.json actual.json
 ```
 
 `diff` shows you line-by-line text differences. That means a key reordered in a JSON object looks like a change even when the values are identical. A YAML file with different indentation looks different even if it means the same thing. You end up chasing formatting noise instead of real drift.
 
 Python parses the config into data, then compares the data.
+
+---
+
+## The Concept: Structural Comparison
+
+Python's comparison logic ignores formatting and key order, focusing only on the data structure and values.
+
+```mermaid
+flowchart TD
+    A([Load Configs]) --> B[json.load / yaml.safe_load]
+    B --> C{Compare Keys}
+    C -->|Key missing| D[Report MISSING]
+    C -->|Extra key| E[Report UNEXPECTED]
+    C -->|Keys match| F{Compare Values}
+    F -->|Dict vs Dict| G[Recurse into nested path]
+    F -->|Value mismatch| H[Report CHANGED]
+    F -->|Match| I[Next Key]
+    G --> C
+    I --> J([Match Complete])
+
+    style A fill:#1a202c,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style B fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style C fill:#4a5568,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style D fill:#c53030,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style E fill:#c53030,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style F fill:#4a5568,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style G fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style H fill:#c53030,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style I fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style J fill:#2f855a,stroke:#cbd5e0,stroke-width:2px,color:#fff
+```
 
 ---
 
@@ -83,7 +114,7 @@ if __name__ == "__main__":
 2. `set(expected) | set(actual)` is the union of keys from both dicts — catches keys in expected but not actual (missing) and keys in actual but not expected (unexpected).
 3. When both values are dicts, recurse into them. The `path` argument builds a dotted key path like `"database.connection.timeout"` so you know exactly where the difference is.
 
-```bash title="Example output"
+```bash title="Example output" linenums="1"
 python compare_json.py expected.json actual.json
 # ✗ 2 differences found:
 #
@@ -126,7 +157,7 @@ Once loaded, YAML becomes Python dicts and lists — the same `find_differences`
 
 ## Comparing Against a Live API Response
 
-The real power comes from comparing a running service's config against what you expect, without needing a file on disk:
+Comparing a running service's config against what you expect — without a file on disk — is where this becomes a daily-use tool:
 
 ```python title="Compare expected file against live API" linenums="1"
 import json
@@ -168,7 +199,9 @@ def find_differences(expected, actual, path=""):
         # ... rest unchanged
 ```
 
-1. Set subtraction removes the ignored keys from comparison. Clean and easy to maintain.
+1. Set subtraction removes the ignored keys from comparison. To add another field to ignore, edit the set.
+
+Once you're comparing data instead of text, finding drift stops being a needle-in-haystack problem and starts being a script you run on a schedule.
 
 ---
 
@@ -236,3 +269,7 @@ def find_differences(expected, actual, path=""):
 
 ### Deep Dives
 - [`deepdiff` library](https://pypi.org/project/deepdiff/) — A more complete solution for production config comparison tools, with type-aware comparison and configurable ignore rules
+
+### Exploring Kubernetes
+- [kubectl Commands](https://k8s.bradpenney.io/day_one/kubectl/commands/) — Extracting live config with `kubectl get configmap -o json` and `kubectl get deployment -o yaml`, which feed directly into the comparison scripts here
+- [Understanding kubectl](https://k8s.bradpenney.io/day_one/kubectl/understanding/) — What kubectl is actually doing when it talks to the API server

@@ -317,7 +317,9 @@ Chaining `.get({})` at each level returns an empty dict if the key is missing, l
 
 ## What's Next
 
-- **[Dictionaries and JSON](dicts_and_json.md)** — Deeper coverage of navigating and transforming nested data structures, which applies to both YAML and JSON API responses
+The dict navigation patterns you've used here — nested key access, iteration, filtering — apply directly to JSON API responses. That's the next Essentials article, coming soon.
+
+In the meantime, the [config comparison script](../day_one/comparing_configs.md) from Day One shows the same dict-diffing patterns applied to both JSON and YAML.
 
 ## Further Reading
 
@@ -331,3 +333,9 @@ Chaining `.get({})` at each level returns an empty dict if the key is missing, l
 
 ### Deep Dives
 - [YAML specification](https://yaml.org/spec/1.2.2/) — When you need to understand why YAML is behaving unexpectedly (the Norway problem, booleans that aren't, etc.)
+
+### Exploring Kubernetes
+- [kubectl First Deploy](https://k8s.bradpenney.io/day_one/kubectl/first_deploy/) — Applying the manifests you're building and modifying here with `kubectl apply -f`
+
+### Exploring Computer Science
+- [How Parsers Work](https://cs.bradpenney.io/efficiency/how_parsers_work/) — What `yaml.safe_load()` is actually doing under the hood when it converts text into Python data structures

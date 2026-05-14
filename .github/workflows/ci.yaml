@@ -1,6 +1,9 @@
-name: ci 
+name: ci
 on:
-  workflow_dispatch:  # disabled: trigger manually only
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:

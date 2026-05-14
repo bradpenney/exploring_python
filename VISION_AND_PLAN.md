@@ -78,3 +78,73 @@ The site will be restructured from `Basics/Intermediate/Advanced` to a progressi
 *   **Cross-Referencing:** 
     *   Level 4 explicitly relies on **Linux** knowledge.
     *   Level 6 explicitly prepares tools for **Kubernetes** deployment.
+
+---
+
+## 5. Task-First Content Plan
+
+The old Level 1-6 concept-first structure is superseded. Every article title is a task or scenario, not a topic. The Python concepts appear in service of the task.
+
+### 📦 Essentials — planned articles
+
+| Title | File | Core concept taught |
+|-------|------|-------------------|
+| Which Pods Aren't Running? | `essentials/pods_not_running.md` | Dict filtering from kubectl JSON |
+| Find the One Field You Need | `essentials/api_response_filtering.md` | Nested dict navigation from API responses |
+| Which EC2 Instances Have No Name Tag? | `essentials/aws_tag_audit.md` | AWS CLI JSON filtering, same pattern as above |
+| Is My Cert Going to Expire? | `essentials/cert_expiry.md` | SSL expiry check across a list of domains |
+| Summarize the Admission Controllers | `essentials/admission_controllers.md` | Two k8s resource types, structured output |
+
+### ⚡ Efficiency — planned articles
+
+| Title | File | Core concept taught |
+|-------|------|-------------------|
+| Is This Whole Stack Healthy? | `efficiency/stack_health.md` | Multi-endpoint checks, `click` CLI, table output |
+| What Changed Between Deploys? | `efficiency/diff_deploys.md` | Comparing two manifests or Helm values files |
+| Which Repos Are Missing CODEOWNERS? | `efficiency/repo_audit.md` | GitHub API, pagination |
+| Is There an Active Incident? | `efficiency/incident_check.md` | PagerDuty/OpsGenie API, deployment gating |
+| Send a Slack Message When the Deploy Finishes | `efficiency/slack_notify.md` | Webhooks, simple integrations |
+| Which Namespaces Have No Resource Limits? | `efficiency/namespace_audit.md` | K8s audit, ResourceQuota/LimitRange |
+| Parse Logs With Regular Expressions | `efficiency/regex_logs.md` | `re` module for non-standard log formats |
+
+### 🎯 Mastery — planned articles
+
+| Title | File | Core concept taught |
+|-------|------|-------------------|
+| Reconcile Git vs Deployed | `mastery/git_vs_deployed.md` | GitOps drift detection |
+| Daily Cost Report by Team Tag | `mastery/cost_report.md` | AWS Cost Explorer API, Slack output |
+| Is This Namespace Production-Ready? | `mastery/namespace_readiness.md` | Multi-resource audit, checklist output |
+| Rotate a Service Account Token | `mastery/rotate_tokens.md` | Multi-cluster ops, Vault integration |
+| Parse Terraform State | `mastery/terraform_state.md` | `terraform show -json`, resource inventory |
+
+---
+
+## 6. Cross-Link Opportunities
+
+Published pages on sister sites as of May 2026. Link to these from Python articles where relevant.
+
+### → k8s.bradpenney.io
+
+| Python article | Links to |
+|----------------|----------|
+| `health_check.md`, `run_everywhere.md`, `wrapping_bash.md` | [kubectl commands](https://k8s.bradpenney.io/day_one/kubectl/commands/), [understanding kubectl](https://k8s.bradpenney.io/day_one/kubectl/understanding/) |
+| `essentials/yaml.md` | [kubectl first deploy](https://k8s.bradpenney.io/day_one/kubectl/first_deploy/) — applying manifests |
+| Future: pods_not_running, admission_controllers | [what is kubernetes](https://k8s.bradpenney.io/day_one/what_is_kubernetes/) |
+
+### → linux.bradpenney.io
+
+| Python article | Links to |
+|----------------|----------|
+| `parsing_logs.md` | [reading logs](https://linux.bradpenney.io/day_one/reading_logs/), [grep](https://linux.bradpenney.io/essentials/grep/) |
+| `run_everywhere.md` | [processes](https://linux.bradpenney.io/essentials/processes/), [users and groups](https://linux.bradpenney.io/essentials/users_and_groups/) |
+| `wrapping_bash.md` | [pipes and redirection](https://linux.bradpenney.io/essentials/pipes_and_redirection/), [command line fundamentals](https://linux.bradpenney.io/essentials/command_line_fundamentals/) |
+| `safety_guide.md` | [linux safety guide](https://linux.bradpenney.io/day_one/safety_guide/) |
+| Future: cert_expiry | [file permissions](https://linux.bradpenney.io/essentials/file_permissions/) |
+
+### → cs.bradpenney.io
+
+| Python article | Links to |
+|----------------|----------|
+| Future: regex_logs | [regular expressions (essentials)](https://cs.bradpenney.io/essentials/regular_expressions/), [regular expressions (efficiency)](https://cs.bradpenney.io/efficiency/regular_expressions/) |
+| `essentials/yaml.md` | [how parsers work](https://cs.bradpenney.io/efficiency/how_parsers_work/) |
+| Future: api_response_filtering | [lists recursive structure](https://cs.bradpenney.io/efficiency/lists_recursive_structure/) |

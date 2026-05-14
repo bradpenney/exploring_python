@@ -74,6 +74,7 @@ nav:
 
   - 🐍 Day One:
       - Overview: day_one/overview.md
+      - "The Clean Setup": day_one/setup.md
       - Why Python (Not Just Bash): day_one/why_python.md
       - "Is It Still Up?": day_one/health_check.md
       - "What Just Broke?": day_one/parsing_logs.md
@@ -86,28 +87,26 @@ nav:
   - 📦 Essentials:
       - Environment Variables and Secrets: essentials/env_and_secrets.md
       - Working with YAML: essentials/yaml.md
-  #     - Strings for Platform Engineers: essentials/strings.md
-  #     - Lists and Loops: essentials/lists_and_loops.md
-  #     - Dictionaries and JSON: essentials/dicts_and_json.md
-  #     - Functions: essentials/functions.md
-  #     - File I/O in Depth: essentials/file_io.md
-  #     - Error Handling: essentials/error_handling.md
+  #     - "Which Pods Aren't Running?": essentials/pods_not_running.md
+  #     - Find the One Field You Need: essentials/api_response_filtering.md
+  #     - "Which EC2 Instances Have No Name Tag?": essentials/aws_tag_audit.md
+  #     - "Is My Cert Going to Expire?": essentials/cert_expiry.md
+  #     - Summarize the Admission Controllers: essentials/admission_controllers.md
 
   # ⚡ Efficiency — Professional Python patterns
   # - ⚡ Efficiency:
-  #     - subprocess in Depth: efficiency/subprocess.md
-  #     - requests: Calling APIs: efficiency/requests.md
-  #     - click: Building CLI Tools: efficiency/click.md
-  #     - Logging: efficiency/logging.md
-  #     - Regular Expressions for Log Parsing: efficiency/regex.md
-  #     - Testing Automation with pytest: efficiency/pytest.md
-  #     - Dataclasses and Type Hints: efficiency/dataclasses.md
+  #     - "Is This Whole Stack Healthy?": efficiency/stack_health.md
+  #     - "What Changed Between Deploys?": efficiency/diff_deploys.md
+  #     - "Which Repos Are Missing CODEOWNERS?": efficiency/repo_audit.md
+  #     - "Is There an Active Incident?": efficiency/incident_check.md
+  #     - "Send a Slack Message When the Deploy Finishes": efficiency/slack_notify.md
+  #     - "Which Namespaces Have No Resource Limits?": efficiency/namespace_audit.md
+  #     - Parse Logs With Regular Expressions: efficiency/regex_logs.md
 
   # 🎯 Mastery — Production Python for senior engineers
   # - 🎯 Mastery:
-  #     - Packaging Python Tools with Poetry: mastery/packaging.md
-  #     - Building Internal APIs with FastAPI: mastery/fastapi.md
-  #     - Async Python for Platform Engineering: mastery/async.md
-  #     - Python for Kubernetes: mastery/kubernetes_client.md
-  #     - Secrets Management: mastery/secrets_management.md
-  #     - Building Reliable CLI Applications: mastery/robust_cli.md
+  #     - Reconcile Git vs Deployed: mastery/git_vs_deployed.md
+  #     - Daily Cost Report by Team Tag: mastery/cost_report.md
+  #     - "Is This Namespace Production-Ready?": mastery/namespace_readiness.md
+  #     - Rotate a Service Account Token: mastery/rotate_tokens.md
+  #     - Parse Terraform State: mastery/terraform_state.md
