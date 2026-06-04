@@ -288,3 +288,5 @@ The `as_completed()` loop prints results as they arrive rather than waiting for 
 ### Exploring Linux
 - [Processes](https://linux.bradpenney.io/essentials/processes/) — `systemctl`, service states, and what your fleet checks are actually verifying at the OS level
 - [Users and Groups](https://linux.bradpenney.io/essentials/users_and_groups/) — SSH access, user permissions, and why your automation might be refused on certain hosts
+- [Bash Loops](https://linux.bradpenney.io/essentials/bash_loops/) — The loop-over-hosts pattern that works until you need parallelism or structured error handling
+- [Bash Functions](https://linux.bradpenney.io/essentials/bash_functions/) — Structuring fleet scripts with functions: what the bash equivalent of this article looks like

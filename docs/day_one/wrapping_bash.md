@@ -8,7 +8,7 @@ description: "Migrate an unwieldy bash deployment script to Python using subproc
 !!! tip "Part of Day One"
     This is part of [Day One: Python for Platform Engineers](overview.md).
 
-You've got a deploy script. It started as 15 lines. Now it's 80 lines, it has nested `if` statements, error handling is a mess of `|| exit 1` chained everywhere, and your teammate asked what it does and you spent 10 minutes explaining it.
+You've got a deploy script. It started as 15 lines. Now it's 80 lines, it has nested `if` statements, error handling is a mess of `|| exit 1` chained everywhere, and your teammate asked what it does and you spent 10 minutes explaining it. You've used [functions](https://linux.bradpenney.io/essentials/bash_functions/) to organise it — but the logic around them is still the problem.
 
 The commands themselves are fine. It's the logic around them that's the problem.
 
@@ -334,3 +334,5 @@ This is the scaffold for every deploy script you'll write. Start here and add wh
 ### Exploring Linux
 - [Pipes and Redirection](https://linux.bradpenney.io/essentials/pipes_and_redirection/) — The bash patterns this article replaces: `|`, `>`, `2>&1`, and why Python handles them more cleanly
 - [Command Line Fundamentals](https://linux.bradpenney.io/essentials/command_line_fundamentals/) — The foundation this article assumes you already have
+- [Bash Functions](https://linux.bradpenney.io/essentials/bash_functions/) — The function and library patterns this article builds on: `local` variables, `source`-based libraries, the `main "$@"` structure
+- [Arguments and Exit Codes](https://linux.bradpenney.io/essentials/bash_arguments/) — `$1`, `$@`, and exit code patterns: what the bash side looks like before Python takes over

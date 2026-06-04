@@ -290,3 +290,6 @@ class Config:
 ### Libraries
 - [`python-dotenv`](https://pypi.org/project/python-dotenv/) — The standard `.env` file library
 - [`pydantic-settings`](https://docs.pydantic.dev/latest/concepts/pydantic_settings/) — For larger projects that need type validation and settings management
+
+### Exploring Linux
+- [Variables and Quoting](https://linux.bradpenney.io/essentials/bash_variables/) — How environment variables work in Bash: `$VAR`, quoting rules, and `${VAR:-default}` patterns — the shell foundation this article builds on

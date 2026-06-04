@@ -237,3 +237,6 @@ Bash functions exist, but sharing logic across files and integrating cleanly wit
 
 ### Exploring Kubernetes
 - [kubectl Commands](https://k8s.bradpenney.io/day_one/kubectl/commands/) — When health checking is part of a larger deploy: `kubectl rollout status` and related commands
+
+### Exploring Linux
+- [Bash Conditionals](https://linux.bradpenney.io/essentials/bash_conditionals/) — The `if [[ ]]` test patterns that cover simple health checks before Python is needed

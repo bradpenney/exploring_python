@@ -312,3 +312,4 @@ This is a script you keep. Add it to your dotfiles or internal tooling repo. Run
 ### Exploring Linux
 - [Reading Logs](https://linux.bradpenney.io/day_one/reading_logs/) — The Linux side: `journalctl`, `tail -f`, and navigating log files from the command line
 - [grep](https://linux.bradpenney.io/essentials/grep/) — When your log parsing can stay in bash, `grep` is what you reach for first
+- [Bash Loops](https://linux.bradpenney.io/essentials/bash_loops/) — The `while IFS= read -r` pattern that handles simple log cases before Python is worth it

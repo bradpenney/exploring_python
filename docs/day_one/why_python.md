@@ -26,6 +26,8 @@ One line. Reads clearly. Does exactly what it says. Python would be six lines an
 
 Same for quick file operations, environment setup scripts, one-shot tasks you run manually. `bash` is the right tool.
 
+If you want to build that foundation before crossing over, [Bash Scripting Essentials](https://linux.bradpenney.io/essentials/bash_scripting/) covers the full scripting toolkit — functions, arguments, loops, and the patterns that hold up until they don't.
+
 ---
 
 ## Where Bash Starts to Cost You
@@ -211,6 +213,9 @@ If you find yourself:
 
 ### Perspective
 - [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html) — When Google uses shell scripts and when they don't; the same decision framework applied at scale
+
+### Exploring Linux
+- [Bash Scripting Essentials](https://linux.bradpenney.io/essentials/bash_scripting/) — The full bash scripting foundation: if you haven't hit these limits yet, start here first
 
 ---
 
