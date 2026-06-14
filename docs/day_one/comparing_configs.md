@@ -1,4 +1,5 @@
 ---
+date: "2026-05-11 21:23"
 title: "Did the Config Change? Comparing Configs with Python"
 description: "Compare JSON and YAML configuration files programmatically — catch config drift after deployments, verify running state against expected, and surface exactly what changed."
 ---

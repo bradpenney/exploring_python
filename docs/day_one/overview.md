@@ -1,4 +1,5 @@
 ---
+date: "2026-05-11 21:23"
 title: "Day One: Python for Platform Engineers, SREs, and DevOps"
 description: "Python automation for platform engineers who know bash — task-first guides for health checking, log parsing, config comparison, and fleet operations."
 ---

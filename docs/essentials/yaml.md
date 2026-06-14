@@ -1,4 +1,5 @@
 ---
+date: "2026-05-11 21:23"
 title: "Reading and Modifying YAML in Python"
 description: "Read, modify, and generate Kubernetes manifests and other YAML files in Python using PyYAML — including multi-document YAML, safe loading, and common pitfalls."
 ---

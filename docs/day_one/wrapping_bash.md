@@ -1,4 +1,5 @@
 ---
+date: "2026-05-11 21:23"
 title: "When Your Bash Script Gets Out of Hand: Switch to Python"
 description: "Migrate an unwieldy bash deployment script to Python using subprocess — keep running shell commands while gaining proper error handling, logging, and readable control flow."
 ---

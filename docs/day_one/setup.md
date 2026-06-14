@@ -1,4 +1,5 @@
 ---
+date: "2026-05-13 21:34"
 title: "The Clean Setup: Stopping Python Hell Before It Starts"
 description: "How to install Python correctly on Linux and macOS, why you must use virtual environments (venv), and how to set up your scratchpad for testing automation ideas."
 ---

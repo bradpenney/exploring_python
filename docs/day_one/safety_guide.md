@@ -1,4 +1,5 @@
 ---
+date: "2026-05-11 21:23"
 title: "The Don't Do This Guide: Python Automation Safety Rules"
 description: "Production safety rules for Python automation — no hardcoded credentials, no shell injection, always build dry-run first, and never let exceptions fail silently."
 ---

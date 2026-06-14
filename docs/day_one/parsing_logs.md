@@ -1,4 +1,5 @@
 ---
+date: "2026-05-11 21:23"
 title: "What Just Broke? Parsing Application Logs with Python"
 description: "Use Python to parse application log files — count errors by component, find when errors started, and understand failure patterns that grep alone can't surface."
 ---

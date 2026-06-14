@@ -1,4 +1,5 @@
 ---
+date: "2026-05-11 21:23"
 title: "Is It Still Up? Health Checking During Redeploys"
 description: "Write a Python health-check poller that distinguishes connection errors from HTTP errors, handles timeouts, and exits cleanly for use in deployment pipelines."
 ---

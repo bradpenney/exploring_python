@@ -1,4 +1,5 @@
 ---
+date: "2026-05-11 21:23"
 title: "Run This Everywhere: Automating Fleet Checks in Python"
 description: "Loop over a server inventory in Python, run checks across your fleet, collect per-server results, and produce a clear pass/fail report — with proper failure handling."
 ---

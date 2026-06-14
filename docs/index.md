@@ -1,4 +1,5 @@
 ---
+date: "2025-06-04 10:14"
 title: "Exploring Python: Automation for Platform Engineers"
 description: "Python automation for platform engineers and SREs — task-first guides for health checking, log parsing, config comparison, fleet operations, and more."
 ---

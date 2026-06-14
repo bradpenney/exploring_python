@@ -1,4 +1,5 @@
 ---
+date: "2026-05-11 21:23"
 title: "Managing Credentials in Python Automation Scripts"
 description: "Load API keys, passwords, and tokens in Python automation scripts using environment variables, .env files, and secrets stores — without hardcoding anything."
 ---

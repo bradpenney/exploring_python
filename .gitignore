@@ -1,5 +1,6 @@
 *cpython*
 *.ipynb*
 site/*
+.cache/
 CLAUDE.md
 GEMINI.md

@@ -1,4 +1,5 @@
 ---
+date: "2026-05-11 21:23"
 title: "Why Python, Not Just Bash: A Practical Decision Framework"
 description: "A practical decision framework for platform engineers: when to stay in bash, when to switch to Python, and what the real differences look like in practice."
 ---
