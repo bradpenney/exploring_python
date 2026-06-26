@@ -294,3 +294,6 @@ class Config:
 
 ### Exploring Linux
 - [Variables and Quoting](https://linux.bradpenney.io/essentials/bash_variables/) — How environment variables work in Bash: `$VAR`, quoting rules, and `${VAR:-default}` patterns — the shell foundation this article builds on
+
+### Exploring Computer Science
+- [Client and Server: The Request/Response Lifecycle](https://cs.bradpenney.io/efficiency/web/client_server_request_response/) — Why the token never belongs in committed source: the client is untrusted, so credentials are supplied at runtime, not baked into code

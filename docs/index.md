@@ -20,41 +20,35 @@ You don't need to know what a decorator is before you can write a health-check p
 
 This site starts with the task. The Python comes with it.
 
-## The Path
+## Where do you start?
 
-=== "🐍 Day One"
+<div class="grid cards two-col" markdown>
 
-    Each article starts with a real scenario you'd face at work. Just enough Python to solve it, no syntax drills.
+-   :material-flag-checkered: **Day One**
 
-    - [The Clean Setup](day_one/setup.md) — Stop "Python Hell" before it starts
-    - [Why Python, Not Just Bash](day_one/why_python.md) — When `bash` is the right tool and when it isn't
-    - [Is It Still Up?](day_one/health_check.md) — Poll a health endpoint during a redeploy
-    - [What Just Broke?](day_one/parsing_logs.md) — Parse a log file to understand failures fast
-    - [Did the Config Change?](day_one/comparing_configs.md) — Compare running config against what you deployed
-    - [Run This Everywhere](day_one/run_everywhere.md) — Run a check across your whole fleet
-    - [My Bash Script Is Getting Out of Hand](day_one/wrapping_bash.md) — Wrap complex shell logic in Python
-    - [The "Don't Do This" Guide](day_one/safety_guide.md) — Safety rules before you run any of this in production
+    ---
 
-    [Start with the Overview →](day_one/overview.md)
+    Each article starts with a real scenario you'd face at work — just enough Python to solve it, no syntax drills.
 
-=== "📦 Essentials"
+    [:octicons-arrow-right-24: Start with Day One](day_one/overview.md)
 
-    Core Python patterns for writing better, more maintainable automation. Deeper coverage of the tools you'll reach for every day.
+-   :material-package-variant: **Essentials**
 
-    - [Environment Variables and Secrets](essentials/env_and_secrets.md) — Loading credentials at runtime, `.env` files, failing fast on missing vars
-    - [Working with YAML](essentials/yaml.md) — Reading, modifying, and generating Kubernetes manifests
+    ---
 
-=== "⚡ Efficiency"
+    Core Python patterns for writing better, more maintainable automation — deeper coverage of the tools you'll reach for every day.
 
-    Professional-grade Python: CLI tools with `click`, proper logging, testing your automation, building things your team can actually use.
+    [:octicons-arrow-right-24: Start with Essentials](essentials/env_and_secrets.md)
 
-    *Coming soon.*
+</div>
 
-=== "🎯 Mastery"
+## ⚡ Efficiency *(Coming soon)*
 
-    Production Python: packaging tools for distribution, internal APIs with FastAPI, async operations, the Kubernetes Python client.
+Professional-grade Python: CLI tools with `click`, proper logging, testing your automation, building things your team can actually use.
 
-    *Coming soon.*
+## 🎯 Mastery *(Coming soon)*
+
+Production Python: packaging tools for distribution, internal APIs with FastAPI, async operations, the Kubernetes Python client.
 
 ---
 

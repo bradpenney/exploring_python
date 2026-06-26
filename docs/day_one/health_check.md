@@ -236,6 +236,9 @@ Bash functions exist, but sharing logic across files and integrating cleanly wit
 - [`time` module](https://docs.python.org/3/library/time.html) — `time.sleep()`, `time.time()`
 - [`sys.exit()`](https://docs.python.org/3/library/sys.html#sys.exit) — Exit codes and pipeline integration
 
+### Exploring Computer Science
+- [What an API Actually Is](https://cs.bradpenney.io/essentials/what_is_an_api/) — The contract behind every `requests.get()` here: it's a *library* API call that makes a *web* API call, and why that trips people up
+
 ### Exploring Kubernetes
 - [kubectl Commands](https://k8s.bradpenney.io/day_one/kubectl/commands/) — When health checking is part of a larger deploy: `kubectl rollout status` and related commands
 
