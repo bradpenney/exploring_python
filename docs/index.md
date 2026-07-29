@@ -42,9 +42,11 @@ This site starts with the task. The Python comes with it.
 
 </div>
 
-## ⚡ Efficiency *(Coming soon)*
+## ⚡ Efficiency
 
 Professional-grade Python: CLI tools with `click`, proper logging, testing your automation, building things your team can actually use.
+
+- **[Is This Whole Stack Healthy?](efficiency/stack_health.md)** — checking dozens of services in parallel, and why threads help for network waits but not for CPU-bound work
 
 ## 🎯 Mastery *(Coming soon)*
 

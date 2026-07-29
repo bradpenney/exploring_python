@@ -142,8 +142,8 @@ nav:
   #     - Summarize the Admission Controllers: essentials/admission_controllers.md
 
   # ⚡ Efficiency — Professional Python patterns
-  # - ⚡ Efficiency:
-  #     - "Is This Whole Stack Healthy?": efficiency/stack_health.md
+  - ⚡ Efficiency:
+      - "Is This Whole Stack Healthy?": efficiency/stack_health.md
   #     - "What Changed Between Deploys?": efficiency/diff_deploys.md
   #     - "Which Repos Are Missing CODEOWNERS?": efficiency/repo_audit.md
   #     - "Is There an Active Incident?": efficiency/incident_check.md
