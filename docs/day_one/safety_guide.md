@@ -240,6 +240,17 @@ Catch specific exceptions. Handle each one explicitly. If you can't recover, exi
             main()
         ```
 
+## What's Next
+
+Day One gave you working scripts. Essentials makes them maintainable.
+
+The gap between "it works on my machine" and "my team can run this in production" comes down to a few patterns you haven't needed yet: loading credentials cleanly without `.env` files scattered everywhere, reading and modifying the YAML that describes your infrastructure, handling failures in a way that gives you useful output instead of a traceback.
+
+Start here:
+
+- **[Environment Variables and Secrets](../essentials/env_and_secrets.md)** — Loading credentials at runtime from environment variables and secret stores, without hardcoding or `.env` sprawl
+- **[Working with YAML](../essentials/yaml.md)** — Reading, modifying, and generating Kubernetes manifests programmatically
+
 ---
 
 ## Further Reading
@@ -255,15 +266,3 @@ Catch specific exceptions. Handle each one explicitly. If you can't recover, exi
 ### Exploring Linux
 - [Linux Safety Guide](https://linux.bradpenney.io/day_one/safety_guide/) — The same safety mindset applied to Linux commands: read before you write, understand before you run
 
----
-
-## What's Next
-
-Day One gave you working scripts. Essentials makes them maintainable.
-
-The gap between "it works on my machine" and "my team can run this in production" comes down to a few patterns you haven't needed yet: loading credentials cleanly without `.env` files scattered everywhere, reading and modifying the YAML that describes your infrastructure, handling failures in a way that gives you useful output instead of a traceback.
-
-Start here:
-
-- **[Environment Variables and Secrets](../essentials/env_and_secrets.md)** — Loading credentials at runtime from environment variables and secret stores, without hardcoding or `.env` sprawl
-- **[Working with YAML](../essentials/yaml.md)** — Reading, modifying, and generating Kubernetes manifests programmatically

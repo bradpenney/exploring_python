@@ -9,7 +9,7 @@ description: "Migrate an unwieldy bash deployment script to Python using subproc
 !!! tip "Part of Day One"
     This is part of [Day One: Python for Platform Engineers](overview.md).
 
-You've got a deploy script. It started as 15 lines. Now it's 80 lines, it has nested `if` statements, error handling is a mess of `|| exit 1` chained everywhere, and your teammate asked what it does and you spent 10 minutes explaining it. You've used [functions](https://linux.bradpenney.io/essentials/bash_functions/) to organise it — but the logic around them is still the problem.
+Deploy scripts start small — 15 lines, maybe. Then they grow: 80 lines, nested `if` statements, error handling that's a mess of `|| exit 1` chained everywhere, and a teammate asking what it does, followed by a 10-minute explanation. [Functions](https://linux.bradpenney.io/essentials/bash_functions/) help organize it — but the logic around them is still the problem.
 
 The commands themselves are fine. It's the logic around them that's the problem.
 

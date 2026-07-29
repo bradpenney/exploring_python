@@ -204,6 +204,16 @@ If you find yourself:
 
         **Was the rewrite worth it?** Probably not for just the count. The `bash` version is shorter and clearer. Python wins when you also need the pod names, restart counts, or per-pod status — `jq` gets unwieldy for multi-field output.
 
+## What's Next
+
+The rest of Day One is all specific scenarios where Python is the right call. Start with the one you're facing today:
+
+- **[Is It Still Up?](health_check.md)** — Health checking during a redeploy
+- **[What Just Broke?](parsing_logs.md)** — Parsing logs to understand failures
+- **[Did the Config Change?](comparing_configs.md)** — Config comparison after a deploy
+- **[Run This Everywhere](run_everywhere.md)** — Fleet-wide checks
+- **[My Bash Script Is Getting Out of Hand](wrapping_bash.md)** — Migrating an unwieldy `bash` script
+
 ---
 
 ## Further Reading
@@ -218,14 +228,3 @@ If you find yourself:
 ### Exploring Linux
 - [Bash Scripting Essentials](https://linux.bradpenney.io/essentials/bash_scripting/) — The full bash scripting foundation: if you haven't hit these limits yet, start here first
 
----
-
-## What's Next
-
-The rest of Day One is all specific scenarios where Python is the right call. Start with the one you're facing today:
-
-- **[Is It Still Up?](health_check.md)** — Health checking during a redeploy
-- **[What Just Broke?](parsing_logs.md)** — Parsing logs to understand failures
-- **[Did the Config Change?](comparing_configs.md)** — Config comparison after a deploy
-- **[Run This Everywhere](run_everywhere.md)** — Fleet-wide checks
-- **[My Bash Script Is Getting Out of Hand](wrapping_bash.md)** — Migrating an unwieldy `bash` script

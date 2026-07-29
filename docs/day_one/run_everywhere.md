@@ -46,7 +46,7 @@ def check_server(server, command, ssh_timeout=5, cmd_timeout=10):
     try:
         result = subprocess.run(
             ["ssh", "-o", f"ConnectTimeout={ssh_timeout}",
-             "-o", "StrictHostKeyChecking=no",  # (1)!
+             "-o", "StrictHostKeyChecking=accept-new",  # (1)!
              server] + command,
             capture_output=True,
             text=True,
@@ -95,7 +95,7 @@ if __name__ == "__main__":
         sys.exit(1)
 ```
 
-1. `StrictHostKeyChecking=no` skips the "are you sure you want to connect?" prompt for new hosts. Necessary in automation; understand the security trade-off. For production tooling, use a known_hosts file instead.
+1. `StrictHostKeyChecking=accept-new` trusts a host's key the first time you connect but **refuses to connect if a known host's key ever changes** — a changed key is the signature of a machine-in-the-middle. Never use `=no`, which silently accepts changed keys too and erases that protection. The gold standard for fleet tooling is a `known_hosts` file distributed by your config management; `accept-new` is the acceptable automation baseline.
 2. `timeout=cmd_timeout` is the Python-level timeout on the `subprocess.run()` call — if SSH hangs entirely (not just slow to connect), this catches it.
 
 ```bash title="Running it" linenums="1"
