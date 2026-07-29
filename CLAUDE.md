@@ -35,6 +35,8 @@ Python concepts appear in service of solving a specific problem. The reader arri
 - ❌ Wrong: "Strings are sequences of characters..."
 - ✅ Right: "You're deploying and need to know when the API comes back up. Here's why a Python poller beats a bash curl loop."
 
+**⚠️ Watch the formula, not just the topic (2026-07-28):** even present-tense "you're doing X right now" still bets on the reader's specific situation. Where it doesn't cost the vividness, prefer the practice framed as a fact of the work: "Knowing when an API comes back up after a deploy is a recurring need — a Python poller beats a bash curl loop for it." Not a hard rule against second person (Day One's task-first framing depends on it), just a check against asserting a biography the reader may not share.
+
 ---
 
 ## Site Structure
@@ -54,7 +56,7 @@ For engineers who need Python to solve a specific problem today. Task-first, one
 
 Core patterns for engineers who've done Day One and want to write better automation. Peer-to-peer tone. No hand-holding.
 
-**Required section in every Essentials article:** "Where You've Seen This" — connects the Python concept to something they already do in bash or their existing workflow.
+**Required section in every Essentials article:** "Where You Might Have Seen This" — connects the Python concept to something they already do in bash or their existing workflow.
 
 ### ⚡ Efficiency (Efficient/professional tier — free)
 

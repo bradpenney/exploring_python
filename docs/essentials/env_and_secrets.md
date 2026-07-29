@@ -7,13 +7,13 @@ description: "Load API keys, passwords, and tokens in Python automation scripts 
 # Environment Variables and Secrets
 
 !!! tip "Part of Essentials"
-    This is part of [Essentials](../index.md#essentials) — core Python patterns for working platform engineers.
+    This is part of [Essentials](../index.md#where-do-you-start) — core Python patterns for working platform engineers.
 
 The [Day One safety guide](../day_one/safety_guide.md) told you not to hardcode credentials. This article shows you the full pattern for doing it properly — reading from environment variables, falling back gracefully, validating at startup, and working with `.env` files.
 
 ---
 
-## Where You've Seen This
+## Where You Might Have Seen This
 
 You already do this in `bash`:
 

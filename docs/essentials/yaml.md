@@ -7,13 +7,13 @@ description: "Read, modify, and generate Kubernetes manifests and other YAML fil
 # Working with YAML
 
 !!! tip "Part of Essentials"
-    This is part of [Essentials](../index.md#essentials) — core Python patterns for working platform engineers.
+    This is part of [Essentials](../index.md#where-do-you-start) — core Python patterns for working platform engineers.
 
 You work with YAML every day — Kubernetes manifests, Helm values files, Ansible playbooks, Docker Compose files. Editing them by hand is fine for one-offs. For bulk changes, generating manifests programmatically, or comparing configs across environments, you need Python.
 
 ---
 
-## Where You've Seen This
+## Where You Might Have Seen This
 
 Every `kubectl apply -f` runs against YAML. Every Helm chart is YAML templates. Editing replica counts, image tags, or resource limits across 15 deployments by hand is error-prone and slow. Python can do it in a loop.
 
@@ -318,7 +318,7 @@ Chaining `.get({})` at each level returns an empty dict if the key is missing, l
 
 ## What's Next
 
-The dict navigation patterns you've used here — nested key access, iteration, filtering — apply directly to JSON API responses. That's the next Essentials article, coming soon.
+The dict navigation patterns you've used here — nested key access, iteration, filtering — apply directly to JSON API responses.
 
 In the meantime, the [config comparison script](../day_one/comparing_configs.md) from Day One shows the same dict-diffing patterns applied to both JSON and YAML.
 
