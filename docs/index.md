@@ -38,15 +38,17 @@ This site starts with the task. The Python comes with it.
 
     Core Python patterns for writing better, more maintainable automation — deeper coverage of the tools you'll reach for every day.
 
-    [:octicons-arrow-right-24: Start with Essentials](essentials/env_and_secrets.md)
+    [:octicons-arrow-right-24: Start with Essentials](essentials/overview.md)
+
+-   :material-lightning-bolt: **Efficiency**
+
+    ---
+
+    Professional-grade Python: CLI tools with `click`, proper logging, testing your automation — building things your team can actually use.
+
+    [:octicons-arrow-right-24: Start with Efficiency](efficiency/overview.md)
 
 </div>
-
-## ⚡ Efficiency
-
-Professional-grade Python: CLI tools with `click`, proper logging, testing your automation, building things your team can actually use.
-
-- **[Is This Whole Stack Healthy?](efficiency/stack_health.md)** — checking dozens of services in parallel, and why threads help for network waits but not for CPU-bound work
 
 ## 🎯 Mastery *(Coming soon)*
 

@@ -7,7 +7,7 @@ description: "Read, modify, and generate Kubernetes manifests and other YAML fil
 # Working with YAML
 
 !!! tip "Part of Essentials"
-    This is part of [Essentials](../index.md#where-do-you-start) — core Python patterns for working platform engineers.
+    This is part of [Essentials](overview.md) — core Python patterns for working platform engineers.
 
 You work with YAML every day — Kubernetes manifests, Helm values files, Ansible playbooks, Docker Compose files. Editing them by hand is fine for one-offs. For bulk changes, generating manifests programmatically, or comparing configs across environments, you need Python.
 

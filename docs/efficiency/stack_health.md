@@ -7,7 +7,7 @@ description: "Check dozens of services at once with ThreadPoolExecutor, why Pyth
 # Is This Whole Stack Healthy?
 
 !!! tip "Part of Efficiency"
-    This is part of [Efficiency](../index.md#efficiency): professional Python patterns for working platform engineers.
+    This is part of [Efficiency](overview.md): professional Python patterns for working platform engineers.
 
 [Is It Still Up?](../day_one/health_check.md) covered polling one service until it comes back healthy. A real deploy rarely touches one service: it's a stack of them, and "is this whole stack healthy" means running that same check against 40 URLs, not one.
 

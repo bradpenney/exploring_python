@@ -135,7 +135,9 @@ Check `mkdocs.yaml` nav. If an article is commented out, don't link to it.
 1. Write the article
 2. Pass the quality checklist (below)
 3. Add to the `nav:` section in `mkdocs.yaml`
-4. Do NOT run `mkdocs` commands — the user handles builds and deploys
+4. `poetry run mkdocs build --strict` IS allowed for testing/verification (updated 2026-07-30) — use it to confirm changes build cleanly. `mkdocs serve` is allowed too for a genuine need, but only on a non-default port (3000 is almost always occupied) and only as a short-lived test, never left running. The user still handles real deploys.
+
+**Every tier needs its own overview page (mandatory, cross-site standard, added 2026-07-30):** before a tier's first article goes live, that tier must have a published `overview.md` linked at the top of its nav section — it's the tier's real SEO landing page, not just the homepage's routing card. **Status here:** Essentials and Efficiency were both live with real articles but had no `overview.md` — the "Part of Essentials"/"Part of Efficiency" callouts in `env_and_secrets.md`, `yaml.md`, and `stack_health.md` linked to homepage anchors (`index.md#where-do-you-start`, `index.md#efficiency`) instead of a dedicated page. Fixed 2026-07-30: `essentials/overview.md` and `efficiency/overview.md` written, wired into nav, and all three callouts + the homepage's own links repointed at them.
 
 ### Quality Checklist
 

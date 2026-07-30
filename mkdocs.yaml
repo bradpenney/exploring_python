@@ -133,6 +133,7 @@ nav:
 
   # 📦 Essentials — Core Python for working platform engineers
   - 📦 Essentials:
+      - Overview: essentials/overview.md
       - Environment Variables and Secrets: essentials/env_and_secrets.md
       - Working with YAML: essentials/yaml.md
   #     - "Which Pods Aren't Running?": essentials/pods_not_running.md
@@ -143,6 +144,7 @@ nav:
 
   # ⚡ Efficiency — Professional Python patterns
   - ⚡ Efficiency:
+      - Overview: efficiency/overview.md
       - "Is This Whole Stack Healthy?": efficiency/stack_health.md
   #     - "What Changed Between Deploys?": efficiency/diff_deploys.md
   #     - "Which Repos Are Missing CODEOWNERS?": efficiency/repo_audit.md
