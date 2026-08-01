@@ -76,6 +76,7 @@ plugins:
   - meta
   - rss:
       match_path: ".*"
+      pretty_print: true
       image: https://python.bradpenney.io/images/exploring_python.png
       abstract_chars_count: 160
       length: 20
