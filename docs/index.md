@@ -58,6 +58,15 @@ Production Python: packaging tools for distribution, internal APIs with FastAPI,
 
 If `bash` is getting in your way, start with [Day One](day_one/overview.md).
 
+## Part of the BradPenney.io Network
+
+This site is part of a family of progressive technical learning resources:
+
+- [Exploring Linux](https://linux.bradpenney.io) — the terminal fluency this site assumes you already have
+- [Exploring Kubernetes](https://k8s.bradpenney.io) — automating clusters with the Kubernetes Python client
+- [Exploring Software Development Tools](https://tools.bradpenney.io) — the terminal tooling that pairs with a Python workflow
+- [Exploring Computer Science](https://cs.bradpenney.io) — the theory behind the data structures and algorithms you're already using
+
 ## Subscribe by RSS
 
 New articles publish straight to the [RSS feed](https://python.bradpenney.io/feed_rss_created.xml) — no algorithm, no email required.
