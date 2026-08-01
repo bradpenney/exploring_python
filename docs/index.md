@@ -57,3 +57,9 @@ Production Python: packaging tools for distribution, internal APIs with FastAPI,
 ---
 
 If `bash` is getting in your way, start with [Day One](day_one/overview.md).
+
+## Subscribe by RSS
+
+New articles publish straight to the [RSS feed](https://python.bradpenney.io/feed_rss_created.xml) — no algorithm, no email required.
+
+<a href="https://iheartrss.com/"><img src="https://iheartrss.com/iheartrss-dark.svg" alt="I ♥ RSS" width="88" height="31"></a>
