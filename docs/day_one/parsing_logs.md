@@ -6,8 +6,25 @@ description: "Use Python to parse application log files — count errors by comp
 
 # What Just Broke?
 
-!!! tip "Part of Day One"
-    This is part of [Day One: Python for Platform Engineers](overview.md).
+<!-- PATHWAY_ROADMAP:START -->
+<div class="pathway-pills" markdown>
+:material-map-marker-path: <span class="pathway-pills__label">Part of a deep dive:</span> [Day One Task Scripts](health_check.md){: .pathway-pill }
+</div>
+
+??? abstract ":material-map-legend: Consult the map"
+
+    <div class="grid cards" markdown>
+
+    -   :material-language-python: __Day One Task Scripts__ — step 2 of 5
+
+        ---
+
+        ← [Is It Still Up?](health_check.md) · **you are here** · [Did the Config Change?](comparing_configs.md) →
+
+        [Start the deep dive →](health_check.md)
+
+    </div>
+<!-- PATHWAY_ROADMAP:END -->
 
 QA says the login flow is broken. You `ssh` to the app server and `tail -f` the log — it's moving fast, there are hundreds of ERROR lines, and you can't tell what's actually happening versus noise. `grep ERROR app.log | head -20` gives you 20 lines that could be anything.
 
@@ -98,6 +115,8 @@ python count_errors.py /var/log/myapp/app.log
 # 847 errors in 12,304 total lines
 # Error rate: 6.9%
 ```
+
+![Running count_errors.py against a real log file, printing the actual error count and rate](../images/terminal/count_errors.gif)
 
 That one number already tells you something. 6.9% error rate on login is a problem. 0.01% might be acceptable noise.
 

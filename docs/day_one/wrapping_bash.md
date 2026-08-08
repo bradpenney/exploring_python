@@ -6,8 +6,25 @@ description: "Migrate an unwieldy bash deployment script to Python using subproc
 
 # My Bash Script Is Getting Out of Hand
 
-!!! tip "Part of Day One"
-    This is part of [Day One: Python for Platform Engineers](overview.md).
+<!-- PATHWAY_ROADMAP:START -->
+<div class="pathway-pills" markdown>
+:material-map-marker-path: <span class="pathway-pills__label">Part of a deep dive:</span> [Day One Task Scripts](health_check.md){: .pathway-pill }
+</div>
+
+??? abstract ":material-map-legend: Consult the map"
+
+    <div class="grid cards" markdown>
+
+    -   :material-language-python: __Day One Task Scripts__ — step 5 of 5
+
+        ---
+
+        ← [Run This Everywhere](run_everywhere.md) · **you are here** · *(last step)* →
+
+        [Start the deep dive →](health_check.md)
+
+    </div>
+<!-- PATHWAY_ROADMAP:END -->
 
 Deploy scripts start small — 15 lines, maybe. Then they grow: 80 lines, nested `if` statements, error handling that's a mess of `|| exit 1` chained everywhere, and a teammate asking what it does, followed by a 10-minute explanation. [Functions](https://linux.bradpenney.io/essentials/bash_functions/) help organize it — but the logic around them is still the problem.
 
@@ -53,7 +70,6 @@ The core of wrapping shell commands in Python is a single reusable function:
 ```python title="The run() function" linenums="1"
 import subprocess
 import sys
-
 
 def run(command, check=True, capture=False):
     """Run a shell command.
@@ -111,7 +127,6 @@ def deploy(environment, image_tag):
          "-l", "app=myapp"])
 
     print(f"\n✓ Deploy complete: {image_tag} → {environment}")
-
 
 deploy("staging", "myapp:v1.4.2")
 ```
@@ -198,7 +213,6 @@ import subprocess
 import sys
 import click
 
-
 def run(command, check=True, capture=False):
     print(f"→ {' '.join(command)}")
     result = subprocess.run(command, text=True, capture_output=capture)
@@ -211,7 +225,6 @@ def run(command, check=True, capture=False):
             print(f"\n✗ Failed: {' '.join(command)}")
             sys.exit(result.returncode)
     return result
-
 
 def deploy(env, tag, dry_run=False):
     print(f"\n{'[DRY RUN] ' if dry_run else ''}Deploying {tag} → {env}\n")
@@ -228,14 +241,12 @@ def deploy(env, tag, dry_run=False):
         else:
             run(step)
 
-
 @click.command()
 @click.argument("environment", type=click.Choice(["staging", "production"]))
 @click.argument("tag")
 @click.option("--dry-run", is_flag=True, help="Print commands without running them")
 def main(environment, tag, dry_run):
     deploy(environment, tag, dry_run=dry_run)
-
 
 if __name__ == "__main__":
     main()

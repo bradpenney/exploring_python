@@ -6,8 +6,25 @@ description: "Loop over a server inventory in Python, run checks across your fle
 
 # Run This Everywhere
 
-!!! tip "Part of Day One"
-    This is part of [Day One: Python for Platform Engineers](overview.md).
+<!-- PATHWAY_ROADMAP:START -->
+<div class="pathway-pills" markdown>
+:material-map-marker-path: <span class="pathway-pills__label">Part of a deep dive:</span> [Day One Task Scripts](health_check.md){: .pathway-pill }
+</div>
+
+??? abstract ":material-map-legend: Consult the map"
+
+    <div class="grid cards" markdown>
+
+    -   :material-language-python: __Day One Task Scripts__ — step 4 of 5
+
+        ---
+
+        ← [Did the Config Change?](comparing_configs.md) · **you are here** · [My Bash Script Is Getting Out of Hand](wrapping_bash.md) →
+
+        [Start the deep dive →](health_check.md)
+
+    </div>
+<!-- PATHWAY_ROADMAP:END -->
 
 The deploy finished. You need to confirm the service is healthy on all 15 app servers before you call it done. Or you need to check disk space on every node in the cluster before the storage migration. Or you need to verify the new config file landed on every host.
 
@@ -40,7 +57,6 @@ You end up grepping through interleaved stdout, or writing to temp files, or los
 import subprocess
 import sys
 
-
 def check_server(server, command, ssh_timeout=5, cmd_timeout=10):
     """Run command on server via SSH. Returns (success, output, error)."""
     try:
@@ -57,7 +73,6 @@ def check_server(server, command, ssh_timeout=5, cmd_timeout=10):
     except subprocess.TimeoutExpired:
         return False, "", "SSH timed out"
 
-
 def check_fleet(servers, command):
     passed = []
     failed = []
@@ -72,7 +87,6 @@ def check_fleet(servers, command):
             passed.append(server)
 
     return passed, failed
-
 
 if __name__ == "__main__":
     servers = [

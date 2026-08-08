@@ -6,8 +6,25 @@ description: "Compare JSON and YAML configuration files programmatically — cat
 
 # Did the Config Change?
 
-!!! tip "Part of Day One"
-    This is part of [Day One: Python for Platform Engineers](overview.md).
+<!-- PATHWAY_ROADMAP:START -->
+<div class="pathway-pills" markdown>
+:material-map-marker-path: <span class="pathway-pills__label">Part of a deep dive:</span> [Day One Task Scripts](health_check.md){: .pathway-pill }
+</div>
+
+??? abstract ":material-map-legend: Consult the map"
+
+    <div class="grid cards" markdown>
+
+    -   :material-language-python: __Day One Task Scripts__ — step 3 of 5
+
+        ---
+
+        ← [What Just Broke?](parsing_logs.md) · **you are here** · [Run This Everywhere](run_everywhere.md) →
+
+        [Start the deep dive →](health_check.md)
+
+    </div>
+<!-- PATHWAY_ROADMAP:END -->
 
 You deployed. Something's slightly off — not broken enough to trigger alerts, but wrong. The service is responding but behavior has changed. Your first question: is the running configuration actually what you deployed?
 
@@ -64,11 +81,9 @@ flowchart TD
 import json
 import sys
 
-
 def load_json(path):
     with open(path) as f:
         return json.load(f)  # (1)!
-
 
 def find_differences(expected, actual, path=""):
     """Return list of human-readable differences between two dicts."""
@@ -90,7 +105,6 @@ def find_differences(expected, actual, path=""):
             differences.append(f"            got:      {actual[key]!r}")
 
     return differences
-
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
@@ -141,11 +155,9 @@ pip install pyyaml
 import yaml
 import sys
 
-
 def load_yaml(path):
     with open(path) as f:
         return yaml.safe_load(f)  # (1)!
-
 
 # ... rest is identical to the JSON version
 ```

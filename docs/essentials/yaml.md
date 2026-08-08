@@ -6,6 +6,26 @@ description: "Read, modify, and generate Kubernetes manifests and other YAML fil
 
 # Working with YAML
 
+<!-- PATHWAY_ROADMAP:START -->
+<div class="pathway-pills" markdown>
+:material-map-marker-path: <span class="pathway-pills__label">Part of a pathway:</span> [Debugging With Nothing But a Terminal](https://bradpenney.io/pathways/nothing-but-a-terminal){: .pathway-pill }
+</div>
+
+??? abstract ":material-map-legend: Consult the map"
+
+    <div class="grid cards" markdown>
+
+    -   :material-console: __Debugging With Nothing But a Terminal__ — step 10 of 20
+
+        ---
+
+        ← [`jq`: Parsing JSON](https://tools.bradpenney.io/essentials/jq_parsing_json/) · **you are here** · [`yq`: Wrangling YAML](https://tools.bradpenney.io/essentials/yq_wrangling_yaml/) →
+
+        [Start the pathway →](https://bradpenney.io/pathways/nothing-but-a-terminal)
+
+    </div>
+<!-- PATHWAY_ROADMAP:END -->
+
 !!! tip "Part of Essentials"
     This is part of [Essentials](overview.md) — core Python patterns for working platform engineers.
 
@@ -78,6 +98,8 @@ print(f"✓ Updated image to {image_tag}")
 python update_image.py myapp:v1.4.2
 ```
 
+![Running a real script to read a Deployment manifest's fields, then updating and writing back the image tag](../images/terminal/pyyaml_read_update.gif)
+
 ---
 
 ## The Round-Trip Problem
@@ -104,7 +126,17 @@ spec:
 
 The comment is lost. Key ordering may also change.
 
-**For scripts that modify files humans also edit**, this is a problem. Two options:
+**For scripts that modify files humans also edit**, this is a problem. The choice between the two libraries below comes down to one question:
+
+```mermaid
+graph TD
+    Q{"Do humans edit<br/>this file too?"} -->|yes| Ruamel["ruamel.yaml<br/>preserves comments"]
+    Q -->|no| PyYAML["PyYAML<br/>simpler, loses comments"]
+
+    style Q fill:#2d3748,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style Ruamel fill:#2f855a,stroke:#cbd5e0,stroke-width:2px,color:#fff
+    style PyYAML fill:#2f855a,stroke:#cbd5e0,stroke-width:2px,color:#fff
+```
 
 === "ruamel.yaml (preserves comments)"
 
@@ -321,6 +353,8 @@ Chaining `.get({})` at each level returns an empty dict if the key is missing, l
 The dict navigation patterns you've used here — nested key access, iteration, filtering — apply directly to JSON API responses.
 
 In the meantime, the [config comparison script](../day_one/comparing_configs.md) from Day One shows the same dict-diffing patterns applied to both JSON and YAML.
+
+If you're following the [Debugging With Nothing But a Terminal](https://bradpenney.io/pathways/nothing-but-a-terminal) pathway, the next step is **[yq: Wrangling YAML Configs](https://tools.bradpenney.io/essentials/yq_wrangling_yaml/)** on the Dev Tools site — the command-line equivalent of everything above, reading, editing, and merging YAML without writing a Python script for it.
 
 ## Further Reading
 

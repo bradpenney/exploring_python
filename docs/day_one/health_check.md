@@ -6,8 +6,25 @@ description: "Write a Python health-check poller that distinguishes connection e
 
 # Is It Still Up?
 
-!!! tip "Part of Day One"
-    This is part of [Day One: Python for Platform Engineers](overview.md).
+<!-- PATHWAY_ROADMAP:START -->
+<div class="pathway-pills" markdown>
+:material-map-marker-path: <span class="pathway-pills__label">Part of a deep dive:</span> [Day One Task Scripts](health_check.md){: .pathway-pill }
+</div>
+
+??? abstract ":material-map-legend: Consult the map"
+
+    <div class="grid cards" markdown>
+
+    -   :material-language-python: __Day One Task Scripts__ — step 1 of 5
+
+        ---
+
+        ← *(first step)* · **you are here** · [What Just Broke?](parsing_logs.md) →
+
+        [Start the deep dive →](health_check.md)
+
+    </div>
+<!-- PATHWAY_ROADMAP:END -->
 
 You're deploying. Traffic is cut over to the new pods, the old ones are terminating, and you need to know the moment your API is healthy again before you proceed. Your options: sit there hitting refresh, write a `curl` loop in `bash`, or do it properly.
 
@@ -63,7 +80,6 @@ import requests
 import time
 import sys
 
-
 def wait_for_health(url, timeout=120, interval=5):
     """Poll url until it returns HTTP 200 or timeout expires.
     
@@ -93,7 +109,6 @@ def wait_for_health(url, timeout=120, interval=5):
 
         time.sleep(interval)
 
-
 if __name__ == "__main__":
     url = "http://api.internal/health"
 
@@ -119,6 +134,8 @@ python health_check.py
 #   HTTP 503 (15s / 120s)
 # ✓ http://api.internal/health is healthy (20s)
 ```
+
+![Running the health check script against a starting server, showing connection refused, then 503s, then healthy](../images/terminal/health_check.gif)
 
 The output tells you exactly what the server was doing during the wait. In a CI log, that's useful information. "It spent 10 seconds failing to connect, then 10 seconds returning 503s before coming healthy" is a different story than "it came up immediately."
 
